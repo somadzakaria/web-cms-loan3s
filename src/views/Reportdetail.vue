@@ -10,9 +10,60 @@
           <Navbar />
           <!-- Begin Page Content -->
           <div class="container-fluid">
-            <div class="card shadow mb-4">
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Report Detail</h1>
+            </div>
+            <!-- Filter -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic example"
+                  >
+                    <button type="button" class="btn btn-white">Januari</button>
+                    <button type="button" class="btn btn-white">
+                      Februari
+                    </button>
+                    <button type="button" class="btn btn-white">Maret</button>
+                    <button type="button" class="btn btn-white">April</button>
+                    <button type="button" class="btn btn-white">Mei</button>
+                    <button type="button" class="btn btn-white">Juni</button>
+                    <button type="button" class="btn btn-white">Juli</button>
+                    <button type="button" class="btn btn-white">Agustus</button>
+                    <button type="button" class="btn btn-white">
+                      September
+                    </button>
+                    <button type="button" class="btn btn-white">Oktover</button>
+                    <button type="button" class="btn btn-white">
+                      November
+                    </button>
+                    <button type="button" class="btn btn-white">
+                      Desember
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Filter -->
+            <div class="card shadow mt-5">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Loan Admin</h6>
+                <div class="row">
+                  <div class="col-lg-6 text-left">
+                    <h6
+                      style="
+                        font-family: 'Poppins';
+                        font-size: 14px;
+                        font-weight: bold;
+                      "
+                    >
+                      Loan Admin
+                    </h6>
+                  </div>
+                </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -141,20 +192,15 @@
               </div>
             </div>
           </div>
+
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
-        <!-- Modal Detail -->
-        <Detail />
-        <!-- End Modal Content -->
+
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
       </div>
-
-      <!-- Moodal Edit -->
-      <Edit />
-      <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
   </div>
@@ -165,8 +211,6 @@
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
-import Detail from "../components/loan/Detail.vue";
-import Edit from "../components/loan/Edit.vue";
 
 export default {
   name: "Home",
@@ -174,8 +218,20 @@ export default {
     Sidebar,
     Navbar,
     Footer,
-    Detail,
-    Edit,
   },
 };
 </script>
+
+<style scoped>
+.btn-white {
+  font-family: "Poppins";
+}
+.btn-white:hover {
+  background-color: #007aff;
+  border-radius: 3px;
+  font-family: "Poppins";
+  color: #ffff;
+}
+</style>
+
+

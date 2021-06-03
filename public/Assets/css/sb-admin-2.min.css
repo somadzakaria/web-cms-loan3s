@@ -5064,7 +5064,7 @@ input[type=submit].btn-block {
 .card-header {
     padding: .75rem 1.25rem;
     margin-bottom: 0;
-    background-color: #f8f9fc;
+    background-color: #ffff !important;
     border-bottom: 1px solid #e3e6f0
 }
 

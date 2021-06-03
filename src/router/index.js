@@ -1,23 +1,69 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Loan from '../views/Loan.vue'
+import HCBP from '../views/HCBP.vue'
+import HCComben from '../views/HCComben.vue'
+import HCCombenupdate from '../views/HCCombenupdate.vue'
+import Product from '../views/Product.vue'
+import Promotion from '../views/Promotion.vue'
+import General from '../views/GeneralSetting.vue'
+import Summary from '../views/Summary.vue'
+import Reportdetail from '../views/Reportdetail.vue'
+
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/auth',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/',
+    name: 'Loan',
+    component: Loan
+  },
+ {
+  path: '/HCBP',
+  name: 'HCBP',
+  component: HCBP
+ },{
+  path: '/HCComben',
+  name: 'HCComben',
+  component: HCComben
+ },
+ {
+  path: '/HCCombenupdate',
+  name: 'HCCombenupdate',
+  component: HCCombenupdate
+ },
+ {
+  path: '/Product',
+  name: 'Product',
+  component: Product
+ },
+ {
+  path: '/GeneralSetting',
+  name: 'GeneralSetting',
+  component: General
+},
+ {
+  path: '/Promotion',
+  name: 'Promotion',
+  component: Promotion
+},
+ {
+  path: '/Summary',
+  name: 'Summary',
+  component: Summary
+},
+ {
+  path: '/Reportdetail',
+  name: 'Reportdetail',
+  component: Reportdetail
+},
+
 ]
 
 const router = new VueRouter({
