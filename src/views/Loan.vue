@@ -154,10 +154,11 @@
             </div>
           </div>
           <!-- /.container-fluid -->
+           <Detail />
         </div>
         <!-- End of Main Content -->
         <!-- Modal Detail -->
-        <Detail />
+       
         <!-- End Modal Content -->
         <!-- Footer -->
         <Footer />

@@ -146,9 +146,9 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+             <div class="row">
               <div class="col-lg-12">
-                <div class="card shadow mt-5">
+                <div class="card shadow mt-5 mb-4">
                   <div class="card-body">
                     <div class="table-responsive">
                       <table
@@ -196,6 +196,38 @@
                             <td style="border: none">Rp 10.000.000</td>
                             <td style="border: none">Belum diproses</td>
                           </tr>
+                          <tr>
+                            <td style="border: none">
+                              <img
+                                class="img-profile rounded-circle mr-4"
+                                src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                alt=""
+                                width="35"
+                              />
+                              Annette Watson
+                            </td>
+                            <td style="border: none">11 Apr 2021 11:00</td>
+                            <td style="border: none">082132</td>
+                            <td style="border: none">Head Office</td>
+                            <td style="border: none">Rp 10.000.000</td>
+                            <td style="border: none">Belum diproses</td>
+                          </tr>
+                          <tr>
+                            <td style="border: none">
+                              <img
+                                class="img-profile rounded-circle mr-4"
+                                src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                alt=""
+                                width="35"
+                              />
+                              Annette Watson
+                            </td>
+                            <td style="border: none">11 Apr 2021 11:00</td>
+                            <td style="border: none">082132</td>
+                            <td style="border: none">Head Office</td>
+                            <td style="border: none">Rp 10.000.000</td>
+                            <td style="border: none">Belum diproses</td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
@@ -203,6 +235,7 @@
                 </div>
               </div>
             </div>
+           
           </div>
           <!-- /.container-fluid -->
         </div>
