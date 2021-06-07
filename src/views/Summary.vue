@@ -268,6 +268,10 @@ export default {
       // Array will be automatically processed with visualization.arrayToDataTable function
       chartData: [
         ["Year", "Peminjam", "User"],
+        ["2010", 1000, 400],
+        ["2011", 3000, 400],
+        ["2012", 2000, 400],
+        ["2013", 1400, 400],
         ["2014", 1000, 400],
         ["2015", 1170, 460],
         ["2016", 660, 1120],
