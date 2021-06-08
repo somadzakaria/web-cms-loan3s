@@ -11,11 +11,17 @@ import Summary from '../views/Summary.vue'
 import Reportdetail from '../views/Reportdetail.vue'
 import Blog from '../views/Blog.vue'
 import Organization from '../views/Organization.vue'
+import Notfound from '../views/404.vue'
 
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '*',
+    name: '*',
+    component: Notfound
+  },
   {
     path: '/auth',
     name: 'Login',
@@ -79,6 +85,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history', 
   routes
 })
 

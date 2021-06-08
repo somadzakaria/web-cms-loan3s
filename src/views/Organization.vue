@@ -64,15 +64,16 @@
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
-        <!-- Modal Detail -->
-    
+               <!-- Modal Detail -->
+     <Detail />
         <!-- End Modal Content -->
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
       </div>
 
-  
+    <!-- Moodal Edit -->
+      <Update />
     </div>
     <!-- End of Page Wrapper -->
   </div>
@@ -83,7 +84,8 @@
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
-
+import Detail from "../components/Organization/Detail.vue";
+import Update from "../components/Organization/Update.vue";
 
 export default {
   name: "Home",
@@ -91,6 +93,8 @@ export default {
     Sidebar,
     Navbar,
     Footer,
+      Detail,
+    Update,
   },
 };
 </script>
