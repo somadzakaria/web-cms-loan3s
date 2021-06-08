@@ -9,6 +9,8 @@ import Promotion from '../views/Promotion.vue'
 import General from '../views/GeneralSetting.vue'
 import Summary from '../views/Summary.vue'
 import Reportdetail from '../views/Reportdetail.vue'
+import Blog from '../views/Blog.vue'
+import Organization from '../views/Organization.vue'
 
 
 Vue.use(VueRouter)
@@ -62,6 +64,16 @@ const routes = [
   path: '/Reportdetail',
   name: 'Reportdetail',
   component: Reportdetail
+},
+ {
+  path: '/blog',
+  name: 'blog',
+  component: Blog
+},
+ {
+  path: '/Organization',
+  name: 'Organization',
+  component: Organization
 },
 
 ]

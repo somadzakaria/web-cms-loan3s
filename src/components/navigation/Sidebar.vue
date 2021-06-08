@@ -132,6 +132,16 @@
                 >Promotion</a
               ></router-link
             >
+            <router-link to="blog">
+              <a class="collapse-item" href="register.html"
+                >Blog</a
+              ></router-link
+            >
+            <router-link to="Organization">
+              <a class="collapse-item" href="register.html"
+                >Organization Chart</a
+              ></router-link
+            >
           </div>
         </div>
       </li>

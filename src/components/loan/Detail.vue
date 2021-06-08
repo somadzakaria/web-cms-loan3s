@@ -21,7 +21,7 @@
           </div>
           <div class="modal-body text-center">
             <div class="form">
-              <img src="img/image.png" width="350" alt="" />
+              <img src="../../assets/image.png" width="350" alt="" />
               <div class="row mt-5">
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> NIK</label>
