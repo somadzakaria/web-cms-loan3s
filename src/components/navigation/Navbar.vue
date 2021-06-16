@@ -208,8 +208,9 @@
               href="#"
               data-toggle="modal"
               data-target="#logoutModal"
+              @click="logout"
             >
-              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" ></i>
               Logout
             </a>
           </router-link>
@@ -219,3 +220,11 @@
   </nav>
   <!-- End of Topbar -->
 </template>
+<script>
+import { authComputed } from '../vuex/helper.js'
+export default {
+  components:{
+    authComputedv  
+  }
+}
+</script>
