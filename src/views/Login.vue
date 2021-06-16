@@ -45,7 +45,7 @@ export default {
         })
         .then(() => {
           this.$router.push({
-            name: "Loan",
+            name: "blog",
           });
         });
     },
