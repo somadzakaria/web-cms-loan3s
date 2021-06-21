@@ -22,20 +22,12 @@ const routes = [
     component: Notfound,
   },
   {
-<<<<<<< HEAD
-    path: "/Login",
-=======
     path: "/auth",
->>>>>>> 7f828623007ff971e6885a341e656b9773c30371
     name: "Login",
     component: () => import("../views/Login.vue"),
   },
   {
-<<<<<<< HEAD
-    path: "/Loan",
-=======
     path: "/",
->>>>>>> 7f828623007ff971e6885a341e656b9773c30371
     name: "Loan",
     component: Loan,
   },
@@ -83,13 +75,9 @@ const routes = [
     path: "/blog",
     name: "blog",
     component: Blog,
-<<<<<<< HEAD
-  },
-=======
     props: true,
   },
  
->>>>>>> 7f828623007ff971e6885a341e656b9773c30371
   {
     path: "/Organization",
     name: "Organization",
@@ -102,8 +90,6 @@ const router = new VueRouter({
   routes,
 });
 
-<<<<<<< HEAD
-=======
 router.beforeEach((to, from, next) => {
   const loggedIn = localStorage.getItem("user");
   if (to.matched.some((record) => record.meta.requiresAuth)) {
@@ -114,5 +100,4 @@ router.beforeEach((to, from, next) => {
     }
   } else next();
 });
->>>>>>> 7f828623007ff971e6885a341e656b9773c30371
 export default router;
