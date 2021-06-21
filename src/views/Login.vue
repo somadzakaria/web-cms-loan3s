@@ -5,29 +5,17 @@
         <div class="row">
           <div class="col-xl-12 col-sm-12">
             <img src="../assets/bfi.png" alt="" class="bfi" />
-            <form>
+            <form role="form" @submit.prevent="login">
               <div class="col-3 mt-5 mx-auto">
-                <label class="sr-only" for="inlineFormInputGroup">NIK</label>
+                <label class="sr-only" for="inlineFormInputGroup">Email</label>
                 <div class="input-group mb-4">
-                
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inlineFormInputGroup"
-                    placeholder="NIK"
-                    style="color: #fff"
-                  />
+                  <input type="email" class="form-control" id="inlineFormInputGroup" v-model="email" placeholder="NIK" style="color: #fff" />
                 </div>
                 <div class="input-group mb-4">
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="inlineFormInputGroup"
-                    placeholder="password"
-                  />
+                  <input type="password" class="form-control" v-model="password" id="inlineFormInputGroup" placeholder="password" />
                 </div>
                 <div class="form-group mt-3">
-                  <button class="btn btn-login">Masuk</button>
+                  <button class="btn btn-login" type="submit">Masuk</button>
                 </div>
                 <div class="form-group mt-3">
                   <a href="#" style="color:white; font-family:'Poppins';">Lupa Password</a>
@@ -40,10 +28,36 @@
     </header>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: { 
+    login() {
+      this.$store
+        .dispatch("login", {
+          email: this.email,
+          password: this.password
+        })
+        .then(() => {
+          this.$router.push({
+            name: "Loan",
+          });
+        });
+    },
+  },
+};
+</script>
+
 <style scoped>
 .bg-login {
   background-image: url("../assets/bg2.png");
-  height: 657px;
+  width: 100% !important;
+  height: 800px !important;
 }
 
 .bfi {
@@ -51,12 +65,11 @@
 }
 
 .form-control {
-    background-color: transparent;
+  background-color: transparent;
   color: #fff !important;
   width: 100%;
   font-family: "Poppins";
   font-size: 14px;
-
 }
 
 .btn-login {

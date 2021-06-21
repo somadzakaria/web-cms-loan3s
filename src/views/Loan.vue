@@ -182,7 +182,7 @@ import Detail from "../components/loan/Detail.vue";
 import Edit from "../components/loan/Edit.vue";
 
 export default {
-  name: "Home",
+  name: "Loan",
   components: {
     Sidebar,
     Navbar,
