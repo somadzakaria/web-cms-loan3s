@@ -5,14 +5,14 @@
         <div class="row">
           <div class="col-xl-12 col-sm-12">
             <img src="../assets/bfi.png" alt="" class="bfi" />
-            <form role="form" @submit.prevent="login">
+            <form @submit.prevent="login">
               <div class="col-3 mt-5 mx-auto">
                 <label class="sr-only" for="inlineFormInputGroup">Email</label>
                 <div class="input-group mb-4">
-                  <input type="email" class="form-control" id="inlineFormInputGroup" v-model="email" placeholder="NIK" style="color: #fff" />
+                  <input type="text" class="form-control" id="inlineFormInputGroup" v-model="email" placeholder="NIK" style="color: #fff" />
                 </div>
                 <div class="input-group mb-4">
-                  <input type="password" class="form-control" v-model="password" id="inlineFormInputGroup" placeholder="password" />
+                  <input type="password" class="form-control" id="inlineFormInputGroup" v-model="password" placeholder="password" />
                 </div>
                 <div class="form-group mt-3">
                   <button class="btn btn-login" type="submit">Masuk</button>
@@ -36,23 +36,26 @@ export default {
       password: "",
     };
   },
-  methods: { 
+  methods: {
     login() {
       this.$store
-        .dispatch("login", {
+        .dispatch('login', {
           email: this.email,
-          password: this.password
+          password: this.password,
         })
         .then(() => {
           this.$router.push({
-            name: "Loan",
+            name: "blog",
           });
         });
     },
   },
 };
 </script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7f828623007ff971e6885a341e656b9773c30371
 <style scoped>
 .bg-login {
   background-image: url("../assets/bg2.png");

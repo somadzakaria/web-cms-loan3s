@@ -132,7 +132,11 @@
           </a>
           <div class="dropdown-divider"></div>
           <router-link to="auth">
+<<<<<<< HEAD
             <a class="dropdown-item" href="#" v-on:click.prevent="handleLogout($event)">
+=======
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" @click="logout">
+>>>>>>> 7f828623007ff971e6885a341e656b9773c30371
               <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               Logout
             </a>
@@ -143,6 +147,7 @@
   </nav>
   <!-- End of Topbar -->
 </template>
+<<<<<<< HEAD
 
 <script>
 export default {
@@ -167,3 +172,18 @@ export default {
   },
 };
 </script>
+=======
+<script>
+// import { authComputed } from "../vuex/helper.js";
+export default {
+  // components: {
+  //   authComputed,
+  // },
+  methods: {
+    logout() {
+     this.$store.dispatch('logout');
+    },
+  },
+};
+</script>
+>>>>>>> 7f828623007ff971e6885a341e656b9773c30371
