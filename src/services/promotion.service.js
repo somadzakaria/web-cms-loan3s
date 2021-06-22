@@ -1,10 +1,8 @@
 import axios from "axios";
 const user = JSON.parse(localStorage.getItem("user"));
-
-
 export default {
   getAll() {
-    return axios.get("https://dev-loan-api.sitama.co.id/api/v1/cms/blog",
+    return axios.get("https://dev-loan-api.sitama.co.id/api/v1/cms/promotion",
         {
         headers: {
             'Authorization': "Bearer " + user.data.access_token,
@@ -21,7 +19,7 @@ export default {
   },
    getDelete(id) {
     return axios.get(
-      "https://dev-loan-api.sitama.co.id/api/v1/cms/blog/delete/"+id,
+      "https://dev-loan-api.sitama.co.id/api/v1/cms/promotion/delete/"+id,
         {   headers: {
             'Authorization': "Bearer " + user.data.access_token,
             'X_USER_ID': user.data.id,
@@ -37,7 +35,7 @@ export default {
   },
 
   postCrate(params){
-    return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/blog/create" ,params,{
+    return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/promotion/create" ,params,{
       headers: {
           'Authorization': "Bearer " + user.data.access_token,
           'X_USER_ID': user.data.id,
@@ -53,7 +51,7 @@ export default {
   },
 
   postUpdate(id,params){
-    return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/blog/update/"+id ,params,{
+    return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/promotion/update/"+id ,params,{
         headers: {
             'Authorization': "Bearer " + user.data.access_token,
             'X_USER_ID': user.data.id,

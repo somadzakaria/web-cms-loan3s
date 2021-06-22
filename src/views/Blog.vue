@@ -17,7 +17,7 @@
                     <h6 style="font-family: 'Poppins'; font-size: 14px; font-weight: bold;">Blog</h6>
                   </div>
                   <div class="col-lg-6 text-right">
-                    <button class="btn btn-primary text-left" data-toggle="modal" data-target="#TambahModal"><i class="fa fa-plus mr-3"></i> Tambah</button>
+                <a class="btn btn-primary text-left"  @click.prevent="handleCreate"><i class="fa fa-plus mr-3"></i> Tambah</a>
                   </div>
                 </div>
               </div>
@@ -59,7 +59,7 @@
                         <td>{{ blog.WritenBy }}</td>
                         <td>
                           <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal"><i class="far fa-eye text-primary"></i></button>
-                          <button class="btn btn-universal" data-toggle="modal" data-target="#EditDetail"><i class="far fa-edit text-primary"></i></button>
+                          <button class="btn btn-universal" @click.prevent="handleupdate(blog.id)"><i class="far fa-edit text-primary"></i></button>
                           <button class="btn btn-universal" type="submit" @click.prevent="handledelete(blog.id)"><i class="far fa-trash-alt text-primary"></i></button>
                         </td>
                       </tr>
@@ -72,17 +72,12 @@
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
-        <Tambah />
-        <!-- Modal Detail -->
-        <Detail />
-        <!-- End Modal Content -->
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
       </div>
 
-      <!-- Moodal Edit -->
-      <Update />
+
     </div>
     <!-- End of Page Wrapper -->
   </div>
@@ -90,12 +85,10 @@
 
 <script>
 // @ is an alias to /src
+import router from "@/router";
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
-import Tambah from "../components/Blog/Tambah.vue";
-import Detail from "../components/Blog/Detail.vue";
-import Update from "../components/Blog/Update.vue";
 import BlogService from "../services/blog.service";
 export default {
   props: ["id"],
@@ -104,9 +97,6 @@ export default {
     Sidebar,
     Navbar,
     Footer,
-    Tambah,
-    Detail,
-    Update,
   },
   data() {
     return {
@@ -127,10 +117,17 @@ export default {
       BlogService.getDelete(id).then((response) =>
       { 
         console.log(response,"Berhasil Terhapus");
+        router.go();
       }).catch((error) => {
         console.log("Gagal Terhapus", error.response);
       });
     },
+     handleCreate(){
+      router.push('/blog-create')
+    },
+     handleupdate(id){
+      router.push('/blog-update/' + id)
+    }
   }
  
 };

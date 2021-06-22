@@ -5,11 +5,14 @@ import HCBP from "../views/HCBP.vue";
 import HCComben from "../views/HCComben.vue";
 import HCCombenupdate from "../views/HCCombenupdate.vue";
 import Product from "../views/Product.vue";
+import Productcreate from "../components/Product/Produkcreate.vue";
 import Promotion from "../views/Promotion.vue";
 import General from "../views/GeneralSetting.vue";
 import Summary from "../views/Summary.vue";
 import Reportdetail from "../views/Reportdetail.vue";
 import Blog from "../views/Blog.vue";
+import Blogcreate from "../components/Blog/Blogcreate.vue";
+import Blogupdate from "../components/Blog/Blogupdate.vue";
 import Organization from "../views/Organization.vue";
 import Notfound from "../views/404.vue";
 
@@ -52,6 +55,11 @@ const routes = [
     component: Product,
   },
   {
+    path: "/Product-create",
+    name: "Productcreate",
+    component: Productcreate,
+  },
+  {
     path: "/GeneralSetting",
     name: "GeneralSetting",
     component: General,
@@ -75,7 +83,18 @@ const routes = [
     path: "/blog",
     name: "blog",
     component: Blog,
-    props: true,
+   
+  },
+  {
+    path: "/blog-create",
+    name: "blogcreate",
+    component: Blogcreate,
+  },
+ 
+  {
+    path: "/blog-update/:id",
+    name: "blogupdate",
+    component: Blogupdate,
   },
  
   {

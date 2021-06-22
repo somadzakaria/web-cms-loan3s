@@ -25,7 +25,7 @@
                     </h6>
                   </div>
                   <div class="col-lg-6 text-right">
-                    <button class="btn btn-primary text-left">
+                    <button class="btn btn-primary text-left" @click="handleCreate()">
                       <i class="fa fa-plus mr-3"></i> Tambah
                     </button>
                   </div>
@@ -58,15 +58,6 @@
                           "
                         >
                           ID
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Name
                         </th>
                         <th
                           style="
@@ -126,20 +117,29 @@
                         >
                           status
                         </th>
+                        <th
+                          class="text-center"
+                          style="
+                            background: #edf2f7;
+                            color: #4a5568;
+                            font-family: 'Poppins';
+                          "
+                        >
+                          action
+                        </th>
                       </tr>
                     </thead>
-
                     <tbody>
-                      <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>61</td>
-                        <td>Rp 10.000.000</td>
-                        <td>Rp 10.000.000</td>
+                      <tr v-for="Product in Products" :key="Product.id">
+                        <td>{{Product.ProductID}}</td>
+                        <td>{{Product.ProductName}}</td>
+                        <td>{{Product.ProductDescription}}</td>
+                        <td>{{Product.FinancePurpose}}</td>
+                        <td>{{Product.Tenor_From}}</td>
+                        <td>{{Product.Tenor_to}}</td>
+                        <td>{{Product.EffectiveRate}}</td>
+                        <td>{{Product.isactive}}</td>
+                    <td>                <button class="btn btn-universal" type="submit" @click.prevent="handledelete(Product.id)"><i class="far fa-trash-alt text-primary"></i></button></td>
                       </tr>
                     </tbody>
                   </table>
@@ -166,11 +166,11 @@
 
 <script>
 // @ is an alias to /src
+import router from "@/router";
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
-
-
+import ProductService from "../services/produk.service";
 export default {
   name: "Home",
   components: {
@@ -178,5 +178,34 @@ export default {
     Navbar,
     Footer,
   },
+  data(){
+    return{
+      Products :[],
+    }
+  }, 
+  created() {
+    ProductService.getAll()
+      .then((response) => {
+        this.Products = response.data;
+      })
+      .catch((error) => {
+        console.log("Eror Data Tidak Di Temukan", error.response);
+      });
+  },
+  methods:{
+    handledelete(id){  
+     ProductService.getDelete(id).then((response) =>
+      { 
+        console.log(response,"Berhasil Terhapus");
+        router.go();
+      }).catch((error) => {
+        console.log("Gagal Terhapus", error.response);
+      });
+    },
+      handleCreate(){
+      router.push('/Product-create')
+    },
+  }
+ 
 };
 </script>

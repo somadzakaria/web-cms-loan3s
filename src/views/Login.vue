@@ -52,10 +52,6 @@ export default {
   },
 };
 </script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 7f828623007ff971e6885a341e656b9773c30371
 <style scoped>
 .bg-login {
   background-image: url("../assets/bg2.png");
