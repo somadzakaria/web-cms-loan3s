@@ -100,6 +100,7 @@ export default {
   },
   data(){
     return{
+    ProductId: this.$route.params.id,
       Products:{
         ProductName : '',
         ProductDescription : '',
@@ -123,7 +124,7 @@ export default {
           EffectiveRate: this.Products.EffectiveRate,
           isactive: this.Products.isactive,
         }
-       ProductService.postCrate(params).then((response)=>
+       ProductService.postUpdate(this.ProductId,params).then((response)=>
         {
           console.log(response,"Berhasil Di tambahkan")
           router.back();  

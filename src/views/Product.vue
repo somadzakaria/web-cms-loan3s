@@ -139,7 +139,9 @@
                         <td>{{Product.Tenor_to}}</td>
                         <td>{{Product.EffectiveRate}}</td>
                         <td>{{Product.isactive}}</td>
-                    <td>                <button class="btn btn-universal" type="submit" @click.prevent="handledelete(Product.id)"><i class="far fa-trash-alt text-primary"></i></button></td>
+                        <td><button class="btn btn-universal" type="submit" @click.prevent="handledelete(Product.id)"><i class="far fa-trash-alt text-primary"></i></button>
+                        <button class="btn btn-universal" type="submit" @click.prevent="handleupdate(Product.id)"><i class="far fa-edit text-primary"></i></button></td>
+                       
                       </tr>
                     </tbody>
                   </table>
@@ -205,6 +207,9 @@ export default {
       handleCreate(){
       router.push('/Product-create')
     },
+    handleupdate(id){
+      router.push('/Product-update/' + id)
+    }
   }
  
 };

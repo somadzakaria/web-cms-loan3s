@@ -6,8 +6,11 @@ import HCComben from "../views/HCComben.vue";
 import HCCombenupdate from "../views/HCCombenupdate.vue";
 import Product from "../views/Product.vue";
 import Productcreate from "../components/Product/Produkcreate.vue";
+import Productupdate from "../components/Product/Produkupdate.vue";
 import Promotion from "../views/Promotion.vue";
 import General from "../views/GeneralSetting.vue";
+import Generalcreate from "../components/General/Generalcreate.vue";
+import Generalupdate from "../components/General/Generalupdate.vue";
 import Summary from "../views/Summary.vue";
 import Reportdetail from "../views/Reportdetail.vue";
 import Blog from "../views/Blog.vue";
@@ -60,9 +63,23 @@ const routes = [
     component: Productcreate,
   },
   {
+    path: "/Product-update/:id",
+    name: "Productupdate",
+    component: Productupdate,
+  },
+  {
     path: "/GeneralSetting",
     name: "GeneralSetting",
     component: General,
+  },
+  {
+    path: "/General-create",
+    name: "Generalcreate",
+    component:Generalcreate,
+  },{
+    path: "/General-update/:id",
+    name: "Generaltupdate",
+    component: Generalupdate,
   },
   {
     path: "/Promotion",
