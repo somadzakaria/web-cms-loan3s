@@ -21,7 +21,7 @@
                         font-weight: bold;
                       "
                     >
-                      Create Product
+                      Create Promotion
                     </h6>
                   </div>
                 </div>
@@ -30,37 +30,23 @@
                 <form role="form" @submit.prevent="submit($event)">
                   <div class="form">
                     <div class="row">
-                      <div class="col-lg-12 text-left">
-                        <label for="NIK" style="text-align: left">Product Name</label>
-                        <input type="text" id="NIK" class="form-control" v-model="Products.ProductName" />
+                      <div class="col-lg-12 mt-3 text-left">
+                        <label for="NIK" style="text-align: left">ProductID</label>
+                        <input type="text" id="NIK" class="form-control" v-model="promotion.ProductID" />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Product Description</label>
-                        <textarea class="form-control" id="Nik" v-model="Products.ProductDescription" cols="30" rows="10"></textarea>
+                        <label for="NIK" style="text-align: left">Promotion Description</label>
+                        <input type="text" id="NIK" class="form-control" v-model="promotion.Promotion_Description" />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">FinancePurpose</label>
-                        <input type="text" id="NIK" class="form-control" v-model="Products.FinancePurpose" />
+                        <label for="NIK" style="text-align: left">RedirectTo</label>
+                        <input type="text" id="NIK" class="form-control" v-model="promotion.RedirectTo" />
                       </div>
-                      <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Tenor From</label>
-                        <input type="text" id="NIK" class="form-control" v-model="Products.Tenor_From" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" />
-                      </div>
-                      <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Tenor To</label>
-                        <input type="text" id="NIK" class="form-control" v-model="Products.Tenor_to" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
-                      </div>
-                      <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">EffectiveRate</label>
-                        <input type="text" id="NIK" class="form-control" v-model="Products.EffectiveRate" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
-                      </div>
-
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Status</label>
-                        <select class="form-control" v-model="Products.isactive">
-                          <option value="" disabled>Pilih</option>
+                        <select class="form-control" v-model="promotion.isactive">
                           <option value="1">Active</option>
-                          <option value="2">No Active</option>
+                          <option value="0">No Active</option>
                         </select>
                       </div>
                       <div class="col-lg-12 mt-4 text-center">
@@ -91,8 +77,7 @@ import router from "@/router";
 import Sidebar from "../navigation/Sidebar.vue";
 import Navbar from "../navigation/Navbar.vue";
 import Footer from "../navigation/Footer.vue";
-import ProductService from "../../services/produk.service";
-
+import PromotionService from "../../services/promotion.service";
 export default {
   name: "Home",
   components: {
@@ -102,13 +87,10 @@ export default {
   },
   data() {
     return {
-      Products: {
-        ProductName: "",
-        ProductDescription: "",
-        FinancePurpose: "",
-        Tenor_From: "",
-        Tenor_to: "",
-        EffectiveRate: "",
+      promotion: {
+        ProductID: "",
+        Promotion_Description: "",
+        RedirectTo: "",
         isactive: "",
       },
     };
@@ -117,15 +99,12 @@ export default {
     submit(event) {
       event.preventDefault();
       let params = {
-        ProductName: this.Products.ProductName,
-        ProductDescription: this.Products.ProductDescription,
-        FinancePurpose: this.Products.FinancePurpose,
-        Tenor_From: this.Products.Tenor_From,
-        Tenor_to: this.Products.Tenor_to,
-        EffectiveRate: this.Products.EffectiveRate,
-        isactive: this.Products.isactive,
+        ProductID: this.promotion.ProductID,
+        Promotion_Description: this.promotion.Promotion_Description,
+        RedirectTo: this.promotion.RedirectTo,
+        isactive: this.promotion.isactive,
       };
-      ProductService.postCrate(params)
+      PromotionService.postCrate(params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
           router.back();

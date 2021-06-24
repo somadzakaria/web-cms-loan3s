@@ -8,6 +8,8 @@ import Product from "../views/Product.vue";
 import Productcreate from "../components/Product/Produkcreate.vue";
 import Productupdate from "../components/Product/Produkupdate.vue";
 import Promotion from "../views/Promotion.vue";
+import Promotioncreate from "../components/Promotion/Promotioncreate.vue";
+import Promotionupdate from "../components/Promotion/Promotionupdate.vue";
 import General from "../views/GeneralSetting.vue";
 import Generalcreate from "../components/General/Generalcreate.vue";
 import Generalupdate from "../components/General/Generalupdate.vue";
@@ -17,6 +19,8 @@ import Blog from "../views/Blog.vue";
 import Blogcreate from "../components/Blog/Blogcreate.vue";
 import Blogupdate from "../components/Blog/Blogupdate.vue";
 import Organization from "../views/Organization.vue";
+import Organizationcreate from "../components/Organization/Ochartcreate.vue";
+import Organizationupdate from "../components/Organization/Ochartupdate.vue";
 import Notfound from "../views/404.vue";
 
 Vue.use(VueRouter);
@@ -87,6 +91,15 @@ const routes = [
     component: Promotion,
   },
   {
+    path: "/Promotion-create",
+    name: "Promotioncreate",
+    component:Promotioncreate,
+  },{
+    path: "/Promotion-update/:id",
+    name: "Promotiontupdate",
+    component: Promotionupdate,
+  },
+  {
     path: "/Summary",
     name: "Summary",
     component: Summary,
@@ -118,6 +131,16 @@ const routes = [
     path: "/Organization",
     name: "Organization",
     component: Organization,
+  },
+  {
+    path: "/Organization-create",
+    name: "Organizationcreate",
+    component: Organizationcreate,
+  },
+  {
+    path: "/Organization-update/:id",
+    name: "Organizationupdate",
+    component: Organizationupdate,
   },
 ];
 

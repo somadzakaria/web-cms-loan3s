@@ -61,6 +61,13 @@
                   <label for="NIK" style="text-align:left">Di Tulis Oleh.</label>
                   <input type="text" id="NIK" class="form-control" v-model="blog.WritenBy" />
                 </div>
+                 <div class="col-lg-12 mt-3 text-left">
+                        <label for="NIK" style="text-align: left">Status</label>
+                        <select class="form-control" v-model="blog.isactive">
+                          <option value="1">Active</option>
+                          <option value="0">No Active</option>
+                        </select>
+                      </div>
                 <div class="col-lg-12 mt-4 text-center">
                   <button class="btn-primary btn-lg text-center" type="submit">Simpan</button>
                 </div></div></div>
@@ -106,6 +113,7 @@ export default {
         Createdate : '',
         Blog_Description : '',
         WritenBy : '',
+        isactive:'',
       },
     }
   },
@@ -119,6 +127,7 @@ export default {
           Createdate: this.blog.Createdate,
           Blog_Description: this.blog.Blog_Description,
           WritenBy: this.blog.WritenBy,
+          isactive: this.blog.isactive,
         }
         BlogService.postUpdate(this.userId,params).then((response)=>
         {

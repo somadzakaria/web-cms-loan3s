@@ -35,8 +35,8 @@ export default {
         });
   },
 
-  postCrate(general){
-    return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/generalsetting/create",general,{
+  postCrate(params){
+    return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/generalsetting/create",params,{
       headers: {
           'Authorization': "Bearer " + user.data.access_token,
           'X_USER_ID': user.data.id,
@@ -50,8 +50,8 @@ export default {
         });
   },
 
-  postUpdate(id,general){
-    return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/generalsetting/update/"+id,general,{
+  postUpdate(id,params){
+    return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/generalsetting/update/"+id,params,{
         headers: {
             'Authorization': "Bearer " + user.data.access_token,
             'X_USER_ID': user.data.id,

@@ -87,7 +87,6 @@ export default {
   },
   data() {
     return {
-      OchartId: this.$route.params.id,
       ochart: {
         TitleName: "",
         PIC: "",
@@ -97,15 +96,26 @@ export default {
     };
   },
   methods: {
+    getDetail() {
+      OchartService.getShow(this.$route.params.id).then(response=>{
+        if(response.code === 200){
+          this.ochart.TitleName = response.data.TitleName;
+          this.ochart.PIC = response.data.PIC;
+          this.ochart.Quotes = response.data.Quotes;
+          this.ochart.isactive = response.data.isactive;
+        }
+      })
+    },
     submit(event) {
       event.preventDefault();
       let params = {
+        OchartID :this.$route.params.id,
         TitleName: this.ochart.TitleName,
         PIC: this.ochart.PIC,
         Quotes: this.ochart.Quotes,
         isactive: this.ochart.isactive,
       };
-      OchartService.postUpdate(this.OchartId, params)
+      OchartService.postUpdate(this.$route.params.id, params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
           router.back();

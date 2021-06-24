@@ -17,7 +17,7 @@
                     <h6 style="font-family: 'Poppins'; font-size: 14px; font-weight: bold;">Blog</h6>
                   </div>
                   <div class="col-lg-6 text-right">
-                <a class="btn btn-primary text-left"  @click.prevent="handleCreate"><i class="fa fa-plus mr-3"></i> Tambah</a>
+                    <a class="btn btn-primary text-left" @click.prevent="handleCreate"><i class="fa fa-plus mr-3"></i> Tambah</a>
                   </div>
                 </div>
               </div>
@@ -58,12 +58,12 @@
                         <td>{{ blog.Createdate }}</td>
                         <td>{{ blog.WritenBy }}</td>
                         <td>
-                          <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal"><i class="far fa-eye text-primary"></i></button>
+                          <button class="btn btn-universal"  v-show="modal"> <i class="far fa-eye text-primary"></i></button>
                           <button class="btn btn-universal" @click.prevent="handleupdate(blog.id)"><i class="far fa-edit text-primary"></i></button>
                           <button class="btn btn-universal" type="submit" @click.prevent="handledelete(blog.id)"><i class="far fa-trash-alt text-primary"></i></button>
                         </td>
                       </tr>
-                    </tbody>
+                    </tbody> 
                   </table>
                 </div>
               </div>
@@ -72,12 +72,50 @@
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
+        <div class="modal" id="exampleModal" tabindex="-1">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title font-weight-bold" style="font-family: 'Poppins'; color: #4a5568">
+                  Detail
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                <div class="form">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <img src="../assets/djani.png" alt="" />
+                    </div>
+                    <div class="col-lg-12 text-left">
+                      <label for="NIK" style="text-align: left">PIC</label>
+                      <input type="text" id="NIK" class="form-control" placeholder="Djani Setiadi" disabled />
+                    </div>
+                    <div class="col-lg-6 mt-3 text-left">
+                      <label for="NIK" style="text-align: left">Jabatan</label>
+                      <input type="text" id="NIK" placeholder="Ceo " class="form-control" disabled />
+                    </div>
+                    <div class="col-lg-6 mt-3 text-left">
+                      <label for="NIK" style="text-align: left">Status</label>
+                      <input type="text" id="NIK" placeholder="Founder" class="form-control" disabled />
+                    </div>
+
+                    <div class="col-lg-12 mt-3 text-left">
+                      <label for="NIK" style="text-align: left">Keyword</label>
+                      <textarea class="form-control" id="Nik" placeholder="Minjem Buat Beli Truck" cols="30" rows="10" disabled></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
       </div>
-
-
     </div>
     <!-- End of Page Wrapper -->
   </div>
@@ -112,23 +150,24 @@ export default {
         console.log("Eror Data Tidak Di Temukan", error.response);
       });
   },
-  methods:{
-     handledelete(id){  
-      BlogService.getDelete(id).then((response) =>
-      { 
-        console.log(response,"Berhasil Terhapus");
-        router.go();
-      }).catch((error) => {
-        console.log("Gagal Terhapus", error.response);
-      });
+  methods: {
+    
+    handledelete(id) {
+      BlogService.getDelete(id)
+        .then((response) => {
+          console.log(response, "Berhasil Terhapus");
+          router.go();
+        })
+        .catch((error) => {
+          console.log("Gagal Terhapus", error.response);
+        });
     },
-     handleCreate(){
-      router.push('/blog-create')
+    handleCreate() {
+      router.push("/blog-create");
     },
-     handleupdate(id){
-      router.push('/blog-update/' + id)
-    }
-  }
- 
+    handleupdate(id) {
+      router.push("/blog-update/" + id);
+    },
+  },
 };
 </script>

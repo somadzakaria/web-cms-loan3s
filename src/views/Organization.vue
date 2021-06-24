@@ -17,7 +17,7 @@
                     <h6 style="font-family: 'Poppins'; font-size: 14px; font-weight: bold;">Organization Chart</h6>
                   </div>
                   <div class="col-lg-6 text-right">
-                    <button class="btn btn-primary text-left"><i class="fa fa-plus mr-3"></i> Tambah</button>
+                    <button class="btn btn-primary text-left" @click="handleCreate"><i class="fa fa-plus mr-3"></i> Tambah</button>
                   </div>
                 </div>
               </div>
@@ -27,11 +27,18 @@
                     <thead>
                       <tr>
                         <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
-                          PIC
+                         OchartID
                         </th>
                         <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
-                          Jabatan
+                         TitleName
                         </th>
+                          <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
+                     PIC
+                        </th>
+                        <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
+                        Quotes
+                        </th>
+                      
                         <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
                           Status
                         </th>
@@ -44,9 +51,11 @@
 
                     <tbody>
                       <tr v-for="ochart in ocharts" :key="ochart.id">
-                        <td>{{ ochart.TitleName }}</td>
+                        <td>{{ ochart.OchartID }}</td>
+                        <td>{{ ochart.TitleName}}</td>
                         <td>{{ ochart.PIC }}</td>
                         <td>{{ ochart.Quotes }}</td>
+                        <td>{{ ochart.isactive }}</td>
                         <td>
                           <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal"><i class="far fa-eye text-primary"></i></button>
                           <button class="btn btn-universal" @click.prevent="handleupdate(ochart.id)"><i class="far fa-edit text-primary"></i></button>
@@ -76,6 +85,7 @@
 
 <script>
 // @ is an alias to /src
+import router from "@/router"
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
@@ -98,7 +108,7 @@ export default {
   created() {
     OchartService.getAll()
       .then((response) => {
-        this.ochart = response.data;
+        this.ocharts = response.data;
       })
       .catch((error) => {
         console.log("Eror Data Tidak Di Temukan", error.response);

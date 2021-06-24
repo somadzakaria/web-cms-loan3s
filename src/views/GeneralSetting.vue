@@ -85,7 +85,7 @@
                         <td>{{general.Name}}</td>
                         <td>{{general.GSValue}}</td>
                         <td>
-                                 <button class="btn btn-universal" @click.prevent="handleupdate(general.id)"><i class="far fa-edit text-primary"></i></button>
+                          <button class="btn btn-universal" @click.prevent="handleupdate(general.id)"><i class="far fa-edit text-primary"></i></button>
                           <button class="btn btn-universal" type="submit" @click.prevent="handledelete(general.id)"><i class="far fa-trash-alt text-primary"></i></button></td>
                       </tr>
                     </tbody>
@@ -144,6 +144,16 @@ export default {
       handleupdate(id){
         router.push('/General-update/' + id)
       },
+      handledelete(id) {
+      GeneralSetting.getDelete(id)
+        .then((response) => {
+          console.log(response, "Berhasil Terhapus");
+          router.go();
+        })
+        .catch((error) => {
+          console.log("Gagal Terhapus", error.response);
+        });
+    },
   }
 };
 </script>

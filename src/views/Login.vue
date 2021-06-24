@@ -9,7 +9,7 @@
               <div class="col-3 mt-5 mx-auto">
                 <label class="sr-only" for="inlineFormInputGroup">Email</label>
                 <div class="input-group mb-4">
-                  <input type="text" class="form-control" id="inlineFormInputGroup" v-model="email" placeholder="NIK" style="color: #fff" />
+                  <input type="text" class="form-control" id="inlineFormInputGroup" v-model="email" placeholder="E-mail" style="color: #fff" />
                 </div>
                 <div class="input-group mb-4">
                   <input type="password" class="form-control" id="inlineFormInputGroup" v-model="password" placeholder="password" />
