@@ -21,34 +21,36 @@
                         font-weight: bold;
                       "
                     >
-                   Create Blog
+                      Create GeneralSetting
                     </h6>
                   </div>
                 </div>
               </div>
               <div class="card-body">
-          <form role="form" @submit.prevent="submit($event)">
-         <div class="form">
-         <div class="row">
-          <div class="col-lg-12 text-left">
-                  <label for="NIK" style="text-align: left">Name</label>
-                  <input type="text" id="NIK" class="form-control" v-model="general.Name" />
-                </div>
-                <div class="col-lg-12 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">GSValue</label>
-                  <input type="text" id="NIK" class="form-control" v-model="general.GSValue" />
-                </div>
-                <div class="col-lg-12 mt-4 text-center">
-                  <button class="btn-primary btn-lg text-center" type="submit">Simpan</button>
-                </div></div></div>
-            </form>
+                <form role="form" @submit.prevent="submit($event)">
+                  <div class="form">
+                    <div class="row">
+                      <div class="col-lg-12 text-left">
+                        <label for="NIK" style="text-align: left">Name</label>
+                        <input type="text" id="NIK" class="form-control" v-model="general.GSName" />
+                      </div>
+                      <div class="col-lg-12 mt-3 text-left">
+                        <label for="NIK" style="text-align: left">GSValue</label>
+                        <input type="text" id="NIK" class="form-control" v-model="general.GSValue" />
+                      </div>
+                      <div class="col-lg-12 mt-4 text-center">
+                        <button class="btn-primary btn-lg text-center" type="submit">Simpan</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
-      
+
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
@@ -60,12 +62,11 @@
   </div>
 </template>
 <script>
-import router from "@/router"
+import router from "@/router";
 import Sidebar from "../navigation/Sidebar.vue";
 import Navbar from "../navigation/Navbar.vue";
 import Footer from "../navigation/Footer.vue";
 import GeneralService from "../../services/general.service";
-
 export default {
   name: "Home",
   components: {
@@ -73,31 +74,31 @@ export default {
     Navbar,
     Footer,
   },
-  data(){
-    return{
-     userId: this.$route.params.id,
-      general:{
-        Name : '',
-        GSValue : '',
+  data() {
+    return {
+      GSId: this.$route.params.id,
+      general: {
+        GSName: "",
+        GSValue: "",
       },
-    }
+    };
   },
-  methods:{
-        submit(event){
-          event.preventDefault();
-          let params = {
-          Name: this.general.Name,
-          GSValue: this.general.GSValue,
-          }
-          GeneralService.postUpdate(this.userID,params).then((response)=>
-        {
-          console.log(response,"Berhasil Di tambahkan")
-          router.back();  
-        }).catch((error) =>{
-             console.log("Gagal Di tambahkan",error.res)
+  methods: {
+    submit(event) {
+      event.preventDefault();
+      let params = {
+        GSName: this.general.GSName,
+        GSValue: this.general.GSValue,
+      };
+      GeneralService.postUpdate(this.GSId, params)
+        .then((response) => {
+          console.log(response, "Berhasil Di tambahkan");
+          router.back();
         })
-        }
-  }
-}
-
+        .catch((error) => {
+          console.log("Gagal Di tambahkan", error.res);
+        });
+    },
+  },
+};
 </script>

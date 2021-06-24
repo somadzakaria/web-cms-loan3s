@@ -43,6 +43,10 @@
                         <input type="text" id="NIK" class="form-control" v-model="ochart.Quotes" />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
+                        <label for="NIK" style="text-align: left">Upload Image</label>
+                        <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
+                      </div>
+                      <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Status</label>
                         <select class="form-control" v-model="ochart.isactive">
                           <option value="1">Active</option>
@@ -91,6 +95,7 @@ export default {
         TitleName: "",
         PIC: "",
         Quotes: "",
+        ImagesPath: "",
         isactive: "",
       },
     };
@@ -102,6 +107,7 @@ export default {
         TitleName: this.ochart.TitleName,
         PIC: this.ochart.PIC,
         Quotes: this.ochart.Quotes,
+        ImagesPath: this.ochart.ImagesPath,
         isactive: this.ochart.isactive,
       };
       OchartService.postCrate(params)
@@ -112,6 +118,18 @@ export default {
         .catch((error) => {
           console.log("Gagal Di tambahkan", error.res);
         });
+    },
+       onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+      this.ochart.ImagesPath =e.target.result;
+      };
+      reader.readAsDataURL(file);
     },
   },
 };

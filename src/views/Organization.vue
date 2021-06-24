@@ -27,18 +27,18 @@
                     <thead>
                       <tr>
                         <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
-                         OchartID
+                          OchartID
                         </th>
                         <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
-                         TitleName
-                        </th>
-                          <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
-                     PIC
+                          TitleName
                         </th>
                         <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
-                        Quotes
+                          PIC
                         </th>
-                      
+                        <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
+                          Quotes
+                        </th>
+
                         <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
                           Status
                         </th>
@@ -52,12 +52,12 @@
                     <tbody>
                       <tr v-for="ochart in ocharts" :key="ochart.id">
                         <td>{{ ochart.OchartID }}</td>
-                        <td>{{ ochart.TitleName}}</td>
+                        <td>{{ ochart.TitleName }}</td>
                         <td>{{ ochart.PIC }}</td>
                         <td>{{ ochart.Quotes }}</td>
                         <td>{{ ochart.isactive }}</td>
                         <td>
-                          <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal"><i class="far fa-eye text-primary"></i></button>
+                          <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click="handledetail(ochart.id)"><i class="far fa-eye text-primary"></i></button>
                           <button class="btn btn-universal" @click.prevent="handleupdate(ochart.id)"><i class="far fa-edit text-primary"></i></button>
                           <button class="btn btn-universal" type="submit" @click.prevent="handledelete(ochart.id)"><i class="far fa-trash-alt text-primary"></i></button>
                         </td>
@@ -72,7 +72,7 @@
         </div>
         <!-- End of Main Content -->
         <!-- Modal Detail -->
-        <Detail />
+        <Detail :dataModal="dataModal" />
         <!-- End Modal Content -->
         <!-- Footer -->
         <Footer />
@@ -85,7 +85,7 @@
 
 <script>
 // @ is an alias to /src
-import router from "@/router"
+import router from "@/router";
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
@@ -103,6 +103,7 @@ export default {
   data() {
     return {
       ocharts: [],
+      dataModal:"",
     };
   },
   created() {
@@ -114,22 +115,32 @@ export default {
         console.log("Eror Data Tidak Di Temukan", error.response);
       });
   },
-  methods:{
-     handledelete(id){  
-      OchartService.getDelete(id).then((response) =>
-      { 
-        console.log(response,"Berhasil Terhapus");
-        router.go();
-      }).catch((error) => {
-        console.log("Gagal Terhapus", error.response);
+  methods: {
+    handledelete(id) {
+      OchartService.getDelete(id)
+        .then((response) => {
+          console.log(response, "Berhasil Terhapus");
+          router.go();
+        })
+        .catch((error) => {
+          console.log("Gagal Terhapus", error.response);
+        });
+    },
+    handleCreate() {
+      router.push("/Organization-create");
+    },
+    handleupdate(id) {
+      router.push("/Organization-update/" + id);
+    },
+    handledetail(id) {
+     OchartService.getShow(id)
+      .then((response) => {
+        this.dataModal = response.data;
+      })  
+      .catch((error) => {
+        console.log("Eror Data Tidak Di Temukan", error.response);
       });
     },
-     handleCreate(){
-      router.push('/Organization-create')
-    },
-     handleupdate(id){
-      router.push('/Organization-update/' + id)
-    }
-  }
+  },
 };
 </script>
