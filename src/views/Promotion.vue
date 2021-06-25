@@ -51,7 +51,7 @@
                         <td>{{ promotion.RedirectTo }}</td>
                         <td>{{ promotion.isactive }}</td>
                         <td>
-                          <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal"><i class="far fa-eye text-primary"></i></button>
+                          <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(promotion.id)"><i class="far fa-eye text-primary"></i></button>
                           <button class="btn btn-universal" @click.prevent="handleupdate(promotion.id)"><i class="far fa-edit text-primary"></i></button>
                           <button class="btn btn-universal" type="submit" @click.prevent="handledelete(promotion.id)"><i class="far fa-trash-alt text-primary"></i></button>
                         </td>
@@ -66,7 +66,7 @@
         </div>
         <!-- End of Main Content -->
         <!-- Modal Detail -->
-
+        <Detail :dataModal="dataModal" />
         <!-- End Modal Content -->
         <!-- Footer -->
         <Footer />
@@ -79,10 +79,11 @@
 
 <script>
 // @ is an alias to /src
-import router from "@/router"
+import router from "@/router";
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
+import Detail from "../components/Promotion/Prouctdetail.vue";
 import PromotionService from "../services/promotion.service";
 export default {
   name: "Home",
@@ -90,10 +91,12 @@ export default {
     Sidebar,
     Navbar,
     Footer,
+    Detail,
   },
-   data() {
+  data() {
     return {
       promotions: [],
+      dataModal: "",
     };
   },
   created() {
@@ -105,22 +108,32 @@ export default {
         console.log("Eror Data Tidak Di Temukan", error.response);
       });
   },
-  methods:{
-     handledelete(id){  
-      PromotionService.getDelete(id).then((response) =>
-      { 
-        console.log(response,"Berhasil Terhapus");
-        router.go();
-      }).catch((error) => {
-        console.log("Gagal Terhapus", error.response);
-      });
+  methods: {
+    handledelete(id) {
+      PromotionService.getDelete(id)
+        .then((response) => {
+          console.log(response, "Berhasil Terhapus");
+          router.go();
+        })
+        .catch((error) => {
+          console.log("Gagal Terhapus", error.response);
+        });
     },
-     handleCreate(){
-      router.push('/Promotion-create')
+    handledetail(id) {
+      PromotionService.getShow(id)
+        .then((response) => {
+          this.dataModal = response.data;
+        })
+        .catch((error) => {
+          console.log("Gagal Terhapus", error.response);
+        });
     },
-     handleupdate(id){
-      router.push('/Promotion-update/' + id)
-    }
-  }
+    handleCreate() {
+      router.push("/Promotion-create");
+    },
+    handleupdate(id) {
+      router.push("/Promotion-update/" + id);
+    },
+  },
 };
 </script>

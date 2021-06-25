@@ -61,12 +61,10 @@
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
-
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
       </div>
-
       <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
@@ -97,6 +95,16 @@ export default {
     };
   },
   methods: {
+    getDetail() {
+      PromotionService.getShow(this.$route.params.id).then((response) => {
+        if (response.code === 200) {
+          (this.promotion.ProductID = response.data.ProductID),
+            (this.promotion.Promotion_Description = response.data.Promotion_Description),
+            (this.promotion.RedirectTo = response.data.RedirectTo),
+            (this.promotion.isactive = response.data.isactive);
+        }
+      });
+    },
     submit(event) {
       event.preventDefault();
       let params = {
@@ -105,7 +113,7 @@ export default {
         RedirectTo: this.promotion.RedirectTo,
         isactive: this.promotion.isactive,
       };
-      PromotionService.postUpdate(this.ProductId, params)
+      PromotionService.postUpdate(this.$route.params.id, params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
           router.back();
@@ -114,6 +122,9 @@ export default {
           console.log("Gagal Di tambahkan", error.res);
         });
     },
+  },
+  mounted() {
+    this.getDetail();
   },
 };
 </script>
