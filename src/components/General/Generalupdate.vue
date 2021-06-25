@@ -21,7 +21,7 @@
                         font-weight: bold;
                       "
                     >
-                      Create GeneralSetting
+                      Update GeneralSetting
                     </h6>
                   </div>
                 </div>
@@ -84,13 +84,21 @@ export default {
     };
   },
   methods: {
+    getDetail() {
+      GeneralService.getShow(this.$route.params.id).then((response) => {
+        if (response.code === 200) {
+          this.general.GSName = response.data.GSName,
+          this.general.GSValue = response.data.GSValue
+        }
+      });
+    },
     submit(event) {
       event.preventDefault();
       let params = {
         GSName: this.general.GSName,
         GSValue: this.general.GSValue,
       };
-      GeneralService.postUpdate(this.GSId, params)
+      GeneralService.postUpdate(this.$route.params.id, params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
           router.back();
@@ -99,6 +107,9 @@ export default {
           console.log("Gagal Di tambahkan", error.res);
         });
     },
+  },
+   mounted() {
+    this.getDetail();
   },
 };
 </script>

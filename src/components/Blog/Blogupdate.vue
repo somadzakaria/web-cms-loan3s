@@ -42,10 +42,10 @@
                         <label for="NIK" style="text-align: left">Tags</label>
                         <input type="text" id="NIK" class="form-control" v-model="blog.Tags" />
                       </div>
-                      <div class="col-lg-12 mt-3 text-left">
+                      <!-- <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Tanggal Upload</label>
                         <input type="date" id="NIK" class="form-control" v-model="blog.Createdate" />
-                      </div>
+                      </div> -->
 
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Isi Blog</label>
@@ -114,18 +114,31 @@ export default {
     };
   },
   methods: {
+    getDetail() {
+      BlogService.getShow(this.$route.params.id).then((response) => {
+        if (response.code === 200) {
+          this.blog.TitleName = response.data.TitleName;
+          this.blog.Category = response.data.Category;
+          this.blog.Tags = response.data.Tags  ;
+          // this.blog.Createdate = response.data.Createdate;
+          this.blog.Blog_Description = response.data.Blog_Description;
+          this.blog.WritenBy = response.data.WritenBy;
+          this.blog.isactive = response.data.isactive;
+        }
+      });
+    },
     submit(event) {
       event.preventDefault();
       let params = {
         TitleName: this.blog.TitleName,
         Category: this.blog.Category,
         Tags: this.blog.Tags,
-        Createdate: this.blog.Createdate,
+        // Createdate: this.blog.Createdate,
         Blog_Description: this.blog.Blog_Description,
         WritenBy: this.blog.WritenBy,
         isactive: this.blog.isactive,
       };
-      BlogService.postUpdate(this.userId, params)
+      BlogService.postUpdate(this.$route.params.id, params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
           router.back();
@@ -134,6 +147,9 @@ export default {
           console.log("Gagal Di tambahkan", error.res);
         });
     },
+  },
+  mounted() {
+    this.getDetail();
   },
 };
 </script>
