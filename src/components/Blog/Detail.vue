@@ -29,7 +29,7 @@
                 <input type="text" id="NIK" v-model="dataModal.Tags" class="form-control" disabled />
               </div>
               <div class="col-lg-12 mt-3 text-left">
-                <label for="NIK" style="text-align: left">Description</label>
+                <label for="NIK" style="text-align: left">Note</label>
                 <textarea class="form-control" id="Nik" v-model="dataModal.Blog_Description" cols="30" rows="10" disabled></textarea>
               </div>
             </div>

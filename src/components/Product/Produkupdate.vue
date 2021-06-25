@@ -21,7 +21,7 @@
                         font-weight: bold;
                       "
                     >
-                      Create Product
+                      Update Product
                     </h6>
                   </div>
                 </div>
@@ -41,6 +41,10 @@
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">FinancePurpose</label>
                         <input type="text" id="NIK" class="form-control" v-model="Products.FinancePurpose" />
+                      </div>
+                      <div class="col-lg-12 mt-3 text-left">
+                        <label for="NIK" style="text-align: left">Edit Image</label>
+                        <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Tenor From</label>
@@ -107,6 +111,7 @@ export default {
         ProductName: "",
         ProductDescription: "",
         FinancePurpose: "",
+        ImagesPath: "",
         Tenor_From: "",
         Tenor_to: "",
         EffectiveRate: "",
@@ -118,13 +123,13 @@ export default {
     getDetail() {
       ProductService.getShow(this.$route.params.id).then((respon) => {
         if (respon.code === 200) {
-          this.Products.ProductName = respon.data.isactive,
-          this.Products.ProductDescription =  respon.data.ProductDescription,
-          this.Products.FinancePurpose =  respon.data.FinancePurpose,
-          this.Products.Tenor_From =  respon.data.Tenor_From,
-          this.Products.Tenor_to =  respon.data.Tenor_to,
-          this.Products.EffectiveRate = respon.data.EffectiveRate,
-          this.Products.isactive =  respon.data.isactive
+          (this.Products.ProductName = respon.data.isactive),
+            (this.Products.ProductDescription = respon.data.ProductDescription),
+            (this.Products.FinancePurpose = respon.data.FinancePurpose),
+            (this.Products.Tenor_From = respon.data.Tenor_From),
+            (this.Products.Tenor_to = respon.data.Tenor_to),
+            (this.Products.EffectiveRate = respon.data.EffectiveRate),
+            (this.Products.isactive = respon.data.isactive);
         }
       });
     },
@@ -134,6 +139,7 @@ export default {
         ProductName: this.Products.ProductName,
         ProductDescription: this.Products.ProductDescription,
         FinancePurpose: this.Products.FinancePurpose,
+        ImagesPath: this.Products.ImagesPath,
         Tenor_From: this.Products.Tenor_From,
         Tenor_to: this.Products.Tenor_to,
         EffectiveRate: this.Products.EffectiveRate,
@@ -148,8 +154,21 @@ export default {
           console.log("Gagal Di tambahkan", error.res);
         });
     },
+    onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        this.Products.ImagesPath = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
   },
-   mounted() {
+
+  mounted() {
     this.getDetail();
   },
 };

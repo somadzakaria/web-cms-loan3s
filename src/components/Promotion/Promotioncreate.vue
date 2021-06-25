@@ -31,9 +31,9 @@
                   <div class="form">
                     <div class="row">
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" id="exampleFormControlSelect1" v-model="promotion.ProductID" @click="changeProductID()">
-                          <option v-for="promotion in promotions" :key="promotion.id">{{ promotion.ProductID }}</option>
+                        <label for="exampleFormControlSelect1">Produk Name</label>
+                        <select class="form-control" id="exampleFormControlSelect1" v-model="promotion.id" @click="changeProductID()">
+                          <option v-for="promotion in promotions" :key="promotion.id">{{ promotion.ProductName }}</option>
                         </select>
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
@@ -103,7 +103,8 @@ export default {
     submit(event) {
       event.preventDefault();
       let params = {
-        ProductID: this.promotion.ProductID,
+        ProductID: this.promotion.id,
+        // ProductID: this.promotion.ProductID,
         Promotion_Description: this.promotion.Promotion_Description,
         RedirectTo: this.promotion.RedirectTo,
         isactive: this.promotion.isactive,

@@ -31,8 +31,10 @@
                   <div class="form">
                     <div class="row">
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">ProductID</label>
-                        <input type="text" id="NIK" class="form-control" v-model="promotion.ProductID" />
+                        <label for="exampleFormControlSelect1">Produk Name</label>
+                        <select class="form-control" id="exampleFormControlSelect1" v-model="promotion.id" @click="changeProductID()">
+                          <option v-for="promotion in promotions" :key="promotion.id">{{ promotion.ProductName }}</option>
+                        </select>
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Promotion Description</label>
@@ -76,6 +78,7 @@ import Sidebar from "../navigation/Sidebar.vue";
 import Navbar from "../navigation/Navbar.vue";
 import Footer from "../navigation/Footer.vue";
 import PromotionService from "../../services/promotion.service";
+import ProductService from "../../services/produk.service";
 export default {
   name: "Home",
   components: {
@@ -92,6 +95,7 @@ export default {
         RedirectTo: "",
         isactive: "",
       },
+      promotions: [],
     };
   },
   methods: {
@@ -108,7 +112,7 @@ export default {
     submit(event) {
       event.preventDefault();
       let params = {
-        ProductID: this.promotion.ProductID,
+        ProductID: this.promotion.id,
         Promotion_Description: this.promotion.Promotion_Description,
         RedirectTo: this.promotion.RedirectTo,
         isactive: this.promotion.isactive,
@@ -121,6 +125,11 @@ export default {
         .catch((error) => {
           console.log("Gagal Di tambahkan", error.res);
         });
+    },
+    changeProductID() {
+      ProductService.getAll().then((response) => {
+        this.promotions = response.data;
+      });
     },
   },
   mounted() {
