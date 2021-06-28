@@ -21,6 +21,9 @@ import Blogupdate from "../components/Blog/Blogupdate.vue";
 import Organization from "../views/Organization.vue";
 import Organizationcreate from "../components/Organization/Ochartcreate.vue";
 import Organizationupdate from "../components/Organization/Ochartupdate.vue";
+import Faq from "../views/Faq.vue";
+import Faqcreate from "../components/Faq/Faqcreate.vue";
+import Faqupdate from "../components/Faq/Faqupdate.vue";
 import Notfound from "../views/404.vue";
 
 Vue.use(VueRouter);
@@ -45,6 +48,21 @@ const routes = [
     path: "/HCBP",
     name: "HCBP",
     component: HCBP,
+  },
+  {
+    path: "/Faq",
+    name: "Faq",
+    component: Faq,
+  },
+  {
+    path: "/Faq-create",
+    name: "Faqcreate",
+    component: Faqcreate,
+  },
+  {
+    path: "/Faq-update/:id",
+    name: "Faqupdate",
+    component: Faqupdate,
   },
   {
     path: "/HCComben",

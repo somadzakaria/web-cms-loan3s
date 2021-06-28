@@ -142,6 +142,11 @@
                 >Organization Chart</a
               ></router-link
             >
+            <router-link to="Faq">
+              <a class="collapse-item" href="register.html"
+                >FAQ</a
+              ></router-link
+            >
           </div>
         </div>
       </li>
