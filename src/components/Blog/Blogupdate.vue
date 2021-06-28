@@ -133,7 +133,6 @@ export default {
         TitleName: this.blog.TitleName,
         Category: this.blog.Category,
         Tags: this.blog.Tags,
-        // Createdate: this.blog.Createdate,
         Blog_Description: this.blog.Blog_Description,
         WritenBy: this.blog.WritenBy,
         isactive: this.blog.isactive,

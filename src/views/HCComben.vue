@@ -28,12 +28,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
                         <th
@@ -141,30 +136,21 @@
                     </thead>
 
                     <tbody>
-                      <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
+                      <tr v-for="comben in combens" :key="comben.id">
+                        <td>{{ comben.SubmitDate }}</td>
+                        <td>{{ comben.NIK }}</td>
+                        <td>{{ comben.firstname }} {{ comben.lastname }}</td>
+                        <td>{{ comben.Jabatan }}</td>
+                        <td>{{ comben.WorkLocation }}</td>
+                        <td>{{ comben.LoanAmount }}</td>
+                        <td>{{ comben.DSR }}</td>
+                        <td>{{ comben.SP }}</td>
+                        <td>{{ comben.SP }}</td>
+                        <td>{{ comben.SP }}</td>
                         <td>
-                          <button
-                            class="btn btn-universal"
-                            data-toggle="modal"
-                            data-target="#exampleModal"
-                          >
-                            <i class="far fa-eye text-primary"></i>
-                          </button>
-                          <button
-                            class="btn btn-universal"
-                            data-toggle="modal"
-                            data-target="#EditDetail"
-                          >
+                          <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(comben.id)"><i class="far fa-eye text-primary"></i></button>
+
+                          <button class="btn btn-universal" data-toggle="modal" data-target="#EditDetail">
                             <i class="far fa-edit text-primary"></i>
                           </button>
                         </td>
@@ -179,7 +165,7 @@
         </div>
         <!-- End of Main Content -->
         <!-- Modal Detail -->
-        <Detail />
+        <Detail :dataModal="dataModal" />
         <!-- End Modal Content -->
         <!-- Footer -->
         <Footer />
@@ -201,7 +187,7 @@ import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import Detail from "../components/HCComben/Detail.vue";
 import Update from "../components/HCComben/Update.vue";
-
+import HCCombenService from "../services/hccomben.service";
 export default {
   name: "Home",
   components: {
@@ -210,6 +196,32 @@ export default {
     Footer,
     Detail,
     Update,
+  },
+  data() {
+    return {
+      combens: [],
+      dataModal: "",
+    };
+  },
+  created() {
+    HCCombenService.getAll()
+      .then((response) => {
+        this.combens = response.data;
+      })
+      .catch((error) => {
+        console.log(error.response, "Respon data");
+      });
+  },
+  methods: {
+    handledetail(id) {
+      HCCombenService.getShow(id)
+        .then((response) => {
+          this.dataModal = response.data;
+        })
+        .catch((error) => {
+          console.log("Eror Data Tidak Di Temukan", error.response);
+        });
+    },
   },
 };
 </script>

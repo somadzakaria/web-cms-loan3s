@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="modal" id="exampleModal" tabindex="-1">
+    <div class="modal" id="Detail" tabindex="-1">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
@@ -29,16 +29,16 @@
                     type="text"
                     id="NIK"
                     class="form-control"
-                    placeholder="5555555"
+               v-model="dataModal.NIK"
                     disabled
                   />
                 </div>
                 <div class="col-lg-6 text-left">
-                  <label for="NIK" style="text-align: left"> Jabatan</label>
+                  <label for="NIK" style="text-align: left"> Tanggal Pengajuan</label>
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="Beli Truck"
+                  v-model="dataModal.SubmitDate"
                     class="form-control"
                     disabled
                   />
@@ -48,19 +48,19 @@
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="Bhaihaki AB"
+                   v-model="dataModal.firstname"
                     class="form-control"
                     disabled
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left"
-                    >Nomor Telepon</label
+                    >Nomor Pendek</label
                   >
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="0882828282"
+                   v-model="dataModal.lastname"
                     class="form-control"
                     disabled
                   />
@@ -70,17 +70,17 @@
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="PT.SITAMA"
+                    v-model="dataModal.WorkLocation"
                     class="form-control"
                     disabled
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Email</label>
+                  <label for="NIK" style="text-align: left">Tujuan Pinjaman</label>
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="DebaleLilo@gmail.com"
+                   v-model="dataModal.FinancePurpose"
                     class="form-control"
                     disabled
                   />
@@ -90,7 +90,7 @@
                   <textarea
                     class="form-control"
                     id="Nik"
-                    placeholder="Untuk Pijet +++"
+                   v-model="dataModal.Notes_HCRecommendation"
                     cols="30"
                     rows="10"
                     disabled
@@ -105,3 +105,17 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      detials: [],
+    };
+  },
+  props: {
+    dataModal: {
+      required: true,
+    },
+  },
+};
+</script>

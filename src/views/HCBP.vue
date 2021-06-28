@@ -21,19 +21,14 @@
                         font-weight: bold;
                       "
                     >
-                     HCBP
+                      HCBP
                     </h6>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
                         <th
@@ -122,30 +117,21 @@
                     </thead>
 
                     <tbody>
-                      <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
+                      <tr v-for="hcbp in hcbps" :key="hcbp.id">
+                        <td>{{ hcbp.SubmitDate }}</td>
+                        <td>{{ hcbp.NIK }}</td>
+                        <td>{{ hcbp.firstname }} {{ hcbp.lastname }}</td>
+                        <td>{{ hcbp.JobTitle }}</td>
+                        <td>{{ hcbp.WorkLocation }}</td>
+                        <td>{{ hcbp.LoanAmount }}</td>
+                        <td>{{ hcbp.InstallmentAmount }}</td>
+                        <td>{{ hcbp.Tenor }}</td>
+
                         <td class="text-left">
-                          <button
-                            class="btn btn-universal"
-                            data-toggle="modal"
-                            data-target="#exampleModal"
-                          >
+                          <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal">
                             <i class="far fa-eye text-primary"></i>
                           </button>
-                          <button
-                            class="btn btn-universal"
-                            data-toggle="modal"
-                            data-target="#EditDetail"
-                          >
-                            <i class="far fa-edit text-primary"></i>
-                          </button>
+                          <button class="btn btn-universal" @click.prevent="handleupdate(hcbp.id)"><i class="far fa-edit text-primary"></i></button>
                         </td>
                       </tr>
                     </tbody>
@@ -175,12 +161,13 @@
 
 <script>
 // @ is an alias to /src
+import router from "@/router";
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import Detail from "../components/HCBP/Detail.vue";
 import Update from "../components/HCBP/Update.vue";
-
+import HCBPService from "../services/hcbp.service";
 export default {
   name: "Home",
   components: {
@@ -189,6 +176,25 @@ export default {
     Footer,
     Detail,
     Update,
+  },
+  data() {
+    return {
+      hcbps: [],
+    };
+  },
+  created() {
+    HCBPService.getAll()
+      .then((response) => {
+        this.hcbps = response.data;
+      })
+      .catch((error) => {
+        console.log("data tidak ditemukan", error.response);
+      });
+  },
+  methods: {
+    handleupdate(id) {
+      router.push("/HCBP-update/" + id);
+    },
   },
 };
 </script>

@@ -21,7 +21,7 @@
                         font-weight: bold;
                       "
                     >
-                      Update Loan Admin
+                      Faq Update
                     </h6>
                   </div>
                 </div>
@@ -30,19 +30,18 @@
                 <form role="form" @submit.prevent="submit($event)">
                   <div class="form">
                     <div class="row">
-                      <div class="col-lg-12 text-left">
-                        <label for="NIK" style="text-align: left">Judul</label>
-                        <input type="text" id="NIK" class="form-control" v-model="loan.NIK" />
+                      <div class="col-lg-12 mt-3 text-left">
+                        <label for="NIK" style="text-align: left">NOTE</label>
+                        <input type="text" id="NIK" class="form-control" v-model="hcbp.NIK" />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Upload Image</label>
                         <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Tags</label>
-                        <input type="text" id="NIK" class="form-control" v-model="loan.LoanAdmin_Checklist" />
+                        <label for="NIK" style="text-align: left">Note</label>
+                        <input type="text" id="NIK" class="form-control" v-model="hcbp.Notes" />
                       </div>
-
                       <div class="col-lg-12 mt-4 text-center">
                         <button class="btn-primary btn-lg text-center" type="submit">Simpan</button>
                       </div>
@@ -71,8 +70,7 @@ import router from "@/router";
 import Sidebar from "../navigation/Sidebar.vue";
 import Navbar from "../navigation/Navbar.vue";
 import Footer from "../navigation/Footer.vue";
-import LoanService from "../../services/loan.service";
-
+import HCBPService from "../../services/hcbp.service";
 export default {
   name: "Home",
   components: {
@@ -82,32 +80,32 @@ export default {
   },
   data() {
     return {
-      Loan: this.$route.params.id,
-      loan: {
+      Faqid: this.$route.params.id,
+      hcbp: {
         NIK: "",
-        DokumenPersetujuanHC: "",
-        LoanAdmin_Checklist: "",
+       DokumenPersetujuan: "",
+        Notes: "",
       },
     };
   },
   methods: {
     getDetail() {
-      LoanService.getShow(this.$route.params.id).then((response) => {
+      HCBPService.getShow(this.$route.params.id).then((response) => {
         if (response.code === 200) {
-          this.loan.NIK = response.data.NIK;
-          this.loan.DokumenPersetujuanHC = response.data.DokumenPersetujuanHC;
-          this.loan.LoanAdmin_Checklist = response.data.LoanAdmin_Checklist;
+          this.hcbp.NIK = response.data.NIK,
+           this.hcbp.DokumenPersetujuan = response.data.DokumenPersetujuan, 
+           this.hcbp.Notes = response.data.Notes
         }
       });
     },
     submit(event) {
       event.preventDefault();
       let params = {
-        NIK: this.loan.NIK,
-        DokumenPersetujuanHC: this.loan.DokumenPersetujuanHC,
-        LoanAdmin_Checklist: this.loan.LoanAdmin_Checklist,
+        NIK: this.hcbp.NIK,
+        DokumenPersetujuan: this.hcbp.DokumenPersetujuan,
+        Notes: this.hcbp.Notes,
       };
-      LoanService.postUpdate(this.$route.params.id, params)
+      HCBPService.postUpdate(this.$route.params.id, params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
           router.back();
@@ -124,7 +122,7 @@ export default {
     createImage(file) {
       let reader = new FileReader();
       reader.onload = (e) => {
-        this.loan.DokumenPersetujuanHC = e.target.result;
+        this.hcbp.DokumenPersetujuan = e.target.result;
       };
       reader.readAsDataURL(file);
     },

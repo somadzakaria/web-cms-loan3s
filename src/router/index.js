@@ -1,7 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Loan from "../views/Loan.vue";
+import Loanupdate from "../components/loan/Edit.vue";
 import HCBP from "../views/HCBP.vue";
+import HCBPupdate from "../components/HCBP/HCBPupdate.vue";
 import HCComben from "../views/HCComben.vue";
 import HCCombenupdate from "../views/HCCombenupdate.vue";
 import Product from "../views/Product.vue";
@@ -45,9 +47,19 @@ const routes = [
     component: Loan,
   },
   {
+    path: "/loan-update/:id",
+    name: "Loanupdate",
+    component: Loanupdate,
+  },
+  {
     path: "/HCBP",
     name: "HCBP",
     component: HCBP,
+  },
+  {
+    path: "/HCBP-update/:id",
+    name: "HCBPupdate",
+    component: HCBPupdate,
   },
   {
     path: "/Faq",
@@ -97,8 +109,9 @@ const routes = [
   {
     path: "/General-create",
     name: "Generalcreate",
-    component:Generalcreate,
-  },{
+    component: Generalcreate,
+  },
+  {
     path: "/General-update/:id",
     name: "Generaltupdate",
     component: Generalupdate,
@@ -111,8 +124,9 @@ const routes = [
   {
     path: "/Promotion-create",
     name: "Promotioncreate",
-    component:Promotioncreate,
-  },{
+    component: Promotioncreate,
+  },
+  {
     path: "/Promotion-update/:id",
     name: "Promotiontupdate",
     component: Promotionupdate,
@@ -131,20 +145,19 @@ const routes = [
     path: "/blog",
     name: "blog",
     component: Blog,
-   
   },
   {
     path: "/blog-create",
     name: "blogcreate",
     component: Blogcreate,
   },
- 
+
   {
     path: "/blog-update/:id",
     name: "blogupdate",
     component: Blogupdate,
   },
- 
+
   {
     path: "/Organization",
     name: "Organization",

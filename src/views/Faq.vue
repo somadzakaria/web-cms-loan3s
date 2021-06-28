@@ -152,8 +152,8 @@ export default {
           console.log("Gagal Terhapus", error.response);
         });
     },
-       handleCreate() {
-      router.push("/Faq-create");
+    handleCreate() {
+    router.push("/Faq-create");
     },
      handleupdate(id) {
       router.push("/Faq-update/" + id);
