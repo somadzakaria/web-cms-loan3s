@@ -5,6 +5,7 @@ import Loanupdate from "../components/loan/Edit.vue";
 import HCBP from "../views/HCBP.vue";
 import HCBPupdate from "../components/HCBP/HCBPupdate.vue";
 import HCComben from "../views/HCComben.vue";
+import HCCombenedit from "../components/HCComben/Update.vue";
 import HCCombenupdate from "../views/HCCombenupdate.vue";
 import Product from "../views/Product.vue";
 import Productcreate from "../components/Product/Produkcreate.vue";
@@ -80,6 +81,11 @@ const routes = [
     path: "/HCComben",
     name: "HCComben",
     component: HCComben,
+  },
+  {
+    path: "/HCComben-update/:id",
+    name: "HCCombenupdate",
+    component: HCCombenedit,
   },
   {
     path: "/HCCombenupdate",

@@ -21,7 +21,7 @@
           </div>
           <div class="modal-body text-center">
             <div class="form">
-              <img src="img/image.png" width="350" alt="" />
+              <img :src="dataModal.images_idno" width="350" alt="" />
               <div class="row mt-5">
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> NIK</label>
@@ -34,11 +34,11 @@
                   />
                 </div>
                 <div class="col-lg-6 text-left">
-                  <label for="NIK" style="text-align: left"> Tanggal Pengajuan</label>
+                  <label for="NIK" style="text-align: left">Tujuan Pinjaman</label>
                   <input
                     type="text"
                     id="NIK"
-                  v-model="dataModal.SubmitDate"
+                   v-model="dataModal.FinancePurpose"
                     class="form-control"
                     disabled
                   />
@@ -54,36 +54,70 @@
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left"> Pinjaman</label>
+                  <input
+                    type="text"
+                    id="NIK"
+                  v-model="dataModal.LoanAmount"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left"
-                    >Nomor Pendek</label
+                    >Lokasi kerja</label
                   >
                   <input
                     type="text"
                     id="NIK"
-                   v-model="dataModal.lastname"
+                   v-model="dataModal.WorkLocation"
                     class="form-control"
                     disabled
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Lokasi kerja</label>
+                  <label for="NIK" style="text-align: left">Rate/tahun</label>
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.WorkLocation"
+                    v-model="dataModal.EffectiveRate"
                     class="form-control"
                     disabled
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Tujuan Pinjaman</label>
+                  <label for="NIK" style="text-align: left">Tanggal Pengajuan</label>
                   <input
                     type="text"
                     id="NIK"
-                   v-model="dataModal.FinancePurpose"
+                    v-model="dataModal.SubmitDate"
                     class="form-control"
                     disabled
                   />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Tenor</label>
+                  <input
+                    type="text"
+                    id="NIK"
+                    v-model="dataModal.Tenor"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+                     <div class="col-lg-12 text-left">
+                  <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
+                   Rekomendasi
+                  </h5>
+   <label for="NIK" style="text-align: left">Rekomendasi untuk Peminjaman</label>
+                  <input
+                    type="text"
+                    id="NIK"
+                    v-model="dataModal.HC_Recommendations"
+                    class="form-control"
+                    disabled
+                  />
+                               
                 </div>
                 <div class="col-lg-12 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Notes</label>

@@ -12,7 +12,7 @@
           <div class="container-fluid">
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-               <div class="row">
+                <div class="row">
                   <div class="col-lg-6 text-left">
                     <h6
                       style="
@@ -28,23 +28,9 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          NIK
-                        </th>
                         <th
                           style="
                             background: #edf2f7;
@@ -108,6 +94,24 @@
                             font-family: 'Poppins';
                           "
                         >
+                          DSR
+                        </th>
+                        <th
+                          style="
+                            background: #edf2f7;
+                            color: #4a5568;
+                            font-family: 'Poppins';
+                          "
+                        >
+                          SP
+                        </th>
+                        <th
+                          style="
+                            background: #edf2f7;
+                            color: #4a5568;
+                            font-family: 'Poppins';
+                          "
+                        >
                           Resign Date
                         </th>
 
@@ -125,29 +129,22 @@
                     </thead>
 
                     <tbody>
-                      <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
+                      <tr v-for="comben in combens" :key="comben.id">
+                        <td>{{comben.NIK}}</td>
+                        <td>{{comben.firstname}} {{comben.lastname}}</td>
+                        <td>{{comben.Jabatan}}</td>
+                        <td>{{comben.WorkLocation}}</td>
+                        <td>{{comben.JG}}</td>
+                        <td>{{comben.PG}}</td>
+                        <td>{{comben.DSR}}</td>
+                        <td>{{comben.SP}}</td>
+                    
                         <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-
                         <td>
-                          <button
-                            class="btn btn-universal"
-                            data-toggle="modal"
-                            data-target="#exampleModal"
-                          >
+                          <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal">
                             <i class="far fa-eye text-primary"></i>
                           </button>
-                          <button
-                            class="btn btn-universal"
-                            data-toggle="modal"
-                            data-target="#EditDetail"
-                          >
+                          <button class="btn btn-universal" data-toggle="modal" data-target="#EditDetail">
                             <i class="far fa-edit text-primary"></i>
                           </button>
                         </td>
@@ -184,7 +181,7 @@ import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import Detail from "../components/HCCombenUpdate/Detail.vue";
 import Update from "../components/HCCombenUpdate/Update.vue";
-
+import HCUpdateService from "../services/hccombenupdate.service";
 export default {
   name: "Home",
   components: {
@@ -193,6 +190,20 @@ export default {
     Footer,
     Detail,
     Update,
+  },
+  data() {
+    return {
+      combens: [],
+    };
+  },
+  created() {
+    HCUpdateService.getAll()
+      .then((response) => {
+        this.combens = response.data;
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   },
 };
 </script>

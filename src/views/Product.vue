@@ -25,20 +25,13 @@
                     </h6>
                   </div>
                   <div class="col-lg-6 text-right">
-                    <button class="btn btn-primary text-left" @click="handleCreate()">
-                      <i class="fa fa-plus mr-3"></i> Tambah
-                    </button>
+                    <button class="btn btn-primary text-left" @click="handleCreate()"><i class="fa fa-plus mr-3"></i> Tambah</button>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
                         <th
@@ -131,17 +124,18 @@
                     </thead>
                     <tbody>
                       <tr v-for="Product in Products" :key="Product.id">
-                        <td>{{Product.ProductID}}</td>
-                        <td>{{Product.ProductName}}</td>
-                        <td>{{Product.ProductDescription}}</td>
-                        <td>{{Product.FinancePurpose}}</td>
-                        <td>{{Product.Tenor_From}}</td>
-                        <td>{{Product.Tenor_to}}</td>
-                        <td>{{Product.EffectiveRate}}</td>
-                        <td>{{Product.isactive}}</td>
-                        <td><button class="btn btn-universal" type="submit" @click.prevent="handledelete(Product.id)"><i class="far fa-trash-alt text-primary"></i></button>
-                        <button class="btn btn-universal" type="submit" @click.prevent="handleupdate(Product.id)"><i class="far fa-edit text-primary"></i></button></td>
-                       
+                        <td>{{ Product.ProductID }}</td>
+                        <td>{{ Product.ProductName }}</td>
+                        <td>{{ Product.ProductDescription }}</td>
+                        <td>{{ Product.FinancePurpose }}</td>
+                        <td>{{ Product.Tenor_From }}</td>
+                        <td>{{ Product.Tenor_to }}</td>
+                        <td>{{ Product.EffectiveRate }}</td>
+                        <td>{{ Product.isactive === "1" ? "ACTIVE" : "NON ACTIVE" }}</td>
+                        <td>
+                          <button class="btn btn-universal" type="submit" @click.prevent="handledelete(Product.id)"><i class="far fa-trash-alt text-primary"></i></button>
+                          <button class="btn btn-universal" type="submit" @click.prevent="handleupdate(Product.id)"><i class="far fa-edit text-primary"></i></button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -153,14 +147,12 @@
         </div>
         <!-- End of Main Content -->
         <!-- Modal Detail -->
-    
+
         <!-- End Modal Content -->
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
       </div>
-
-  
     </div>
     <!-- End of Page Wrapper -->
   </div>
@@ -180,11 +172,11 @@ export default {
     Navbar,
     Footer,
   },
-  data(){
-    return{
-      Products :[],
-    }
-  }, 
+  data() {
+    return {
+      Products: [],
+    };
+  },
   created() {
     ProductService.getAll()
       .then((response) => {
@@ -194,23 +186,23 @@ export default {
         console.log("Eror Data Tidak Di Temukan", error.response);
       });
   },
-  methods:{
-    handledelete(id){  
-     ProductService.getDelete(id).then((response) =>
-      { 
-        console.log(response,"Berhasil Terhapus");
-        router.go();
-      }).catch((error) => {
-        console.log("Gagal Terhapus", error.response);
-      });
+  methods: {
+    handledelete(id) {
+      ProductService.getDelete(id)
+        .then((response) => {
+          console.log(response, "Berhasil Terhapus");
+          router.go();
+        })
+        .catch((error) => {
+          console.log("Gagal Terhapus", error.response);
+        });
     },
-      handleCreate(){
-      router.push('/Product-create')
+    handleCreate() {
+      router.push("/Product-create");
     },
-    handleupdate(id){
-      router.push('/Product-update/' + id)
-    }
-  }
- 
+    handleupdate(id) {
+      router.push("/Product-update/" + id);
+    },
+  },
 };
 </script>

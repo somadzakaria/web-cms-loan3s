@@ -128,9 +128,7 @@
                         <td>{{ hcbp.Tenor }}</td>
 
                         <td class="text-left">
-                          <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal">
-                            <i class="far fa-eye text-primary"></i>
-                          </button>
+                           <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(hcbp.id)"><i class="far fa-eye text-primary"></i></button>
                           <button class="btn btn-universal" @click.prevent="handleupdate(hcbp.id)"><i class="far fa-edit text-primary"></i></button>
                         </td>
                       </tr>
@@ -144,7 +142,7 @@
         </div>
         <!-- End of Main Content -->
         <!-- Modal Detail -->
-        <Detail />
+        <Detail :dataModal="dataModal" />
         <!-- End Modal Content -->
         <!-- Footer -->
         <Footer />
@@ -180,6 +178,7 @@ export default {
   data() {
     return {
       hcbps: [],
+      dataModal: "",
     };
   },
   created() {
@@ -194,6 +193,15 @@ export default {
   methods: {
     handleupdate(id) {
       router.push("/HCBP-update/" + id);
+    },
+      handledetail(id) {
+     HCBPService.getShow(id)
+        .then((response) => {
+          this.dataModal = response.data;
+        })
+        .catch((error) => {
+          console.log("Eror Data Tidak Di Temukan", error.response);
+        });
     },
   },
 };

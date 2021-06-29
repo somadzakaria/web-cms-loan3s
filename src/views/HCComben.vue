@@ -21,7 +21,7 @@
                         font-weight: bold;
                       "
                     >
-                      HC Comben
+                      HC Comben Recommendation
                     </h6>
                   </div>
                 </div>
@@ -150,7 +150,7 @@
                         <td>
                           <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(comben.id)"><i class="far fa-eye text-primary"></i></button>
 
-                          <button class="btn btn-universal" data-toggle="modal" data-target="#EditDetail">
+                          <button class="btn btn-universal" @click.prevent="handleupdate(comben.id)">
                             <i class="far fa-edit text-primary"></i>
                           </button>
                         </td>
@@ -172,8 +172,6 @@
         <!-- End of Footer -->
       </div>
 
-      <!-- Moodal Edit -->
-      <Update />
       <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
@@ -182,11 +180,11 @@
 
 <script>
 // @ is an alias to /src
+import router from "@/router"
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import Detail from "../components/HCComben/Detail.vue";
-import Update from "../components/HCComben/Update.vue";
 import HCCombenService from "../services/hccomben.service";
 export default {
   name: "Home",
@@ -195,7 +193,6 @@ export default {
     Navbar,
     Footer,
     Detail,
-    Update,
   },
   data() {
     return {
@@ -221,6 +218,9 @@ export default {
         .catch((error) => {
           console.log("Eror Data Tidak Di Temukan", error.response);
         });
+    },
+    handleupdate(id) {
+      router.push("/HCComben-update/" + id);
     },
   },
 };
