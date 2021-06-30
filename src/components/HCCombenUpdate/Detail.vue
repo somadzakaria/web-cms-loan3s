@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="modal" id="exampleModal" tabindex="-1">
+    <div class="modal" id="Detail" tabindex="-1">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
@@ -8,7 +8,7 @@
               class="modal-title font-weight-bold"
               style="font-family: 'Poppins'; color: #4a5568"
             >
-              Edit HC Comben Update
+              Detail HC Comben Update
             </h5>
             <button
               type="button"
@@ -28,7 +28,7 @@
                     type="text"
                     id="NIK"
                     class="form-control"
-                    placeholder="5555555"
+             v-model="dataModal.ResignDate"
                     disabled
                   />
                 </div>
@@ -37,7 +37,7 @@
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="Beli Truck"
+                    v-model="dataModal.Jabatan"
                     class="form-control"
                     disabled
                   />
@@ -47,7 +47,7 @@
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="Bhaihaki AB"
+                   v-model="dataModal.NIK"
                     class="form-control"
                     disabled
                   />
@@ -57,7 +57,7 @@
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="0882828282"
+                   v-model="dataModal.WorkLocation"
                     class="form-control"
                     disabled
                   />
@@ -67,37 +67,48 @@
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="PT.SITAMA"
+                    v-model="dataModal.firstname"
                     class="form-control"
                     disabled
                   />
                 </div>
-                <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Pinjaman</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                    placeholder="DebaleLilo@gmail.com"
-                    class="form-control"
-                    disabled
-                  />
-                </div>
+            
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">PG</label>
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="11"
+             v-model="dataModal.PG"
                     class="form-control"
                     disabled
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">PG</label>
+                  <label for="NIK" style="text-align: left">JG</label>
                   <input
                     type="text"
                     id="NIK"
-                    placeholder="1"
+                  v-model="dataModal.JG"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+                <div class="col-lg-3 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">DSR</label>
+                  <input
+                    type="text"
+                    id="NIK"
+                  v-model="dataModal.DSR"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+                <div class="col-lg-3 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">SP</label>
+                  <input
+                    type="text"
+                    id="NIK"
+                  v-model="dataModal.SP"
                     class="form-control"
                     disabled
                   />
@@ -110,3 +121,17 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      dataModa: [],
+    };
+  },
+  props: {
+    dataModal: {
+      required: true,
+    },
+  },
+};
+</script>

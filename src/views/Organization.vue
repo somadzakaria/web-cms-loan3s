@@ -55,7 +55,7 @@
                         <td>{{ ochart.TitleName }}</td>
                         <td>{{ ochart.PIC }}</td>
                         <td>{{ ochart.Quotes }}</td>
-                        <td>{{ ochart.isactive }}</td>
+                        <td>{{ ochart.isactive === "1" ? "Active" : "Not Active" }}</td>
                         <td>
                           <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click="handledetail(ochart.id)"><i class="far fa-eye text-primary"></i></button>
                           <button class="btn btn-universal" @click.prevent="handleupdate(ochart.id)"><i class="far fa-edit text-primary"></i></button>

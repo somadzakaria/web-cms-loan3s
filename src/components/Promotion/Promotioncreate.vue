@@ -30,6 +30,10 @@
                 <form role="form" @submit.prevent="submit($event)">
                   <div class="form">
                     <div class="row">
+                       <div class="col-lg-12 mt-3 text-left">
+                        <label for="NIK" style="text-align: left">Upload Image</label>
+                        <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
+                      </div>
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="exampleFormControlSelect1">Produk Name</label>
                         <select class="form-control" id="exampleFormControlSelect1" v-model="promotion.id" @click="changeProductID()">
@@ -91,6 +95,7 @@ export default {
   data() {
     return {
       promotion: {
+        ImagesPath:'',
         ProductID: "",
         Promotion_Description: "",
         RedirectTo: "",
@@ -104,6 +109,7 @@ export default {
       event.preventDefault();
       let params = {
         ProductID: this.promotion.id,
+        ImagesPath: this.promotion.ImagesPath,
         // ProductID: this.promotion.ProductID,
         Promotion_Description: this.promotion.Promotion_Description,
         RedirectTo: this.promotion.RedirectTo,
@@ -117,6 +123,18 @@ export default {
         .catch((error) => {
           console.log("Gagal Di tambahkan", error.res);
         });
+    },
+     onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+      this.promotion.ImagesPath =e.target.result;
+      };
+      reader.readAsDataURL(file);
     },
     changeProductID() {
       ProductService.getAll().then((response) => {

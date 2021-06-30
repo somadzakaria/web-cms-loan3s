@@ -137,16 +137,11 @@
                         <td>{{comben.JG}}</td>
                         <td>{{comben.PG}}</td>
                         <td>{{comben.DSR}}</td>
-                        <td>{{comben.SP}}</td>
-                    
-                        <td>2011/04/25</td>
+                        <td>{{comben.SP}}</td> 
+                        <td>{{comben.ResignDate}}</td>
                         <td>
-                          <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal">
-                            <i class="far fa-eye text-primary"></i>
-                          </button>
-                          <button class="btn btn-universal" data-toggle="modal" data-target="#EditDetail">
-                            <i class="far fa-edit text-primary"></i>
-                          </button>
+                        <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(comben.id)"><i class="far fa-eye text-primary"></i></button>
+                        <button class="btn btn-universal" @click.prevent="handleupdate(comben.id)"><i class="far fa-edit text-primary"></i></button>
                         </td>
                       </tr>
                     </tbody>
@@ -159,15 +154,14 @@
         </div>
         <!-- End of Main Content -->
         <!-- Modal Detail -->
-        <Detail />
+        <Detail  :dataModal="dataModal" />
         <!-- End Modal Content -->
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
       </div>
 
-      <!-- Moodal Edit -->
-      <Update />
+
       <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
@@ -176,11 +170,12 @@
 
 <script>
 // @ is an alias to /src
+import router from "@/router"
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import Detail from "../components/HCCombenUpdate/Detail.vue";
-import Update from "../components/HCCombenUpdate/Update.vue";
+
 import HCUpdateService from "../services/hccombenupdate.service";
 export default {
   name: "Home",
@@ -189,11 +184,11 @@ export default {
     Navbar,
     Footer,
     Detail,
-    Update,
   },
   data() {
     return {
       combens: [],
+          dataModal: "",
     };
   },
   created() {
@@ -205,5 +200,19 @@ export default {
         console.log(error.response);
       });
   },
+  methods:{
+      handledetail(id) {
+      HCUpdateService.getShow(id)
+        .then((response) => {
+          this.dataModal = response.data;
+        })
+        .catch((error) => {
+          console.log("Eror Data Tidak Di Temukan", error.response);
+        });
+    },
+      handleupdate(id) {
+      router.push("/HCComben-Edit/" + id);
+    },
+  }
 };
 </script>

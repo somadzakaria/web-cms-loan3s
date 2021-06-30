@@ -21,7 +21,7 @@
                         font-weight: bold;
                       "
                     >
-                      Update GeneralSetting
+                      Update HCComben
                     </h6>
                   </div>
                 </div>

@@ -57,6 +57,7 @@
                         <td>{{ blog.Tags }}</td>
                         <td>{{ blog.Createdate }}</td>
                         <td>{{ blog.WritenBy }}</td>
+                     
                         <td>
                           <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(blog.id)"><i class="far fa-eye text-primary"></i></button>
                           <button class="btn btn-universal" @click.prevent="handleupdate(blog.id)"><i class="far fa-edit text-primary"></i></button>
@@ -143,3 +144,4 @@ export default {
   },
 };
 </script>
+

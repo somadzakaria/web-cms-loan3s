@@ -64,7 +64,7 @@
                         <select class="form-control" v-model="Products.isactive">
                           <option value="" disabled>Pilih</option>
                           <option value="1">Active</option>
-                          <option value="2">No Active</option>
+                          <option value="0">No Active</option>
                         </select>
                       </div>
                       <div class="col-lg-12 mt-4 text-center">

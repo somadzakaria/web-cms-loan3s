@@ -21,7 +21,7 @@
                         font-weight: bold;
                       "
                     >
-                      Faq Update
+                      Faq Create
                     </h6>
                   </div>
                 </div>

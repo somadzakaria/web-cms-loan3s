@@ -131,7 +131,7 @@
                         <td>{{ Product.Tenor_From }}</td>
                         <td>{{ Product.Tenor_to }}</td>
                         <td>{{ Product.EffectiveRate }}</td>
-                        <td>{{ Product.isactive === "1" ? "ACTIVE" : "NON ACTIVE" }}</td>
+                        <td>{{ Product.isactive === "1" ? "ACTIVE"  : "NON ACTIVE" }}</td>
                         <td>
                           <button class="btn btn-universal" type="submit" @click.prevent="handledelete(Product.id)"><i class="far fa-trash-alt text-primary"></i></button>
                           <button class="btn btn-universal" type="submit" @click.prevent="handleupdate(Product.id)"><i class="far fa-edit text-primary"></i></button>

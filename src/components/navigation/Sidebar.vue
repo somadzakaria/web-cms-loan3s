@@ -72,6 +72,13 @@
           >
         </router-link>
       </li>
+      <li class="nav-item mt-2">
+        <router-link to="/Approval">
+          <a class="nav-link" href="charts.html">
+            <span>Approval</span></a
+          >
+        </router-link>
+      </li>
       <li class="nav-item">
         <a
           class="nav-link collapsed"

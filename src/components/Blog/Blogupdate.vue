@@ -30,6 +30,10 @@
                 <form role="form" @submit.prevent="submit($event)">
                   <div class="form">
                     <div class="row">
+                            <div class="col-lg-12 mt-3 text-left">
+                        <label for="NIK" style="text-align: left">Upload Image</label>
+                        <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
+                      </div>
                       <div class="col-lg-12 text-left">
                         <label for="NIK" style="text-align: left">Judul</label>
                         <input type="text" id="NIK" class="form-control" v-model="blog.TitleName" />
@@ -106,6 +110,7 @@ export default {
         TitleName: "",
         Category: "",
         Tags: "",
+              ImagesPath: "",
         Createdate: "",
         Blog_Description: "",
         WritenBy: "",
@@ -131,6 +136,7 @@ export default {
       event.preventDefault();
       let params = {
         TitleName: this.blog.TitleName,
+        ImagesPath: this.blog.ImagesPath,
         Category: this.blog.Category,
         Tags: this.blog.Tags,
         Blog_Description: this.blog.Blog_Description,
@@ -145,6 +151,18 @@ export default {
         .catch((error) => {
           console.log("Gagal Di tambahkan", error.res);
         });
+    },
+     onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+      this.blog.ImagesPath=e.target.result;
+      };
+      reader.readAsDataURL(file);
     },
   },
   mounted() {
