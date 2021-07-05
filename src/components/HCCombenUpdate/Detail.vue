@@ -93,26 +93,7 @@
                     disabled
                   />
                 </div>
-                <div class="col-lg-3 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">DSR</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                  v-model="dataModal.DSR"
-                    class="form-control"
-                    disabled
-                  />
-                </div>
-                <div class="col-lg-3 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">SP</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                  v-model="dataModal.SP"
-                    class="form-control"
-                    disabled
-                  />
-                </div>
+                
               </div>
             </div>
           </div>

@@ -58,14 +58,7 @@
                         <label for="NIK" style="text-align: left">JG</label>
                         <input type="text" id="NIK" class="form-control" v-model="hccomben.JG" />
                       </div>
-                      <div class="col-lg-12 text-left">
-                        <label for="NIK" style="text-align: left">DSR</label>
-                        <input type="text" id="NIK" class="form-control" v-model="hccomben.DSR" />
-                      </div>
-                      <div class="col-lg-12 text-left">
-                        <label for="NIK" style="text-align: left">SP</label>
-                        <input type="text" id="NIK" class="form-control" v-model="hccomben.SP" />
-                      </div>
+                     
                
                       <div class="col-lg-12 mt-4 text-center">
                         <button class="btn-primary btn-lg text-center" type="submit">Simpan</button>
@@ -114,8 +107,7 @@ export default {
         WorkLocation: "",
         PG: "",
         JG: "",
-        DSR: "",
-        SP: "",
+    
       },
     };
   },
@@ -129,9 +121,8 @@ export default {
           this.hccomben.Jabatan = response.data.Jabatan,
           this.hccomben.WorkLocation = response.data.WorkLocation,
           this.hccomben.PG = response.data.PG,
-          this.hccomben.JG = response.data.JG,
-          this.hccomben.DSR = response.data.DSR,
-          this.hccomben.SP = response.data.SP
+          this.hccomben.JG = response.data.JG
+
         }
       });
     },
@@ -145,8 +136,6 @@ export default {
         WorkLocation: this.hccomben.WorkLocation,
         PG: this.hccomben.PG,
         JG: this.hccomben.JG,
-        DSR: this.hccomben.DSR,
-        SP: this.hccomben.SP,
       };
       HCCombenupdateService.postUpdate(this.$route.params.id, params)
         .then((response) => {
