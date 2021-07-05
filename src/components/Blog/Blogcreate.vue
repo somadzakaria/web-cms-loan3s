@@ -46,9 +46,9 @@
                         <label for="NIK" style="text-align: left">Tanggal Upload</label>
                         <input type="date" id="NIK" class="form-control" v-model="blog.Createdate" />
                       </div>
-                      <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Isi Blog</label>
-                        <textarea class="form-control" id="Nik" v-model="blog.Blog_Description" cols="30" rows="10"></textarea>
+                
+                      <div class="col-lg-12 mt-3">
+                       <ckeditor :editor="editor"  v-model="blog.Blog_Description"></ckeditor>
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Upload Image</label>
@@ -94,7 +94,7 @@ import Sidebar from "../navigation/Sidebar.vue";
 import Navbar from "../navigation/Navbar.vue";
 import Footer from "../navigation/Footer.vue";
 import BlogService from "../../services/blog.service";
-
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default {
   name: "Home",
   components: {
@@ -104,6 +104,9 @@ export default {
   },
   data() {
     return {
+      editor: ClassicEditor,
+      editorData: '<p>Content of the editor.</p>',
+      editorConfig: {},
       blog: {
         TitleName: "",
         Category: "",
@@ -114,6 +117,7 @@ export default {
         WritenBy: "",
         isactive: "",
       },
+     
     };
   },
   methods: {

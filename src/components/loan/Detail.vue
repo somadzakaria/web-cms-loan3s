@@ -13,7 +13,7 @@
           </div>
           <div class="modal-body text-center">
             <div class="form">
-              <img :src="dataModal.images_idno" width="350" alt="" />
+              <img :src="dataModal.FileAttachment_KTP" width="350" alt="" />
               <div class="row mt-5">
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> NIK</label>
@@ -51,13 +51,17 @@
                   <label for="NIK" style="text-align: left">Tenor</label>
                   <input type="text" id="NIK" v-model="dataModal.Tenor" class="form-control" disabled />
                 </div>
-                <div class="col-lg-12 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Notes</label>
-                  <textarea class="form-control" id="Nik" placeholder="Minjem Bob" cols="30" rows="10" disabled></textarea>
-                </div>
+   
                   <div class="col-lg-6 mt-3 text-left">
                   <p>Document</p>
-                  <img :src="dataModal.FileAttachment_LoanApplication" id="NIK" width="330" />
+                  <img :src="dataModal.DokumenPersetujuan" id="NIK" width="330" />
+                </div>
+                             <div class="col-lg-12 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Notes</label>
+                  <textarea class="form-control" id="Nik" placeholder="Minjem Bob" cols="30" rows="10" disabled></textarea>
+                </div>  
+                <div class="col-lg-12 mt-3 text-center">
+                  <button class="btn btn-primary"><i class="fas fa-dollar-sign mr-3"></i>Cairkan</button>
                 </div>
               </div>
             </div>

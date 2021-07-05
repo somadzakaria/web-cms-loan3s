@@ -21,7 +21,7 @@
           </div>
           <div class="modal-body text-center">
             <div class="form">
-              <img :src="dataModal.images_idno" width="350" alt="" />
+              <img :src="dataModal.FileAttachment_KTP" width="350" alt="" />
               <div class="row mt-5">
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> NIK</label>
@@ -100,7 +100,8 @@
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.Tenor"
+                    v-model="dataModal.Tenor" 
+                
                     class="form-control"
                     disabled
                   />

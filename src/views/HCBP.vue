@@ -123,9 +123,9 @@
                         <td>{{ hcbp.firstname }} {{ hcbp.lastname }}</td>
                         <td>{{ hcbp.JobTitle }}</td>
                         <td>{{ hcbp.WorkLocation }}</td>
-                        <td>{{ hcbp.LoanAmount }}</td>
+                        <td>Rp.{{ hcbp.LoanAmount }}</td>
                         <td>{{ hcbp.InstallmentAmount }}</td>
-                        <td>{{ hcbp.Tenor }}</td>
+                        <td>{{ hcbp.Tenor }} Bulan</td>
 
                         <td class="text-left">
                            <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(hcbp.id)"><i class="far fa-eye text-primary"></i></button>

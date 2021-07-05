@@ -113,15 +113,7 @@
                         >
                           SP
                         </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Notes
-                        </th>
+                   
                         <th
                           class="text-center"
                           style="
@@ -141,11 +133,10 @@
                         <td>{{ comben.NIK }}</td>
                         <td>{{ comben.firstname }} {{ comben.lastname }}</td>
                         <td>{{ comben.Jabatan }}</td>
-                        <td>{{ comben.WorkLocation }}</td>
                         <td>{{ comben.LoanAmount }}</td>
+                        <td>{{ comben.WorkLocation }}</td>
+                        <td>Hellen</td>
                         <td>{{ comben.DSR }}</td>
-                        <td>{{ comben.SP }}</td>
-                        <td>{{ comben.SP }}</td>
                         <td>{{ comben.SP }}</td>
                         <td>
                           <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(comben.id)"><i class="far fa-eye text-primary"></i></button>

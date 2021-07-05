@@ -124,11 +124,12 @@
                         <td>{{ loan.LoanAmount }}</td>
                         <td>{{ loan.DSR }}</td>
                         <td>{{ loan.SP }}</td>
-                        <td>
+                        <td style="width: 219px;">
                           <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal" @click.prevent="handledetail(loan.id)">
                             <i class="far fa-eye text-primary"></i>
                           </button>
                          <button class="btn btn-universal" @click.prevent="handleupdate(loan.id)"><i class="far fa-edit text-primary"></i></button>
+                            <button class="btn btn-primary"><i class="fas fa-dollar-sign mr-3"></i>Cairkan</button>
                         </td>
                       </tr>
                     </tbody>

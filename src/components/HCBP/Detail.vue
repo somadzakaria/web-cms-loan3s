@@ -13,7 +13,7 @@
           </div>
           <div class="modal-body text-center">
             <div class="form">
-              <img :src="dataModal.DokumenPersetujuanHC" width="200" alt="" />
+              <img :src="dataModal.FileAttachment_KTP" width="200" alt="" />
               <div class="row mt-5">
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> NIK</label>
@@ -44,7 +44,7 @@
                     Dokumen Persetujuan Pinjaman
                   </h5>
 
-                                <img class="mt-3 mb-3" :src="dataModal.DokumenPersetujuanHC" width="200" alt="" />
+                                <img class="mt-3 mb-3" :src="dataModal.DokumenPersetujuan" width="200" alt="" />
                 </div>
                 <div class="col-lg-12 text-left">
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 12px">

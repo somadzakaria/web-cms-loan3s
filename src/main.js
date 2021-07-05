@@ -5,6 +5,9 @@ import store from "./store";
 Vue.config.productionTip = false;
 import VueGoogleCharts from "vue-google-charts";
 
+import CKEditor from '@ckeditor/ckeditor5-vue2';
+Vue.use( CKEditor );
+
 Vue.use(VueGoogleCharts);
 new Vue({
   router,

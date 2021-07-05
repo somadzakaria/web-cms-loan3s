@@ -26,23 +26,51 @@
                   </div>
                 </div>
               </div>
-              <div class="card-body">
+              <div class="card-body text-center">
+                     <img class="mb-5" :src="loan.DokumenPersetujuan" width="200" alt="" />  
                 <form role="form" @submit.prevent="submit($event)">
                   <div class="form">
                     <div class="row">
-                      <div class="col-lg-12 text-left">
-                        <label for="NIK" style="text-align: left">Judul</label>
-                        <input type="text" id="NIK" class="form-control" v-model="loan.NIK" />
-                      </div>
+                     <div class="col-lg-6 mt-5 text-left">
+                  <label for="NIK" style="text-align: left"> NIK</label>
+                  <input type="text" id="NIK" class="form-control" v-model="loan.NIK" />
+                </div>
+                <div class="col-lg-6 mt-5 text-left">
+                  <label for="NIK" style="text-align: left"> Tujuan</label>
+                  <input type="text" id="NIK" v-model="loan.FinancePurpose" class="form-control" disabled />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Name Depan</label>
+                  <input type="text" id="NIK" v-model="loan.firstname" class="form-control" disabled />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Name Belakang</label>
+                  <input type="text" id="NIK" v-model="loan.lastname" class="form-control" disabled />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Pinjaman</label>
+                  <input type="text" id="NIK" v-model="loan.LoanAmount" class="form-control" disabled />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Lokasi kerja</label>
+                  <input type="text" id="NIK" v-model="loan.WorkLocation" class="form-control" disabled />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Rate/tahun</label>
+                  <input type="text" id="NIK" v-model="loan.EffectiveRate" class="form-control" disabled />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Tanggal Pengajuan</label>
+                  <input type="text" id="NIK" v-model="loan.SubmitDate" class="form-control" disabled />
+                </div>
+                <div class="col-lg-12 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Tenor</label>
+                  <input type="text" id="NIK" v-model="loan.Tenor" class="form-control" disabled />
+                </div>
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Upload Image</label>
                         <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
                       </div>
-                      <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Tags</label>
-                        <input type="text" id="NIK" class="form-control" v-model="loan.LoanAdmin_Checklist" />
-                      </div>
-
                       <div class="col-lg-12 mt-4 text-center">
                         <button class="btn-primary btn-lg text-center" type="submit">Simpan</button>
                       </div>
@@ -72,7 +100,6 @@ import Sidebar from "../navigation/Sidebar.vue";
 import Navbar from "../navigation/Navbar.vue";
 import Footer from "../navigation/Footer.vue";
 import LoanService from "../../services/loan.service";
-
 export default {
   name: "Home",
   components: {
@@ -85,8 +112,16 @@ export default {
       Loan: this.$route.params.id,
       loan: {
         NIK: "",
-        DokumenPersetujuanHC: "",
-        LoanAdmin_Checklist: "",
+        firstname:'',
+        lastname:'',
+        LoanAmount:"",
+        WorkLocation:'',
+        SubmitDate:'',
+        DokumenPersetujuan: "",
+        FileAttachment_KTP:"",
+        EffectiveRate:"",
+        Tenor:"",
+        FinancePurpose:"",
       },
     };
   },
@@ -95,8 +130,16 @@ export default {
       LoanService.getShow(this.$route.params.id).then((response) => {
         if (response.code === 200) {
           this.loan.NIK = response.data.NIK;
-          this.loan.DokumenPersetujuanHC = response.data.DokumenPersetujuanHC;
-          this.loan.LoanAdmin_Checklist = response.data.LoanAdmin_Checklist;
+          this.loan.firstname = response.data.firstname;
+          this.loan.lastname = response.data.lastname;
+          this.loan.WorkLocation = response.data.WorkLocation;
+          this.loan.LoanAmount = response.data.LoanAmount;
+          this.loan.EffectiveRate = response.data.EffectiveRate;
+          this.loan.SubmitDate = response.data.SubmitDate;
+          this.loan.Tenor = response.data.Tenor;
+          this.loan.FinancePurpose = response.data.FinancePurpose;
+          this.loan.DokumenPersetujuan = response.data.DokumenPersetujuan;
+          this.loan.FileAttachment_KTP = response.data.FileAttachment_KTP;
         }
       });
     },
@@ -104,8 +147,7 @@ export default {
       event.preventDefault();
       let params = {
         NIK: this.loan.NIK,
-        DokumenPersetujuanHC: this.loan.DokumenPersetujuanHC,
-        LoanAdmin_Checklist: this.loan.LoanAdmin_Checklist,
+        DokumenPersetujuan: this.loan.DokumenPersetujuan,
       };
       LoanService.postUpdate(this.$route.params.id, params)
         .then((response) => {
@@ -124,7 +166,7 @@ export default {
     createImage(file) {
       let reader = new FileReader();
       reader.onload = (e) => {
-        this.loan.DokumenPersetujuanHC = e.target.result;
+        this.loan.DokumenPersetujuan = e.target.result;
       };
       reader.readAsDataURL(file);
     },

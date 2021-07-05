@@ -21,26 +21,46 @@
                         font-weight: bold;
                       "
                     >
-                      Faq Update
+                      Update hcbp 
                     </h6>
                   </div>
                 </div>
               </div>
-              <div class="card-body">
+              <div class="card-body text-center">
+                     <img class="mb-5" :src="hcbp.DokumenPersetujuan" width="200" alt="" />  
                 <form role="form" @submit.prevent="submit($event)">
                   <div class="form">
                     <div class="row">
-                      <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">NOTE</label>
-                        <input type="text" id="NIK" class="form-control" v-model="hcbp.NIK" />
-                      </div>
+                     <div class="col-lg-6 mt-5 text-left">
+                  <label for="NIK" style="text-align: left"> NIK</label>
+                  <input type="text" id="NIK" class="form-control" v-model="hcbp.NIK" />
+                </div>
+                <div class="col-lg-6 mt-5 text-left">
+                  <label for="NIK" style="text-align: left">Jabatan</label>
+                  <input type="text" id="NIK" v-model="hcbp.Jabatan" class="form-control" disabled />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Name Depan</label>
+                  <input type="text" id="NIK" v-model="hcbp.firstname" class="form-control" disabled />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Name Belakang</label>
+                  <input type="text" id="NIK" v-model="hcbp.lastname" class="form-control" disabled />
+                </div>
+              
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Lokasi kerja</label>
+                  <input type="text" id="NIK" v-model="hcbp.WorkLocation" class="form-control" disabled />
+                </div>
+           
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Email</label>
+                  <input type="text" id="NIK" v-model="hcbp.email" class="form-control" disabled />
+                </div>
+         
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Upload Image</label>
                         <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
-                      </div>
-                      <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Note</label>
-                        <input type="text" id="NIK" class="form-control" v-model="hcbp.Notes" />
                       </div>
                       <div class="col-lg-12 mt-4 text-center">
                         <button class="btn-primary btn-lg text-center" type="submit">Simpan</button>
@@ -80,11 +100,16 @@ export default {
   },
   data() {
     return {
-      Faqid: this.$route.params.id,
+      Hcbp: this.$route.params.id,
       hcbp: {
         NIK: "",
-       DokumenPersetujuan: "",
-        Notes: "",
+        firstname:'',
+        lastname:'',
+        WorkLocation:'',
+        email:'',
+        DokumenPersetujuan: "",
+        FileAttachment_KTP:"",
+        Jabatan:"",
       },
     };
   },
@@ -92,9 +117,14 @@ export default {
     getDetail() {
       HCBPService.getShow(this.$route.params.id).then((response) => {
         if (response.code === 200) {
-          this.hcbp.NIK = response.data.NIK,
-           this.hcbp.DokumenPersetujuan = response.data.DokumenPersetujuan, 
-           this.hcbp.Notes = response.data.Notes
+          this.hcbp.NIK = response.data.NIK;
+          this.hcbp.firstname = response.data.firstname;
+          this.hcbp.lastname = response.data.lastname;
+          this.hcbp.Jabatan = response.data.Jabatan;
+          this.hcbp.WorkLocation = response.data.WorkLocation;
+          this.hcbp.email = response.data.email;
+          this.hcbp.DokumenPersetujuan = response.data.DokumenPersetujuan;
+          this.hcbp.FileAttachment_KTP = response.data.FileAttachment_KTP;
         }
       });
     },
@@ -103,7 +133,6 @@ export default {
       let params = {
         NIK: this.hcbp.NIK,
         DokumenPersetujuan: this.hcbp.DokumenPersetujuan,
-        Notes: this.hcbp.Notes,
       };
       HCBPService.postUpdate(this.$route.params.id, params)
         .then((response) => {
