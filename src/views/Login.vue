@@ -1,5 +1,6 @@
 <template>
-  <div class="bg-login">
+<div class="home">
+    <div class="bg-login">
     <header>
       <div class="container text-center">
         <div class="row">
@@ -27,6 +28,7 @@
       </div>
     </header>
   </div>
+</div>
 </template>
 <script>
 export default {
@@ -38,12 +40,14 @@ export default {
   },
   methods: {
     login() {
+      let loading = this.$loading.show();
       this.$store
         .dispatch('login', {
           email: this.email,
           password: this.password,
         })
         .then(() => {
+          loading.hide();
           this.$router.push({
             name: "blog",
           });

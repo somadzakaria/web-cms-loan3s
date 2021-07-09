@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div >
     <!-- Page Wrapper -->
     <div id="wrapper">
       <Sidebar />
