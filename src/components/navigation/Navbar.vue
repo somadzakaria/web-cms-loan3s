@@ -144,8 +144,11 @@
   <!-- End of Topbar -->
 </template>
 <script>
-
+import {authComputed} from '../../vuex/helper.js'
 export default {
+  computed:{
+    ...authComputed
+  },
   methods: {
     logout() {
      this.$store.dispatch('logout');

@@ -15,7 +15,7 @@ export default new Vuex.Store({
       axios.defaults.headers.common["Authorization"] = "Bearer ${userData.token}";
       userData.token;
     },
-    CLEAT_USER_DATA() {
+    CLEAR_USER_DATA() {
       localStorage.removeItem("user");
       location.reload();
     },

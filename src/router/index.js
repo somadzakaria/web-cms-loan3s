@@ -48,148 +48,178 @@ const routes = [
     path: "/loan",
     name: "Loan",
     component: Loan,
+    meta:{requiresAuth:true}
   },
   {
     path: "/Approval",
     name: "Approval",
     component: Approval,
+    meta:{requiresAuth:true}
   },
   {
     path: "/loan-update/:id",
     name: "Loanupdate",
     component: Loanupdate,
+    meta:{requiresAuth:true}
   },
   {
     path: "/HCBP",
     name: "HCBP",
     component: HCBP,
+    meta:{requiresAuth:true}
   },
   {
     path: "/HCBP-update/:id",
     name: "HCBPupdate",
     component: HCBPupdate,
+    meta:{requiresAuth:true}
   },
   {
     path: "/Faq",
     name: "Faq",
     component: Faq,
+    meta:{requiresAuth:true}
   },
   {
     path: "/Faq-create",
     name: "Faqcreate",
     component: Faqcreate,
+    meta:{requiresAuth:true}
   },
   {
     path: "/Faq-update/:id",
     name: "Faqupdate",
     component: Faqupdate,
+    meta:{requiresAuth:true}
   },
   {
     path: "/HCComben",
     name: "HCComben",
     component: HCComben,
+    meta:{requiresAuth:true}
   },
   {
     path: "/HCComben-update/:id",
     name: "HCCombenupdate2",
     component: HCCombenedit,
+      meta:{requiresAuth:true}
+
   },
   {
     path: "/HCCombenupdate",
     name: "HCCombenupdate",
     component: HCCombenupdate,
+      meta:{requiresAuth:true}
   },
   {
     path: "/HCComben-Edit/:id",
     name: "HCComben-update",
     component: HCCombenupdateEdit,
+      meta:{requiresAuth:true}
   },
   {
     path: "/Product",
     name: "Product",
     component: Product,
+      meta:{requiresAuth:true}
   },
   {
     path: "/Product-create",
     name: "Productcreate",
     component: Productcreate,
+      meta:{requiresAuth:true}
   },
   {
     path: "/Product-update/:id",
     name: "Productupdate",
     component: Productupdate,
+      meta:{requiresAuth:true}
   },
   {
     path: "/GeneralSetting",
     name: "GeneralSetting",
     component: General,
+      meta:{requiresAuth:true}
   },
   {
     path: "/General-create",
     name: "Generalcreate",
     component: Generalcreate,
+      meta:{requiresAuth:true}
   },
   {
     path: "/General-update/:id",
     name: "Generaltupdate",
     component: Generalupdate,
+      meta:{requiresAuth:true}
   },
   {
     path: "/Promotion",
     name: "Promotion",
     component: Promotion,
+      meta:{requiresAuth:true}
   },
   {
     path: "/Promotion-create",
     name: "Promotioncreate",
     component: Promotioncreate,
+      meta:{requiresAuth:true}
   },
   {
     path: "/Promotion-update/:id",
     name: "Promotiontupdate",
     component: Promotionupdate,
+      meta:{requiresAuth:true}
   },
   {
     path: "/Summary",
     name: "Summary",
     component: Summary,
+      meta:{requiresAuth:true}
   },
   {
     path: "/Reportdetail",
     name: "Reportdetail",
     component: Reportdetail,
+      meta:{requiresAuth:true}
   },
   {
     path: "/blog",
     name: "blog",
     component: Blog,
+      meta:{requiresAuth:true}
   },
   {
     path: "/blog-create",
     name: "blogcreate",
     component: Blogcreate,
+      meta:{requiresAuth:true}
   },
 
   {
     path: "/blog-update/:id",
     name: "blogupdate",
     component: Blogupdate,
+      meta:{requiresAuth:true}
   },
 
   {
     path: "/Organization",
     name: "Organization",
     component: Organization,
+      meta:{requiresAuth:true}
   },
   {
     path: "/Organization-create",
     name: "Organizationcreate",
     component: Organizationcreate,
+      meta:{requiresAuth:true}
   },
   {
     path: "/Organization-update/:id",
     name: "Organizationupdate",
     component: Organizationupdate,
+      meta:{requiresAuth:true}
   },
 ];
 
@@ -200,12 +230,9 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const loggedIn = localStorage.getItem("user");
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (!loggedIn) {
-      next("/");
-    } else {
-      next();
+  if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+      next("/")
     }
-  } else next();
+  next();
 });
 export default router;
