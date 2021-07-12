@@ -122,7 +122,7 @@
                         <td>{{ loan.firstname }} {{ loan.lastname }}</td>
                         <td>{{ loan.WorkLocation }}</td>
                         <td>{{ loan.LoanAmount }}</td>
-                        <td>{{ loan.DSR }}</td>
+                        <td>{{ loan.DSR  === 1 ? "Ya" : "Tidak" }}</td>
                         <td>{{ loan.SP }}</td>
                         <td style="width: 219px;">
                           <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal" @click.prevent="handledetail(loan.id)">

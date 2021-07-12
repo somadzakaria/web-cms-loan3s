@@ -44,7 +44,7 @@
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Name</label>
+                  <label for="NIK" style="text-align: left">Nama</label>
                   <input
                     type="text"
                     id="NIK"

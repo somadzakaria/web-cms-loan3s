@@ -36,7 +36,8 @@
                       </div>
                     <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Rekomendasi Peminjaman</label>
-                        <select class="form-control" v-model="hccomben.RekomendasiPeminjaman">
+                         <select class="form-control" v-model="hccomben.RekomendasiPeminjaman">
+                          <option value="" disabled>Pilih</option>
                           <option value="1">Ya</option>
                           <option value="0">Tidak</option>
                         </select>

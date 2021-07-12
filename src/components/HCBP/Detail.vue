@@ -24,7 +24,7 @@
                   <input type="text" id="NIK" v-model="dataModal.Jabatan" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Name</label>
+                  <label for="NIK" style="text-align: left">Nama</label>
                   <input type="text" id="NIK" v-model="dataModal.firstname" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
@@ -51,7 +51,7 @@
                     Notes
                   </h5>
                   <label for="NIK" style="text-align: left">Notes untuk Peminjaman </label>
-                  <textarea class="form-control" id="Nik" placeholder="Peminjaman boleh diberikan namun hanya dengan limit Rp 2.000.000 dengan tenor selama 6 bulan" cols="30" rows="10" disabled></textarea>
+                  <textarea class="form-control" id="Nik" placeholder="Peminjaman boleh diberikan namun hanya dengan limit  2.000.000 dengan tenor selama 6 bulan" cols="30" rows="10" disabled></textarea>
                 </div>
 
                 <!-- <div class="row">

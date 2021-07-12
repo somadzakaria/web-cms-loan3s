@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 Vue.config.productionTip = false;
+Vue.config.delimiters = ['${', '}'];
 import VueGoogleCharts from "vue-google-charts";
 import CKEditor from '@ckeditor/ckeditor5-vue2';
 import Loading from 'vue-loading-overlay';

@@ -10,10 +10,10 @@
               <div class="col-3 mt-5 mx-auto">
                 <label class="sr-only" for="inlineFormInputGroup">Email</label>
                 <div class="input-group mb-4">
-                  <input type="text" class="form-control" id="inlineFormInputGroup" v-model="email" placeholder="E-mail" style="color: #fff" />
+                  <input type="text" class="form-control" id="inlineFormInputGroup" v-model="email" placeholder="E-mail" style="color: #fff" required />
                 </div>
                 <div class="input-group mb-4">
-                  <input type="password" class="form-control" id="inlineFormInputGroup" v-model="password" placeholder="password" />
+                  <input type="password" class="form-control" id="inlineFormInputGroup" v-model="password" placeholder="password" required />
                 </div>
                 <div class="form-group mt-3">
                   <button class="btn btn-login" type="submit">Masuk</button>
@@ -49,7 +49,7 @@ export default {
         .then(() => {
           loading.hide();
           this.$router.push({
-            name: "blog",
+            name: "Loan",
           });
         });
     },

@@ -21,7 +21,7 @@
                         font-weight: bold;
                       "
                     >
-                      Create GeneralSetting
+                      General Setting
                     </h6>
                   </div>
                 </div>

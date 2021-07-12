@@ -136,7 +136,7 @@
                         <td>{{aproval.Jabatan}}</td>
                         <td>{{aproval.WorkLocation}}</td>
                         <td>{{aproval.LoanAmount}}</td>
-                        <td>{{aproval.DSR}}</td>
+                        <td>{{aproval.DSR }}</td>
                         <td>{{aproval.SP}}</td>
                         <td>
                           <button class="btn btn-primary" data-toggle="modal" data-target="#Detail"  @click.prevent="handledetail(aproval.id)">

@@ -8,7 +8,7 @@
       <!-- Sidebar - Brand -->
       <a
         class="sidebar-brand d-flex align-items-center justify-content-center"
-        href="index.html"
+        href="/loan"
       >
         <div
           class="sidebar-brand-text"

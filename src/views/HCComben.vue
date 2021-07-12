@@ -135,9 +135,9 @@
                         <td>{{ comben.Jabatan }}</td>
                         <td>{{ comben.LoanAmount }}</td>
                         <td>{{ comben.WorkLocation }}</td>
-                        <td>Hellen</td>
-                        <td>{{ comben.DSR }}</td>
-                        <td>{{ comben.SP }}</td>
+                        <td>{{ comben.HC_Recommendations === "1" ? "Ya"  : "Tidak" }}</td>
+                        <td >{{ comben.DSR === "1" ? "Ya"  : "Tidak"  }}</td>
+                        <td>{{ comben.SP  ==- "1" ? "Ya"  : "Tidak" }}</td>
                         <td>
                           <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(comben.id)"><i class="far fa-eye text-primary"></i></button>
 
