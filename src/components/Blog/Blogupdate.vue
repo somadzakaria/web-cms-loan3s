@@ -143,7 +143,7 @@ export default {
         WritenBy: this.blog.WritenBy,
         isactive: this.blog.isactive,
       };
-      BlogService.postUpdate(this.$route.params.id, params)
+      BlogService.postUpdate(this.$route.params.id,params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
           router.back();

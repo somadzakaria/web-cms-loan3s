@@ -46,7 +46,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <!-- Nav Item - Charts -->
       <li class="nav-item mt-2">
-        <router-link to="/">
+        <router-link to="/loan">
           <a class="nav-link" href="charts.html"> <span>Loan Admin</span></a>
         </router-link>
       </li>

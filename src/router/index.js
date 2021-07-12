@@ -28,6 +28,7 @@ import Organizationupdate from "../components/Organization/Ochartupdate.vue";
 import Faq from "../views/Faq.vue";
 import Faqcreate from "../components/Faq/Faqcreate.vue";
 import Faqupdate from "../components/Faq/Faqupdate.vue";
+import Approval from "../views/Aproval.vue";
 import Notfound from "../views/404.vue";
 
 Vue.use(VueRouter);
@@ -47,6 +48,11 @@ const routes = [
     path: "/loan",
     name: "Loan",
     component: Loan,
+  },
+  {
+    path: "/Approval",
+    name: "Approval",
+    component: Approval,
   },
   {
     path: "/loan-update/:id",

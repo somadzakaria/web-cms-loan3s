@@ -131,7 +131,7 @@
             Settings
           </a>
           <div class="dropdown-divider"></div>
-          <router-link to="auth">
+          <router-link to="/">
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" @click="logout">
               <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               Logout
