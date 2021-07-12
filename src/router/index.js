@@ -39,12 +39,12 @@ const routes = [
     component: Notfound,
   },
   {
-    path: "/auth",
+    path: "/",
     name: "Login",
     component: () => import("../views/Login.vue"),
   },
   {
-    path: "/",
+    path: "/loan",
     name: "Loan",
     component: Loan,
   },
