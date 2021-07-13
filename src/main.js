@@ -3,11 +3,28 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 Vue.config.productionTip = false;
-Vue.config.delimiters = ['${', '}'];
 import VueGoogleCharts from "vue-google-charts";
-import CKEditor from '@ckeditor/ckeditor5-vue2';
+import CKEditor from '@ckeditor/ckeditor5-vue2'; 
+
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+
+// Cleave
+import Cleave from 'cleave.js';
+
+Vue.directive('cleave', {
+    inserted: (el, binding) => {
+        el.cleave = new Cleave(el, binding.value || {})
+    },
+    update: (el) => {
+        const event = new Event('input', {bubbles: true});
+        setTimeout(function () {
+            el.value = el.cleave.properties.result
+            el.dispatchEvent(event)
+        }, 100);
+    }
+})
+// 
 Vue.use(Loading,{
   color: '#148DCD',
   height:70,

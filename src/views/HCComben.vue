@@ -133,17 +133,14 @@
                         <td>{{ comben.NIK }}</td>
                         <td>{{ comben.firstname }} {{ comben.lastname }}</td>
                         <td>{{ comben.Jabatan }}</td>
-                        <td>{{ comben.LoanAmount }}</td>
+                        <td>{{ currency(comben.LoanAmount) }}</td>
                         <td>{{ comben.WorkLocation }}</td>
                         <td>{{ comben.HC_Recommendations === "1" ? "Ya"  : "Tidak" }}</td>
                         <td >{{ comben.DSR === "1" ? "Ya"  : "Tidak"  }}</td>
                         <td>{{ comben.SP  ==- "1" ? "Ya"  : "Tidak" }}</td>
                         <td>
                           <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(comben.id)"><i class="far fa-eye text-primary"></i></button>
-
-                          <button class="btn btn-universal" @click.prevent="handleupdate(comben.id)">
-                            <i class="far fa-edit text-primary"></i>
-                          </button>
+                          <button class="btn btn-universal" data-toggle="modal" data-target="#Edit" @click.prevent="handleupdate(comben.id)"><i class="far fa-edit text-primary"></i></button>
                         </td>
                       </tr>
                     </tbody>
@@ -161,6 +158,7 @@
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
+        <Update :dataModal="dataModal" />
       </div>
 
       <!-- End of Content Wrapper -->
@@ -171,11 +169,12 @@
 
 <script>
 // @ is an alias to /src
-import router from "@/router"
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import Detail from "../components/HCComben/Detail.vue";
+import Update from "../components/HCComben/Update.vue";
+import Utils from "@/utils/index";
 import HCCombenService from "../services/hccomben.service";
 export default {
   name: "Home",
@@ -184,6 +183,7 @@ export default {
     Navbar,
     Footer,
     Detail,
+    Update
   },
   data() {
     return {
@@ -211,7 +211,16 @@ export default {
         });
     },
     handleupdate(id) {
-      router.push("/HCComben-update/" + id);
+      HCCombenService.getShow(id)
+        .then((response) => {
+          this.dataModal = response.data;
+        })
+        .catch((error) => {
+          console.log("Eror Data Tidak Di Temukan", error.response);
+        });
+    },
+      currency(nominal) {
+      return Utils.currencyRp(nominal);
     },
   },
 };

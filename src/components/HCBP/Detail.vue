@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Nama</label>
-                  <input type="text" id="NIK" v-model="dataModal.firstname" class="form-control" disabled />
+                  <input type="text" id="NIK" v-model="fullname" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Nomor Telepon</label>
@@ -43,8 +43,7 @@
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                     Dokumen Persetujuan Pinjaman
                   </h5>
-
-                                <img class="mt-3 mb-3" :src="dataModal.DokumenPersetujuan" width="200" alt="" />
+                  <img class="mt-3 mb-3" :src="dataModal.DokumenPersetujuan" width="200" alt="" />
                 </div>
                 <div class="col-lg-12 text-left">
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 12px">
@@ -53,21 +52,6 @@
                   <label for="NIK" style="text-align: left">Notes untuk Peminjaman </label>
                   <textarea class="form-control" id="Nik" placeholder="Peminjaman boleh diberikan namun hanya dengan limit  2.000.000 dengan tenor selama 6 bulan" cols="30" rows="10" disabled></textarea>
                 </div>
-
-                <!-- <div class="row">
-                  <div class="col-lg-4 mt-5 text-center">
-                    <img src="img/dokumen.png" id="NIK" width="330" height="90%" />
-                    <label class="mt-4" style="text-align: left">Pesetujuan dari xxxx </label>
-                  </div>
-                  <div class="col-lg-4 mt-5 text-center">
-                    <img src="img/dokumen.png" id="NIK" width="330" />
-                    <label class="mt-4" style="text-align: left">Pesetujuan dari xxxx </label>
-                  </div>
-                  <div class="col-lg-4 mt-5 text-center">
-                    <img src="img/dokumen.png" id="NIK" width="330" />
-                    <label class="mt-4" style="text-align: left">Pesetujuan dari xxxx </label>
-                  </div>
-                </div> -->
               </div>
             </div>
           </div>
@@ -82,6 +66,7 @@ export default {
   data() {
     return {
       ochart: [],
+      fullname : this.firstname + "" + this.lastname
     };
   },
   props: {

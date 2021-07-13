@@ -56,7 +56,7 @@ export default {
 
   postActivation(id, params) {
     return axios
-      .post("https://dev-loan-api.sitama.co.id/api/v1/cms/loan/Activation/" + id, params, {
+      .post("http://127.0.0.1:8000/api/v1/cms/loan/Activation/" + id, params, {
         headers: {
           Authorization: "Bearer " + user.data.access_token,
           X_USER_ID: user.data.id,

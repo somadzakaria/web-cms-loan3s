@@ -121,15 +121,15 @@
                         <td>{{ loan.NIK }}</td>
                         <td>{{ loan.firstname }} {{ loan.lastname }}</td>
                         <td>{{ loan.WorkLocation }}</td>
-                        <td>{{ loan.LoanAmount }}</td>
+                        <td>{{ currency(loan.LoanAmount) }}</td>
                         <td>{{ loan.DSR  === 1 ? "Ya" : "Tidak" }}</td>
-                        <td>{{ loan.SP }}</td>
+                        <td>{{ loan.SP === 1 ? "Ya" : "Tidak"}}</td>
                         <td style="width: 219px;">
                           <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal" @click.prevent="handledetail(loan.id)">
                             <i class="far fa-eye text-primary"></i>
                           </button>
-                         <button class="btn btn-universal" @click.prevent="handleupdate(loan.id)"><i class="far fa-edit text-primary"></i></button>
-                            <button class="btn btn-primary"><i class="fas fa-dollar-sign mr-3"></i>Cairkan</button>
+                         <button class="btn btn-universal" data-toggle="modal" data-target="#EditModal" @click.prevent="handleUpdate(loan.id)"><i class="far fa-edit text-primary"></i></button>
+                         <button class="btn btn-primary"><i class="fas fa-dollar-sign mr-3"></i>Cairkan</button>
                         </td>
                       </tr>
                     </tbody>
@@ -140,6 +140,7 @@
           </div>
           <!-- /.container-fluid -->
           <Detail :dataModal="dataModal" />
+          <Edit :dataModal="dataModal" />
         </div>
         <!-- End of Main Content -->
         <!-- Modal Detail -->
@@ -159,11 +160,13 @@
 
 <script>
 // @ is an alias to /src
-import router from "@/router";
+
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import Detail from "../components/loan/Detail.vue";
+import Edit from "../components/loan/Edit.vue";
+import Utils from "@/utils/index";
 import LoanService from "../services/loan.service";
 export default {
   name: "Loan",
@@ -172,6 +175,7 @@ export default {
     Navbar,
     Footer,
     Detail,
+    Edit
   },
   data() {
     return {
@@ -198,9 +202,19 @@ export default {
           console.log("Eror Data Tidak Di Temukan", error.response);
         });
     },
-    handleupdate(id) {
-      router.push("/loan-update/" + id);
+    handleUpdate(id) {
+      LoanService.getShow(id)
+        .then((response) => {
+          this.dataModal = response.data;
+        })
+        .catch((error) => {
+          console.log("Eror Data Tidak Di Temukan", error.response);
+        });
+    },
+     currency(nominal) {
+      return Utils.currencyRp(nominal);
     },
   },
+ 
 };
 </script>

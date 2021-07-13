@@ -136,12 +136,12 @@
                         <td>{{comben.WorkLocation}}</td>
                         <td>{{comben.JG}}</td>
                         <td>{{comben.PG}}</td>
-                        <td>{{comben.DSR}}</td>
-                        <td>{{comben.SP}}</td> 
+                        <td>{{comben.DSR === 1 ? "Ya" : "Tidak" }}</td>
+                        <td>{{comben.SP === 1 ? "Ya" : "Tidak" }}</td> 
                         <td>{{comben.ResignDate}}</td>
                         <td>
                         <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(comben.id)"><i class="far fa-eye text-primary"></i></button>
-                        <button class="btn btn-universal" @click.prevent="handleupdate(comben.id)"><i class="far fa-edit text-primary"></i></button>
+                        <button class="btn btn-universal" data-toggle="modal" data-target="#Edit" @click.prevent="handleupdate(comben.id)"><i class="far fa-edit text-primary"></i></button>
                         </td>
                       </tr>
                     </tbody>
@@ -159,6 +159,7 @@
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
+              <Update  :dataModal="dataModal" />
       </div>
 
 
@@ -170,12 +171,12 @@
 
 <script>
 // @ is an alias to /src
-import router from "@/router"
+
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import Detail from "../components/HCCombenUpdate/Detail.vue";
-
+import Update from "../components/HCCombenUpdate/Update.vue";
 import HCUpdateService from "../services/hccombenupdate.service";
 export default {
   name: "Home",
@@ -184,6 +185,7 @@ export default {
     Navbar,
     Footer,
     Detail,
+    Update
   },
   data() {
     return {
@@ -211,7 +213,13 @@ export default {
         });
     },
       handleupdate(id) {
-      router.push("/HCComben-Edit/" + id);
+        HCUpdateService.getShow(id)
+        .then((response) => {
+          this.dataModal = response.data;
+        })
+        .catch((error) => {
+          console.log("Eror Data Tidak Di Temukan", error.response);
+        });
     },
   }
 };

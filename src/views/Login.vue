@@ -49,7 +49,7 @@ export default {
         .then(() => {
           loading.hide();
           this.$router.push({
-            name: "Loan",
+            name: "Summary",
           });
         });
     },

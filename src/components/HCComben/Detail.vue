@@ -106,7 +106,7 @@
                     disabled
                   />
                 </div>
-                     <div class="col-lg-12 text-left">
+                     <div class="col-lg-4 text-left">
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                    Rekomendasi
                   </h5>
@@ -120,8 +120,39 @@
                   />
                                
                 </div>
+                     <div class="col-lg-4 text-left">
+                  <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
+                  DSR
+                  </h5>
+   <label for="NIK" style="text-align: left">Apakah DSR karyawan mencukupi?</label>
+                  <input
+                    type="text"
+                    id="NIK"
+                    v-model="dataModal.HC_Recommendations"
+                    class="form-control"
+                    disabled
+                  />
+                               
+                </div>
+                     <div class="col-lg-4 text-left">
+                  <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
+                  SP
+                  </h5>
+   <label for="NIK" style="text-align: left">Apakah karyawan ada riwayat SP?</label>
+                  <input
+                    type="text"
+                    id="NIK"
+                    v-model="dataModal.HC_Recommendations"
+                    class="form-control"
+                    disabled
+                  />
+                               
+                </div>
                 <div class="col-lg-12 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Notes</label>
+                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
+                Notes
+                  </h5>
+                  <label for="NIK" style="text-align: left">Notes untuk Peminjaman</label>
                   <textarea
                     class="form-control"
                     id="Nik"

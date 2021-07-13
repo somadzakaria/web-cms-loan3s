@@ -126,10 +126,9 @@
                         <td>Rp.{{ hcbp.LoanAmount }}</td>
                         <td>{{ hcbp.InstallmentAmount }}</td>
                         <td>{{ hcbp.Tenor }} Bulan</td>
-
                         <td class="text-left">
                            <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(hcbp.id)"><i class="far fa-eye text-primary"></i></button>
-                          <button class="btn btn-universal" @click.prevent="handleupdate(hcbp.id)"><i class="far fa-edit text-primary"></i></button>
+                          <button class="btn btn-universal" data-toggle="modal" data-target="#Edit" @click.prevent="handleupdate(hcbp.id)"><i class="far fa-edit text-primary"></i></button>
                         </td>
                       </tr>
                     </tbody>
@@ -150,7 +149,7 @@
       </div>
 
       <!-- Moodal Edit -->
-      <Update />
+      <Update :dataModal="dataModal" />
       <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
@@ -159,7 +158,6 @@
 
 <script>
 // @ is an alias to /src
-import router from "@/router";
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
@@ -191,11 +189,17 @@ export default {
       });
   },
   methods: {
-    handleupdate(id) {
-      router.push("/HCBP-update/" + id);
-    },
       handledetail(id) {
-     HCBPService.getShow(id)
+      HCBPService.getShow(id)
+        .then((response) => {
+          this.dataModal = response.data;
+        })
+        .catch((error) => {
+          console.log("Eror Data Tidak Di Temukan", error.response);
+        });
+    },
+     handleupdate(id) {
+      HCBPService.getShow(id)
         .then((response) => {
           this.dataModal = response.data;
         })

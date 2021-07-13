@@ -12,7 +12,8 @@
             </button>
           </div>
           <div class="modal-body text-center">
-            <div class="form">
+           <form>
+              <div class="form">
               <img :src="dataModal.FileAttachment_KTP" width="350" alt="" />
               <div class="row mt-5">
                 <div class="col-lg-6 text-left">
@@ -61,10 +62,11 @@
                   <textarea class="form-control" id="Nik" placeholder="Minjem Bob" cols="30" rows="10" disabled></textarea>
                 </div>  
                 <div class="col-lg-12 mt-3 text-center">
-                  <button class="btn btn-primary"><i class="fas fa-dollar-sign mr-3"></i>Cairkan</button>
+                  <button class="btn btn-primary" @click="submit()"><i class="fas fa-dollar-sign mr-3"></i>Cairkan</button>
                 </div>
               </div>
             </div>
+           </form>
           </div>
         </div>
       </div>
@@ -72,10 +74,11 @@
   </div>
 </template>
 <script>
+import LoanService from "../../services/aproval.service"
 export default {
   data() {
     return {
-      ochart: [],
+      loan: [],
     };
   },
   props: {
@@ -83,5 +86,21 @@ export default {
       required: true,
     },
   },
+  methods:{
+  submit(){
+  let params ={
+    loan_amount : this.dataModal.loan_amount,
+    term_years : this.dataModal.term_years,
+    terms : this.dataModal.terms
+    }
+  LoanService.postActivation(this.dataModal.id,params).then((response)=>
+  {
+    console.log(response,"Berhasil Di tambahkan")
+    }).catch((error)=>
+    {
+    console.log("data tidak terkirim",error.response)
+  })
+  }
+}
 };
 </script>

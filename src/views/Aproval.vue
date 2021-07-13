@@ -135,7 +135,7 @@
                         <td>{{aproval.firstname}} {{aproval.lastname}}</td>
                         <td>{{aproval.Jabatan}}</td>
                         <td>{{aproval.WorkLocation}}</td>
-                        <td>{{aproval.LoanAmount}}</td>
+                        <td>{{currency(aproval.LoanAmount)}}</td>
                         <td>{{aproval.DSR }}</td>
                         <td>{{aproval.SP}}</td>
                         <td>
@@ -170,6 +170,7 @@ import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import AprovalService from "../services/aproval.service";
+import Utils from "@/utils/index";
 import Detail from "../components/Approval/Detail.vue";
 export default {
   name: "Home",
@@ -203,6 +204,9 @@ export default {
         .catch((error) => {
           console.log("Eror Data Tidak Di Temukan", error.response);
         });
+    },
+       currency(nominal) {
+      return Utils.currencyRp(nominal);
     },
   
   }

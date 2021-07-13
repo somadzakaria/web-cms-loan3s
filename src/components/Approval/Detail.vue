@@ -25,7 +25,7 @@
               </div>
               <div class="col-lg-6 mt-3 text-left">
                 <label for="NIK" style="text-align: left">Nama</label>
-                <input type="text" id="NIK" v-model="dataModal.firstname" class="form-control" disabled />
+                <input type="text" id="NIK" v-model="dataModal.fullname" class="form-control" disabled />
               </div>
               <div class="col-lg-6 mt-3 text-left">
                 <label for="NIK" style="text-align: left">Pinjaman</label>
@@ -72,6 +72,7 @@ export default {
   data() {
     return {
       ochart: [],
+       fullname: this.firstname + '' + this.lastname
     };
   },
   props: {
