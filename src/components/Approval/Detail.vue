@@ -165,7 +165,6 @@ export default {
       },
       set(newValue) {
         const m = newValue.match(/(\S*)\s+(.*)/);
-
         this.firsnName = m[1];
         this.lastname = m[2];
       }
