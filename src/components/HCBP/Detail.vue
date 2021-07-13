@@ -11,6 +11,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+         
           <div class="modal-body text-center">
             <div class="form">
               <img :src="dataModal.FileAttachment_KTP" width="200" alt="" />
@@ -25,7 +26,7 @@
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Nama</label>
-                  <input type="text" id="NIK" v-model="fullname" class="form-control" disabled />
+                  <input type="text" id="NIK" v-model="fullName" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Nomor Telepon</label>
@@ -65,14 +66,13 @@
 export default {
   data() {
     return {
-      ochart: [],
-      fullname : this.firstname + "" + this.lastname
+      ochart: []
     };
   },
   props: {
     dataModal: {
       required: true,
     },
-  },
+  }
 };
 </script>
