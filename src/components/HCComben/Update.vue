@@ -175,6 +175,7 @@
   </div>
 </template>
 <script>
+import router from "@/router"
 import HCcombenService from "../../services/hccomben.service"
 export default {
   data() {
@@ -199,6 +200,7 @@ export default {
   HCcombenService.postUpdate(this.dataModal.id,params).then((response)=>
   {
     console.log(response,"Berhasil Di tambahkan")
+    router.go();
     }).catch((error)=>
     {
     console.log("data tidak terkirim",error.response)

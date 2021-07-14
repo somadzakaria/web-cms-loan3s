@@ -28,8 +28,7 @@
                     type="text"
                     id="NIK"
                     class="form-control"
-             v-model="dataModal.ResignDate"
-                    
+                    v-model="dataModal.ResignDate" 
                   />
                 </div>
                 <div class="col-lg-6 text-left">
@@ -37,9 +36,8 @@
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.Jabatan"
+                    v-model="dataModal.JobTitle"
                     class="form-control"
-                    
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
@@ -57,19 +55,26 @@
                   <input
                     type="text"
                     id="NIK"
-                   v-model="dataModal.WorkLocation"
+                     v-model="dataModal.WorkLocation"
                     class="form-control"
-                  
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Nama</label>
+                  <label for="NIK" style="text-align: left">Nama Depan</label>
                   <input
                     type="text"
                     id="NIK"
-                    v-model="fullName"
-                    class="form-control"
-                    
+                    v-model="dataModal.Firstname"
+                    class="form-control"  
+                  />
+                </div>
+                <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Nama belakang</label>
+                  <input
+                    type="text"
+                    id="NIK"
+                    v-model="dataModal.Lastname"
+                    class="form-control"  
                   />
                 </div>
             
@@ -105,7 +110,7 @@
   </div>
 </template>
 <script>
-import router from "@/router"
+// import router from "@/router"
 import Combenupdate from "../../services/hccombenupdate.service"
 export default {
   data() {
@@ -122,7 +127,7 @@ export default {
   submit(){
   let params ={
     ResignDate : this.dataModal.ResignDate,
-    Jabatan : this.dataModal.Jabatan,
+    JobTitle : this.dataModal.JobTitle,
     NIK : this.dataModal.NIK,
     WorkLocation : this.dataModal.WorkLocation,
     Firstname : this.dataModal.Firstname,
@@ -133,24 +138,13 @@ export default {
   Combenupdate.postUpdate(this.dataModal.id,params).then((response)=>
   {
     console.log(response,"Berhasil Di tambahkan")
-    router.go();
+    // router.go();
     }).catch((error)=>
     {
     console.log("data tidak terkirim",error.response)
   })
   },
   },
-     computed: {
-    fullName: {
-      get() {
-        return `${this.dataModal.firstname} ${this.dataModal.lastname}`;
-      },
-      set(newValue) {
-        const m = newValue.match(/(\S*)\s+(.*)/);
-        this.firsnName = m[1];
-        this.lastname = m[2];
-      }
-    }
-  }
+ 
 };
 </script>
