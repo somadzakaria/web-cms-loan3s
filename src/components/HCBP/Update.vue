@@ -21,11 +21,11 @@
                 </div>
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> Jabatan</label>
-                  <input type="text" id="NIK" v-model="dataModal.Jabatan" class="form-control" disabled />
+                  <input type="text" id="NIK" v-model="dataModal.JobTitle" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Nama</label>
-                  <input type="text" id="NIK" v-model="dataModal.firstname" class="form-control" disabled />
+                  <input type="text" id="NIK" v-model="fullName" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Nomor Telepon</label>
@@ -107,6 +107,18 @@ export default {
       this.dataModal.DokumenPersetujuan =e.target.result;
       };
       reader.readAsDataURL(file);
+    }
+  },
+   computed: {
+    fullName: {
+      get() {
+        return `${this.dataModal.firstname} ${this.dataModal.lastname}`;
+      },
+      set(newValue) {
+        const m = newValue.match(/(\S*)\s+(.*)/);
+        this.firsnName = m[1];
+        this.lastname = m[2];
+      }
     }
   }
 };

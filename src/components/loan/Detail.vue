@@ -25,13 +25,10 @@
                   <input type="text" id="NIK" v-model="dataModal.FinancePurpose" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Name Depan</label>
-                  <input type="text" id="NIK" v-model="dataModal.firstname" class="form-control" disabled />
+                  <label for="NIK" style="text-align: left">Nama Lengkap</label>
+                  <input type="text" id="NIK" v-model="fullName" class="form-control" disabled />
                 </div>
-                <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Name Belakang</label>
-                  <input type="text" id="NIK" v-model="dataModal.lastname" class="form-control" disabled />
-                </div>
+      
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Pinjaman</label>
                   <input type="text" id="NIK" v-model="dataModal.LoanAmount" class="form-control" disabled />
@@ -48,7 +45,7 @@
                   <label for="NIK" style="text-align: left">Tanggal Pengajuan</label>
                   <input type="text" id="NIK" v-model="dataModal.SubmitDate" class="form-control" disabled />
                 </div>
-                <div class="col-lg-12 mt-3 text-left">
+                <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Tenor</label>
                   <input type="text" id="NIK" v-model="dataModal.Tenor" class="form-control" disabled />
                 </div>
@@ -101,6 +98,18 @@ export default {
     console.log("data tidak terkirim",error.response)
   })
   }
-}
+},
+  computed: {
+    fullName: {
+      get() {
+        return `${this.dataModal.firstname} ${this.dataModal.lastname}`;
+      },
+      set(newValue) {
+        const m = newValue.match(/(\S*)\s+(.*)/);
+        this.firsnName = m[1];
+        this.lastname = m[2];
+      }
+    }
+  }
 };
 </script>

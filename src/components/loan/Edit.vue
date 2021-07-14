@@ -25,13 +25,10 @@
                   <input type="text" id="NIK" v-model="dataModal.FinancePurpose" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Name Depan</label>
-                  <input type="text" id="NIK" v-model="dataModal.firstname" class="form-control" disabled />
+                  <label for="NIK" style="text-align: left">Nama</label>
+                  <input type="text" id="NIK" v-model="fullName" class="form-control" disabled />
                 </div>
-                <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Name Belakang</label>
-                  <input type="text" id="NIK" v-model="dataModal.lastname" class="form-control" disabled />
-                </div>
+              
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Pinjaman</label>
                   <input type="text" id="NIK" v-model="dataModal.LoanAmount" class="form-control" disabled />
@@ -77,7 +74,7 @@
   </div>
 </template>
 <script>
-import LoanService from "../../services/aproval.service"
+import LoanService from "../../services/loan.service"
 export default {
   data() {
     return {
@@ -115,7 +112,18 @@ export default {
       };
       reader.readAsDataURL(file);
     }
-   
-}
+},
+computed: {
+    fullName: {
+      get() {
+        return `${this.dataModal.firstname} ${this.dataModal.lastname}`;
+      },
+      set(newValue) {
+        const m = newValue.match(/(\S*)\s+(.*)/);
+        this.firsnName = m[1];
+        this.lastname = m[2];
+      }
+    }
+  }
 };
 </script>

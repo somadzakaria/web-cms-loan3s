@@ -19,7 +19,7 @@
           </button>
         </div>
         <div class="modal-body text-center">
-          <form @submit.prevent="submit($event)">
+          <form>
             <div class="form">
               <div class="row">
                 <div class="col-lg-6 text-left">
@@ -110,7 +110,7 @@
                   <textarea
                     class="form-control"
                     id="Nik"
-                    v-model="dataModal.Blog_Description"
+                    v-model="dataModal.Notes"
                     cols="30"
                     rows="10"
                     disabled
@@ -120,7 +120,7 @@
                   <button class="btn btn-danger mt-5 mr-3 btn-lg">
                     Reject
                   </button>
-                  <button class="btn btn-success mt-5 btn-lg">Approve</button>
+                  <button class="btn btn-success mt-5 btn-lg" @click="submit(dataModal.Approval)">Approve</button>
                 </div>
               </div>
             </div>
@@ -131,6 +131,7 @@
   </div>
 </template>
 <script>
+import router from "@/router"
 import AprovalService from "../../services/aproval.service";
 export default {
   data() {
@@ -144,14 +145,14 @@ export default {
     },
   },
   methods: {
-    submit(event) {
-      event.preventDefault();
+    submit() {
       let params = {
         Approval: this.dataModal.Approval,
       };
-      AprovalService.postSubmit(params)
+      AprovalService.postSubmit(this.dataModal.id,params)
         .then((response) => {
-          console.log(response, "Berhasil Di tambahkan");
+          console.log(response,"Berhasil Di tambahkan");
+          router.go();
         })
         .catch((error) => {
           console.log("Gagal Di tambahkan", error.res);

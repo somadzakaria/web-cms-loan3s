@@ -67,7 +67,7 @@
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.firstname"
+                    v-model="fullName"
                     class="form-control"
                     disabled
                   />
@@ -114,5 +114,17 @@ export default {
       required: true,
     },
   },
+   computed: {
+    fullName: {
+      get() {
+        return `${this.dataModal.firstname} ${this.dataModal.lastname}`;
+      },
+      set(newValue) {
+        const m = newValue.match(/(\S*)\s+(.*)/);
+        this.firsnName = m[1];
+        this.lastname = m[2];
+      }
+    }
+  }
 };
 </script>

@@ -35,18 +35,14 @@
                         <input type="text" id="NIK" class="form-control" v-model="blog.TitleName" />
                       </div>
                       <div class="col-lg-6 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Pilih Kategori</label>
+                        <label for="NIK" style="text-align: left">Kategori</label>
                         <input type="text" id="NIK" class="form-control" v-model="blog.Category" />
                       </div>
                       <div class="col-lg-6 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Tags</label>
                         <input type="text" id="NIK" class="form-control" v-model="blog.Tags" />
                       </div>
-                      <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Tanggal Upload</label>
-                        <input type="date" id="NIK" class="form-control" v-model="blog.Createdate" />
-                      </div>
-                
+        
                       <div class="col-lg-12 mt-3">
                        <ckeditor :editor="editor"  v-model="blog.Blog_Description"></ckeditor>
                       </div>
@@ -111,7 +107,6 @@ export default {
         TitleName: "",
         Category: "",
         Tags: "",
-        Createdate: "",
         Blog_Description: "",
         ImagesPath: "",
         WritenBy: "",
@@ -127,7 +122,6 @@ export default {
         TitleName: this.blog.TitleName,
         Category: this.blog.Category,
         Tags: this.blog.Tags,
-        Createdate: this.blog.Createdate,
         Blog_Description: this.blog.Blog_Description,
         ImagesPath: this.blog.ImagesPath,
         WritenBy: this.blog.WritenBy,

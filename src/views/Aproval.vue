@@ -115,6 +115,33 @@
                         >
                           SP
                         </th>
+                        <th
+                          style="
+                            background: #edf2f7;
+                            color: #4a5568;
+                            font-family: 'Poppins';
+                          "
+                        >
+                       Apv. Ketua
+                        </th>
+                        <th
+                          style="
+                            background: #edf2f7;
+                            color: #4a5568;
+                            font-family: 'Poppins';
+                          "
+                        >
+                     Apv. Sekretaris
+                        </th>
+                        <th
+                          style="
+                            background: #edf2f7;
+                            color: #4a5568;
+                            font-family: 'Poppins';
+                          "
+                        >
+                     Apv. Bendahara
+                        </th>
                     
                         <th
                           style="
@@ -138,6 +165,9 @@
                         <td>{{currency(aproval.LoanAmount)}}</td>
                         <td>{{aproval.DSR }}</td>
                         <td>{{aproval.SP}}</td>
+                        <td>{{aproval.ApvKetua === 1 ? "Disetujui" : "Ditolak"}}</td>
+                        <td>{{aproval.ApvSekretaris  === 1 ? "Disetujui" : "Ditolak" }}</td>
+                        <td>{{aproval.ApvBendahara === "1" ? "Disetujui" : "Ditolak"}}</td>
                         <td>
                           <button class="btn btn-primary" data-toggle="modal" data-target="#Detail"  @click.prevent="handledetail(aproval.id)">
                             Approval
