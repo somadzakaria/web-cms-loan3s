@@ -110,7 +110,7 @@
   </div>
 </template>
 <script>
-// import router from "@/router"
+import router from "@/router"
 import Combenupdate from "../../services/hccombenupdate.service"
 export default {
   data() {
@@ -138,7 +138,7 @@ export default {
   Combenupdate.postUpdate(this.dataModal.id,params).then((response)=>
   {
     console.log(response,"Berhasil Di tambahkan")
-    // router.go();
+    router.go();
     }).catch((error)=>
     {
     console.log("data tidak terkirim",error.response)

@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import router from "@/router"
 import HcbpService from "../../services/hcbp.service"
 export default {
   data() {
@@ -91,6 +92,7 @@ export default {
   HcbpService.postUpdate(this.dataModal.id,params).then((response)=>
   {
     console.log(response,"Berhasil Di tambahkan")
+     router.go();
     }).catch((error)=>
     {
     console.log("data tidak terkirim",error.response)
