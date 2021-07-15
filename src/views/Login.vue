@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-xl-12 col-sm-12">
             <img src="../assets/bfi.png" alt="" class="bfi" />
-            <form @submit.prevent="login">
+            <form @submit.prevent="login"  novalidate="true">
               <div class="col-3 mt-5 mx-auto">
                 <label class="sr-only" for="inlineFormInputGroup">Email</label>
                 <div class="input-group mb-4">
@@ -51,7 +51,18 @@ export default {
           this.$router.push({
             name: "Summary",
           });
-        });
+        },
+        (error)=>{
+            loading.hide();
+          this.$swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid username or password !",
+          });
+          this.message = (error.response && error.response.data) || error.message || error.toString()
+        }
+        
+        );
     },
   },
 };
