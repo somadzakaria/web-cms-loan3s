@@ -9,13 +9,7 @@
         <div id="content">
           <Navbar />
           <!-- Begin Page Content -->
-          <div class="container-fluid">
-            <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
-              <h1 class="h3 mb-0 text-gray-800">Report Detail</h1>
-            </div>
-       
+          <div class="container-fluid">       
             <!-- End Filter -->
             <div class="card shadow mt-5">
               <div class="card-header py-3">
@@ -37,8 +31,7 @@
                 <div class="table-responsive">
                   <table
                     class="table table-bordered"
-             
-                    width="100%"
+                    width="110%"
                     cellspacing="0"
                   >
                     <thead>
@@ -213,7 +206,7 @@ export default {
   data(){
       return{
           aprovals:[],
-           dataModal: "",
+          dataModal: "",
       }
   },
   created(){

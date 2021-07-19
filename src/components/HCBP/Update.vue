@@ -17,7 +17,7 @@
               <div class="row mt-5">
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> NIK</label>
-                  <input type="text" v-model="dataModal.NIK" class="form-control" />
+                  <input type="text" v-model="dataModal.NIK" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> Jabatan</label>
@@ -36,8 +36,8 @@
                   <input type="text" id="NIK"  v-model="dataModal.WorkLocation" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Tenor</label>
-                  <input type="text" id="NIK" placeholder="3 Bulan" class="form-control" disabled />
+                  <label for="NIK" style="text-align: left">Email</label>
+                  <input type="text" id="NIK"  v-model="dataModal.email" class="form-control" disabled />
                 </div>
                 <div class="col-lg-12 text-left">
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">

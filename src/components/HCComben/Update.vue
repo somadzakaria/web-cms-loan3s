@@ -101,7 +101,6 @@
                     type="text"
                     id="NIK"
                     v-model="dataModal.Tenor" 
-                
                     class="form-control"
                     disabled
                   />
@@ -110,25 +109,24 @@
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                    Rekomendasi
                   </h5>
-   <label for="NIK" style="text-align: left">Rekomendasi untuk Peminjaman</label>
+                  <label for="NIK" style="text-align: left">Rekomendasi untuk Peminjaman</label>
                   <input
                     type="text"
                     id="NIK"
                     v-model="dataModal.RekomendasiPeminjaman"
                     class="form-control"
-                 
-                  />
-                               
+                    value="dataModal.HC_Recommendations"
+                  />           
                 </div>
                      <div class="col-lg-4 text-left">
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                   DSR
                   </h5>
-   <label for="NIK" style="text-align: left">Apakah DSR karyawan mencukupi?</label>
+                  <label for="NIK" style="text-align: left">Apakah DSR karyawan mencukupi?</label>
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal. DSR"
+                    v-model="dataModal.DSR"
                     class="form-control"
                
                   />
@@ -153,13 +151,13 @@
                 Notes
                   </h5>
                   <label for="NIK" style="text-align: left">Notes untuk Peminjaman</label>
-                  <textarea
+                 <textarea
                     class="form-control"
                     id="Nik"
                    v-model="dataModal.Notes"
                     cols="30"
                     rows="10"
-           
+                    value="dataModal.Notes_HCRecommendation" 
                   ></textarea>
                 </div>
                     <div class="col-lg-12 mt-3 text-center">

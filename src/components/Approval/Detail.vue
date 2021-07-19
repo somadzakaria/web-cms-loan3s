@@ -117,7 +117,7 @@
                   ></textarea>
                 </div>
                 <div class="col-lg-12 mt-5">
-                  <button class="btn btn-danger mt-5 mr-3 btn-lg">
+                  <button class="btn btn-danger mt-5 mr-3 btn-lg" @click="back()">
                     Reject
                   </button>
                   <button class="btn btn-success mt-5 btn-lg" @click="submit(dataModal.Approval)">Approve</button>
@@ -158,6 +158,9 @@ export default {
           console.log("Gagal Di tambahkan", error.res);
         });
     },
+    back(){
+      router.go();
+    }
   },
    computed: {
     fullName: {

@@ -123,7 +123,7 @@
                         <td>{{ hcbp.firstname }} {{ hcbp.lastname }}</td>
                         <td>{{ hcbp.JobTitle }}</td>
                         <td>{{ hcbp.WorkLocation }}</td>
-                        <td>{{ hcbp.LoanAmount }}</td>
+                        <td>{{ currency(hcbp.LoanAmount) }}</td>
                         <td>{{ hcbp.InstallmentAmount }}</td>
                         <td>{{ hcbp.Tenor }} Bulan</td>
                         <td class="text-left">
@@ -163,6 +163,7 @@ import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import Detail from "../components/HCBP/Detail.vue";
 import Update from "../components/HCBP/Update.vue";
+import Utils from "@/utils/index";
 import HCBPService from "../services/hcbp.service";
 export default {
   name: "Home",
@@ -206,6 +207,9 @@ export default {
         .catch((error) => {
           console.log("Eror Data Tidak Di Temukan", error.response);
         });
+    },
+      currency(nominal) {
+      return Utils.currencyRp(nominal);
     },
   },
 };

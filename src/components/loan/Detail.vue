@@ -16,6 +16,9 @@
               <div class="form">
               <img :src="dataModal.FileAttachment_KTP" width="350" alt="" />
               <div class="row mt-5">
+                <div class="col-lg-12 text-left">
+                  <label class="h5 mb-4">Data Karyawan</label>
+                </div>
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> NIK</label>
                   <input type="text" id="NIK" class="form-control" v-model="dataModal.NIK" disabled />
@@ -28,10 +31,9 @@
                   <label for="NIK" style="text-align: left">Nama Lengkap</label>
                   <input type="text" id="NIK" v-model="fullName" class="form-control" disabled />
                 </div>
-      
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Pinjaman</label>
-                  <input type="text" id="NIK" v-model="dataModal.LoanAmount" class="form-control" disabled />
+                   <vue-numeric separator="." v-model="dataModal.LoanAmount"   :read-only="readOnly"  read-only-class="form-control disable" />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Lokasi kerja</label>
@@ -39,7 +41,7 @@
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Rate/tahun</label>
-                  <input type="text" id="NIK" placeholder="7%" class="form-control" disabled />
+                  <input type="text" id="NIK" v-model="dataModal.EffectiveRate" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Tanggal Pengajuan</label>
@@ -69,12 +71,22 @@
     </div>
   </div>
 </template>
+<style scoped>
+.disable{
+   background-color: #edf2f7;
+}
+</style>
 <script>
 import LoanService from "../../services/aproval.service"
+import VueNumeric from 'vue-numeric'
 export default {
+    components: {
+    VueNumeric
+  },
   data() {
     return {
       loan: [],
+      readOnly: true
     };
   },
   props: {
@@ -89,14 +101,12 @@ export default {
     term_years : this.dataModal.term_years,
     terms : this.dataModal.terms
     }
+
   LoanService.postActivation(this.dataModal.id,params).then((response)=>
-  {
-    console.log(response,"Berhasil Di tambahkan")
-    }).catch((error)=>
-    {
+  { console.log(response,"Berhasil Di tambahkan")}).catch((error)=>{
     console.log("data tidak terkirim",error.response)
-  })
-  }
+  })},
+  
 },
   computed: {
     fullName: {
@@ -108,7 +118,8 @@ export default {
         this.firsnName = m[1];
         this.lastname = m[2];
       }
-    }
+    },
+  
   }
 };
 </script>

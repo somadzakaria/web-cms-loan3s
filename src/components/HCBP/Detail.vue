@@ -32,26 +32,26 @@
                   <label for="NIK" style="text-align: left">Nomor Telepon</label>
                   <input type="text" id="NIK" v-model="dataModal.mobilephoneno" class="form-control" disabled />
                 </div>
+                   <div class="col-lg-6 mt-3 text-left">
+                  <label for="NIK" style="text-align: left">Email</label>
+                  <input type="text" id="NIK" v-model="dataModal.email" class="form-control" disabled />
+                </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Lokasi Kerja</label>
                   <input type="text" id="NIK"  v-model="dataModal.WorkLocation" class="form-control" disabled />
-                </div>
-                <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Tenor</label>
-                  <input type="text" id="NIK" placeholder="3 Bulan" class="form-control" disabled />
                 </div>
                 <div class="col-lg-12 text-left">
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                     Dokumen Persetujuan Pinjaman
                   </h5>
-                  <img class="mt-3 mb-3" :src="dataModal.DokumenPersetujuan" width="200" alt="" />
+                  <img class="mt-3 mb-3" :src="dataModal.DokumenPersetujuan" width="300" height="auto" alt="" />
                 </div>
                 <div class="col-lg-12 text-left">
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 12px">
                     Notes
                   </h5>
                   <label for="NIK" style="text-align: left">Notes untuk Peminjaman </label>
-                  <textarea class="form-control" id="Nik" placeholder="Peminjaman boleh diberikan namun hanya dengan limit  2.000.000 dengan tenor selama 6 bulan" cols="30" rows="10" disabled></textarea>
+                  <textarea class="form-control" id="Nik" v-model="dataModal.Notes" cols="30" rows="10" disabled></textarea>
                 </div>
               </div>
             </div>

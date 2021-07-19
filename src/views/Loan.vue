@@ -94,6 +94,15 @@
                         >
                           SP
                         </th>
+                        <th
+                          style="
+                            background: #edf2f7;
+                            color: #4a5568;
+                            font-family: 'Poppins';
+                          "
+                        >
+                          Status
+                        </th>
                         <!-- <th
                           style="
                             background: #edf2f7;
@@ -124,6 +133,7 @@
                         <td>{{ currency(loan.LoanAmount) }}</td>
                         <td>{{ loan.DSR  === 1 ? "Ya" : "Tidak" }}</td>
                         <td>{{ loan.SP === 1 ? "Ya" : "Tidak"}}</td>
+                        <td>{{ loan.Status}}</td>
                         <td style="width: 219px;">
                           <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal" @click.prevent="handledetail(loan.id)">
                             <i class="far fa-eye text-primary"></i>

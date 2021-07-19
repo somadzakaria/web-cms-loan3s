@@ -18,7 +18,7 @@
               <div class="row mt-5">
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> NIK</label>
-                  <input type="text" id="NIK" class="form-control" v-model="dataModal.NIK" />
+                  <input type="text" id="NIK" class="form-control" v-model="dataModal.NIK" disabled />
                 </div>
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left">Tujuan</label>
@@ -31,7 +31,7 @@
               
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Pinjaman</label>
-                  <input type="text" id="NIK" v-model="dataModal.LoanAmount" class="form-control" disabled />
+               <vue-numeric separator="." v-model="dataModal.LoanAmount"   :read-only="readOnly"  read-only-class="form-control disable" />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Lokasi kerja</label>
@@ -39,13 +39,13 @@
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Rate/tahun</label>
-                  <input type="text" id="NIK" placeholder="7%" class="form-control" disabled />
+                  <input type="text" id="NIK" v-model="dataModal.EffectiveRate" class="form-control" disabled />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Tanggal Pengajuan</label>
                   <input type="text" id="NIK" v-model="dataModal.SubmitDate" class="form-control" disabled />
                 </div>
-                <div class="col-lg-12 mt-3 text-left">
+                <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Tenor</label>
                   <input type="text" id="NIK" v-model="dataModal.Tenor" class="form-control" disabled />
                 </div>
@@ -59,7 +59,7 @@
                       </div>
                   <div class="col-lg-12 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Notes</label>
-                  <textarea class="form-control" id="Nik" placeholder="Modal usaha" cols="30" rows="5" disabled></textarea>
+                  <textarea class="form-control" id="Nik" cols="30" rows="5" disabled></textarea>
                 </div>  
                 <div class="col-lg-12 mt-3 text-center">
                   <button class="btn btn-primary" @click="submit()">Simpan</button>
@@ -73,12 +73,22 @@
     </div>
   </div>
 </template>
+<style scoped>
+.disable{
+   background-color: #edf2f7;
+}
+</style>
 <script>
 import LoanService from "../../services/loan.service"
+import VueNumeric from 'vue-numeric'
 export default {
+     components: {
+    VueNumeric
+  },
   data() {
     return {
       loan: [],
+         readOnly: true
     };
   },
   props: {

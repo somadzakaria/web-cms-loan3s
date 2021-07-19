@@ -48,7 +48,7 @@
                   <input
                     type="text"
                     id="NIK"
-                   v-model="dataModal.firstname"
+                   v-model="fullName"
                     class="form-control"
                     disabled
                   />
@@ -58,7 +58,7 @@
                   <input
                     type="text"
                     id="NIK"
-                  v-model="dataModal.LoanAmount"
+                    v-model="dataModal.LoanAmount"
                     class="form-control"
                     disabled
                   />
@@ -114,6 +114,7 @@
                   <input
                     type="text"
                     id="NIK"
+      
                     v-model="dataModal.HC_Recommendations"
                     class="form-control"
                     disabled
@@ -124,11 +125,11 @@
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                   DSR
                   </h5>
-   <label for="NIK" style="text-align: left">Apakah DSR karyawan mencukupi?</label>
+                  <label for="NIK" style="text-align: left">Apakah DSR karyawan mencukupi?</label>
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.HC_Recommendations"
+                    v-model="dataModal.DSR"
                     class="form-control"
                     disabled
                   />
@@ -142,7 +143,7 @@
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.HC_Recommendations"
+                    v-model="dataModal.SP"
                     class="form-control"
                     disabled
                   />
@@ -183,5 +184,17 @@ export default {
       required: true,
     },
   },
+    computed: {
+    fullName: {
+      get() {
+        return `${this.dataModal.firstname} ${this.dataModal.lastname}`;
+      },
+      set(newValue) {
+        const m = newValue.match(/(\S*)\s+(.*)/);
+        this.firsnName = m[1];
+        this.lastname = m[2];
+      }
+    }
+  }
 };
 </script>
