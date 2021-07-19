@@ -28,7 +28,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead>
                       <tr>
                         <th
@@ -123,7 +123,7 @@
                         <td>{{ hcbp.firstname }} {{ hcbp.lastname }}</td>
                         <td>{{ hcbp.JobTitle }}</td>
                         <td>{{ hcbp.WorkLocation }}</td>
-                        <td>Rp.{{ hcbp.LoanAmount }}</td>
+                        <td>{{ hcbp.LoanAmount }}</td>
                         <td>{{ hcbp.InstallmentAmount }}</td>
                         <td>{{ hcbp.Tenor }} Bulan</td>
                         <td class="text-left">

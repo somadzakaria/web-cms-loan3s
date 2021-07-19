@@ -57,11 +57,10 @@ export default {
           this.$swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Invalid username or password !",
+            text: "Invalid Email or password !",
           });
           this.message = (error.response && error.response.data) || error.message || error.toString()
-        }
-        
+        } 
         );
     },
   },

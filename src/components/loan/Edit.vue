@@ -55,7 +55,7 @@
                   </div>
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Upload Image</label>
-                        <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
+                        <input id="file-input" accept="image/jpeg, image/png, image/gif" @change="onFileChange" type="file" class="form-control" />
                       </div>
                   <div class="col-lg-12 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Notes</label>
@@ -108,7 +108,7 @@ export default {
     createImage(file) {
       let reader = new FileReader();
       reader.onload = (e) => {
-      this.dataModal.DokumenPersetujuan =e.target.result;
+      this.dataModal.DokumenPersetujuan = e.target.result;
       };
       reader.readAsDataURL(file);
     }
