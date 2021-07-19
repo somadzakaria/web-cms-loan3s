@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Pinjaman</label>
-                   <vue-numeric separator="." v-model="dataModal.LoanAmount"   :read-only="readOnly"  read-only-class="form-control disable" />
+                   <vue-numeric separator="." v-model="dataModal.LoanAmount"  :read-only="readOnly"  read-only-class="form-control disable" />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Lokasi kerja</label>

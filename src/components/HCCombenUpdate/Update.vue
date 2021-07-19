@@ -37,6 +37,7 @@
                     type="text"
                     id="NIK"
                     v-model="dataModal.JobTitle"
+                    value="dataModa.jobtitle"
                     class="form-control"
                   />
                 </div>

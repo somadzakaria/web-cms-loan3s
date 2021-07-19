@@ -54,13 +54,7 @@
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Pinjaman</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                    v-model="dataModal.LoanAmount"
-                    class="form-control"
-                    disabled
-                  />
+                    <vue-numeric separator="." v-model="dataModal.LoanAmount"  :read-only="readOnly"  read-only-class="form-control disable" />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Lokasi kerja</label>
@@ -130,13 +124,23 @@
     </div>
   </div>
 </template>
+<style scoped>
+.disable{
+   background-color: #edf2f7;
+}
+</style>
 <script>
 import router from "@/router"
 import AprovalService from "../../services/aproval.service";
+import VueNumeric from 'vue-numeric'
 export default {
+    components: {
+    VueNumeric
+  },
   data() {
     return {
-      ochart: []
+      ochart: [],
+      readOnly: true
     };
   },
   props: {

@@ -37,7 +37,7 @@
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.Jabatan"
+                    v-model="dataModal.jobtitle"
                     class="form-control"
                     disabled
                   />
