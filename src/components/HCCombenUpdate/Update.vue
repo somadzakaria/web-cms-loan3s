@@ -126,7 +126,7 @@ export default {
   },
   methods:{
   submit(){
-  let params ={
+  let params = {
     ResignDate : this.dataModal.ResignDate,
     JobTitle : this.dataModal.JobTitle,
     NIK : this.dataModal.NIK,

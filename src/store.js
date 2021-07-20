@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import auth from "../src/services/auth.service"
 
 Vue.use(Vuex);
 
@@ -19,6 +20,14 @@ export default new Vuex.Store({
       localStorage.removeItem("user");
       location.reload();
     },
+    otpSuccess(state, user) {
+      state.status.loggedIn = false;
+      state.user = user;
+    },
+     otpFailure(state) {
+      state.status.loggedIn = false;
+      state.user = null;
+   }
   },
   actions: {
     login({ commit }, credentials) {
@@ -29,6 +38,17 @@ export default new Vuex.Store({
     logout({ commit }) {
       commit("CLEAR_USER_DATA");
     },
+    otp({commit},account){
+      return auth.getOtp(account).then(
+        response =>{
+          commit('otpSuccces',response.data.data);
+          return Promise.resolve(response.data.data);
+        },
+      ).catch(function (error){
+        commit('otpFailure');
+        return Promise.reject(error);
+      })
+    }
   },
   getters: {
     loggedIn(state) {

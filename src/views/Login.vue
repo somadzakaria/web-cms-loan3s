@@ -19,7 +19,7 @@
                   <button class="btn btn-login" type="submit">Masuk</button>
                 </div>
                 <div class="form-group mt-3">
-                  <a href="#" style="color:white; font-family:'Poppins';">Lupa Password</a>
+                  <a href="/Forgot-password" style="color:white; font-family:'Poppins';">Lupa Password</a>
                 </div>
               </div>
             </form>
@@ -31,6 +31,7 @@
 </div>
 </template>
 <script>
+import router from "@/router"
 export default {
   data() {
     return {
@@ -51,6 +52,7 @@ export default {
           this.$router.push({
             name: "Summary",
           });
+            router.go();
         },
         (error)=>{
             loading.hide();

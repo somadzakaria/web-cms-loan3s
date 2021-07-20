@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Loan from "../views/Loan.vue";
 import Loanupdate from "../components/loan/Edit.vue";
 import HCBP from "../views/HCBP.vue";
-import HCBPupdate from "../components/HCBP/HCBPupdate.vue";
+
 import HCComben from "../views/HCComben.vue";
 import HCCombenedit from "../components/HCComben/Update.vue";
 import HCCombenupdate from "../views/HCCombenupdate.vue";
@@ -31,6 +31,9 @@ import Faqupdate from "../components/Faq/Faqupdate.vue";
 import Approval from "../views/Aproval.vue";
 import Notfound from "../views/404.vue";
 
+import Forgotpassword from "../views/reset/ForgotPassword.vue"
+import Otp from "../views/reset/Otp.vue"
+import ResetPassword from "../views/reset/ResetPassword.vue"
 Vue.use(VueRouter);
 
 const routes = [
@@ -43,6 +46,21 @@ const routes = [
     path: "/",
     name: "Login",
     component: () => import("../views/Login.vue"),
+  },
+  {
+    path: "/Forgot-password",
+    name: "Forgotpassword",
+    component: Forgotpassword,
+  },
+  {
+    path: "/Otp",
+    name: "Otp",
+    component: Otp,
+  },
+  {
+    path: "/Reset-password",
+    name: "Resetpassword",
+    component: ResetPassword,
   },
   {
     path: "/loan",
@@ -68,12 +86,7 @@ const routes = [
     component: HCBP,
     meta:{requiresAuth:true}
   },
-  {
-    path: "/HCBP-update/:id",
-    name: "HCBPupdate",
-    component: HCBPupdate,
-    meta:{requiresAuth:true}
-  },
+
   {
     path: "/Faq",
     name: "Faq",

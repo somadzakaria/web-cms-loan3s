@@ -123,7 +123,6 @@
                         </th>
                       </tr>
                     </thead>
-
                     <tbody>
                       <tr v-for="loan in loans" :key="loan.id">
                         <td>{{ loan.SubmitDate }}</td>
@@ -160,8 +159,6 @@
         <Footer />
         <!-- End of Footer -->
       </div>
-
-
       <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->

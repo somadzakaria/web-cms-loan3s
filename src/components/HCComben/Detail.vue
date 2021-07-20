@@ -108,7 +108,7 @@
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.HC_Recommendations"
+                    v-model="HC_Recommendations"
                     class="form-control"
                     disabled
                   />
@@ -122,7 +122,7 @@
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.DSR"
+                    v-model="DSR"
                     class="form-control"
                     disabled
                   />              
@@ -135,7 +135,7 @@
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.SP"
+                    v-model="SP"
                     class="form-control"
                     disabled
                   />
@@ -186,7 +186,8 @@ export default {
       required: true,
     },
   },
-    computed: {
+  
+  computed: {
     fullName: {
       get() {
         return `${this.dataModal.firstname} ${this.dataModal.lastname}`;
@@ -196,7 +197,24 @@ export default {
         this.firsnName = m[1];
         this.lastname = m[2];
       }
-    }
-  }
+    },
+    HC_Recommendations :{
+       get() {
+        return this.dataModal.HC_Recommendations ? "ya" : "tidak";
+      },
+    },
+    DSR:{
+       get() {
+        return this.dataModal.DSR ? "ya" : "tidak";
+      },
+    },     
+    SP:{
+       get() {
+        return this.dataModal.SP ? "ya" : "tidak";
+      },
+    },
+
+  },
+ 
 };
 </script>
