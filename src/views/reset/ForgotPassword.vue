@@ -11,7 +11,7 @@
                   Masukan email atu nomor Anda untuk mereset password
                 </p>
                 <form action="#!">
-                  <div class="form-group" @submit.prevent="onSubmit">
+                  <div class="form-group" @submit.prevent="handlesubmit(event)">
                     <div class="col-4">
                       <em>
                         <img
@@ -24,7 +24,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        v-model="account"
+                        v-model="form.nik"
                         placeholder="E-mail  atau nomor Telepon"
                       />
                     </div>
@@ -44,38 +44,32 @@
   </div>
 </template>
 <script>
-import router from "@/router";
-export default {
-  name: "ForgotPassword",
-  data() {
-    return {
-      account: "",
-    };
-  },
-  methods: {
-    onSubmit(event) {
-      event.preventDefault();
-      let loading = this.$loading.show();
-      this.$store.dispatch("auth/otp", this.account).then(
-        () => {
-          loading.hide();
-          sessionStorage.setItem("Otp", "reset-password");
-          router.push("/Otp");
-        },
-        (error) => {
-          loading.hide();
-          this.error = true;
-          this.message = error.response.data.message;
-          this.$swal.fire({
-            icon: "error",
-            title: "Opss...",
-            text: "Your account not found",
-          });
-        }
-      );
-    },
-  },
-};
+import router from "@/router"
+import Forgotservice from "../../services/forgotpassword.service"
+export default{
+data(){
+  return{
+    form:{
+      nik:'',
+    }
+  }
+},
+methods:{
+handlesubmit(event){
+  event.preventDefault();
+  let Account = {
+  nik : this.form.nik
+  };
+  Forgotservice.getOtp(Account).then((response)=>{
+    console.log(response,"Berhasil Di tambahkan")
+    router.push("/otp")
+  }).catch((error)=>
+  {
+    console.log("Gagal Di tambahkan", error.response);
+  })
+}
+}
+}
 </script>
 
 <style scoped>
@@ -89,6 +83,7 @@ body {
   max-width: 700px;
   margin: auto;
 }
+
 .card-description {
   font-family: "Poppins";
   font-size: 19px;

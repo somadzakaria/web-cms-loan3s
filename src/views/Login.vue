@@ -56,7 +56,7 @@ export default {
         },
         (error)=>{
             loading.hide();
-          this.$swal.fire({
+            this.$swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Invalid Email or password !",
