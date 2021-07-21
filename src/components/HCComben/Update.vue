@@ -124,7 +124,7 @@
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                   DSR
                   </h5>
-   <label for="NIK" style="text-align: left">Apakah DSR karyawan mencukupi?</label>
+             <label for="NIK" style="text-align: left">Apakah DSR karyawan mencukupi?</label>
                   <input
                     type="text"
                     id="NIK"

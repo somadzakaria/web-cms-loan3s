@@ -35,8 +35,7 @@ export default {
         return error.response.data;
       });
   },
-
-
+  
   postUpdate(id, params) {
     return axios
       .post("https://dev-loan-api.sitama.co.id/api/v1/cms/loan/HCBPUpdate/" + id, params, {

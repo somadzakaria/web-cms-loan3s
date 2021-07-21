@@ -10,8 +10,8 @@
                 <p class="card-description mb-5">
                   Masukan email atu nomor Anda untuk mereset password
                 </p>
-                <form action="#!">
-                  <div class="form-group" @submit.prevent="handlesubmit(event)">
+                <form role="form" @submit.prevent="onSubmit">
+                  <div class="form-group">
                     <div class="col-4">
                       <em>
                         <img
@@ -24,7 +24,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        v-model="form.nik"
+                        v-model="account"
                         placeholder="E-mail  atau nomor Telepon"
                       />
                     </div>
@@ -44,31 +44,34 @@
   </div>
 </template>
 <script>
-import router from "@/router"
-import Forgotservice from "../../services/forgotpassword.service"
-export default{
-data(){
-  return{
-    form:{
-      nik:'',
+import router from "@/router";
+export default {
+  name: "ForgotPassword",
+  data() {
+    return {
+      account: '',
+    }
+  },
+  methods: {
+    onSubmit(event) {
+      event.preventDefault();
+      let loading = this.$loading.show();
+      this.$store.dispatch('otp',this.account).then(() => {
+        loading.hide();
+        sessionStorage.setItem('otp', 'reset-password');
+        router.push('/Otp');
+      }, error => {
+        loading.hide();
+        this.error = true;
+        this.message = error.response.data.message;
+        this.$swal.fire({
+          icon:'error',
+          title:'Opss...',
+          text:'Your account not found'
+        })
+      });
     }
   }
-},
-methods:{
-handlesubmit(event){
-  event.preventDefault();
-  let Account = {
-  nik : this.form.nik
-  };
-  Forgotservice.getOtp(Account).then((response)=>{
-    console.log(response,"Berhasil Di tambahkan")
-    router.push("/otp")
-  }).catch((error)=>
-  {
-    console.log("Gagal Di tambahkan", error.response);
-  })
-}
-}
 }
 </script>
 

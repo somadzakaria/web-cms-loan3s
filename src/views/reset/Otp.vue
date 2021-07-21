@@ -10,6 +10,11 @@
                 <p class="card-description mb-5">
                   Kode OTP anda sudah dikirim ke email/nomor Anda
                 </p>
+                <div class="m-4">
+                <h4 v-show="countDown !=='NaN:NaN'" v-bind:class="[countDown ==='Token expired'?'expired':'']">{{
+                countDown
+                }}</h4>
+                </div> 
                 <form
                   class="digit-group"
                   @submit.prevent="handleVerify($event)"
@@ -93,6 +98,122 @@
     </main>
   </div>
 </template>
+<script>
+
+import OTP from '../../services/forgotpassword.service';
+import router from "@/router";
+
+export default {
+  name: "otp",
+  props: {
+    nextPage: String
+  },
+  data() {
+    return {
+      countDown: '',
+      otp: {
+        code1: '',
+        code2: '',
+        code3: '',
+        code4: '',
+        code5: '',
+        code6: '',
+      },
+      resend: false,
+      intervalToken: ''
+    }
+  },
+  computed: {
+    registerId() {
+      return this.$store.state.user === null ? "" : this.$store.state.user.id;
+    },
+    expired() {
+      return this.$store.state.user === null ? router.back() : this.$store.state.user.expired_time;
+    }
+  },
+  methods: {
+    handleVerify(event) {
+      event.preventDefault();
+      let loading = this.$loading.show();
+      let otp = this.otp.code1 + this.otp.code2 + this.otp.code3 + this.otp.code4 + this.otp.code5 + this.otp.code6;
+      OTP.postVerifikaiOtp(this.registerId, otp).then(() => {
+        loading.hide();
+        router.push(sessionStorage.getItem('otp'));
+      }, () => {
+        loading.hide()
+        this.$swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Invalid OTP code !',
+        })
+      })
+    },
+    handleResendOTP(event) {
+      event.preventDefault();
+      let loading = this.$loading.show();
+      this.$store.dispatch('auth/otp', this.registerId).then(() => {
+        loading.hide()
+        this.otp = {
+          code1: '',
+          code2: '',
+          code3: '',
+          code4: '',
+          code5: '',
+          code6: '',
+        }
+        window.clearInterval(this.intervalToken);
+        this.countTime();
+      }, () => {
+        loading.hide()
+        this.$swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Invalid account!',
+        })
+      })
+    },
+    countTime() {
+      let countDownDate
+      let chromeAgent = navigator.userAgent.indexOf("Chrome") > -1;
+      let safariAgent = navigator.userAgent.indexOf("Safari") > -1;
+      if ((chromeAgent) && (safariAgent)) safariAgent = false;
+      console.log(this.$moment(this.expired).format('DD/MM/YYYY HH:mm:ss'));
+      if (safariAgent) {
+        countDownDate = new Date(this.$moment(this.expired).format('DD/MM/YYYY HH:mm:ss')).getTime();
+      } else {
+        countDownDate = new Date(this.expired).getTime();
+      }
+
+      if (countDownDate || this.countDown === '') this.intervalToken = window.setInterval(() => {
+        let now = new Date().getTime();
+        let distance = countDownDate - now;
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        this.countDown = minutes + ":" + seconds;
+        if (distance < 0) {
+          window.clearInterval(this.intervalToken);
+          this.countDown = 'Token expired';
+        }
+      }, 1000)
+    },
+    isNumber(evt) {
+      evt = (evt) ? evt : window.event;
+      let charCode = (evt.which) ? evt.which : evt.keyCode;
+      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+        evt.preventDefault();
+      } else {
+        return true;
+      }
+    },
+  },
+  created() {
+    if (this.registerId !== null) this.countTime();
+  },
+  mounted() {
+    if (this.registerId === null) router.back();
+  }
+}
+</script>
 
 <style scoped>
 body {

@@ -82,7 +82,7 @@ export default {
       required: true,
     },
   },
-    methods:{
+  methods:{
   submit(){
   let params ={
     NIK : this.dataModal.NIK,

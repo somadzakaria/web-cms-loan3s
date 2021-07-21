@@ -57,7 +57,7 @@
                 </div>
                   <div class="col-lg-12 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Notes</label>
-                  <textarea class="form-control" id="Nik"   v-model="dataModal.Notes_HCRecommendation" cols="30" rows="10" disabled></textarea>
+                  <textarea class="form-control" id="Nik" v-model="dataModal.Notes_HCRecommendation" cols="30" rows="10" disabled></textarea>
                 </div>  
                 <div class="col-lg-12 mt-3 text-center">
                   <button class="btn btn-primary" @click="submit()"><i class="fas fa-dollar-sign mr-3"></i>Cairkan</button>
