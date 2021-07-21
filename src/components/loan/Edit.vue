@@ -134,7 +134,8 @@
                       id="Nik"
                       cols="30"
                       rows="5"
-                      disabled
+                      v-model="dataModal.Notes_HCRecommendation"
+                      disabled 
                     ></textarea>
                   </div>
                   <div class="col-lg-12 mt-3 text-center">

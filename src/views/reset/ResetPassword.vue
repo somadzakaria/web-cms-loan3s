@@ -14,7 +14,7 @@
                   <div class="form-group" @submit.prevent="onSubmit">
                       <div class="col-4">
                       <em>
-                          <img src="../../assets/gmail.png" style="position:absolute; margin:8px 0px 0px 55px; ">
+                          <img src="../../assets/gmail.png" style="position:absolute; margin:8px 0px 0px -100px; ">
                      </em>
                       </div>
                       <div class="col-12">
@@ -31,7 +31,7 @@
                   <div class="form-group" @submit.prevent="onSubmit">
                       <div class="col-4">
                       <em>
-                          <img src="../../assets/gmail.png" style="position:absolute; margin:8px 0px 0px 55px; ">
+                          <img src="../../assets/gmail.png" style="position:absolute; margin:8px 0px 0px -100px; ">
                      </em>
                       </div>
                       <div class="col-12">
@@ -100,6 +100,10 @@ body {
   background-color: #d0d0ce;
   min-height: 100vh;
 }
+.card {
+  max-width: 700px;
+  margin: auto;
+}
 
 .card-description {
   font-family: "Poppins";
@@ -139,12 +143,13 @@ body {
   margin-bottom: 23px;
 }
 .login-card form {
-  max-width: 560px;
+  max-width: 400px;
+  margin: auto
 }
 .login-card .form-control {
   border: 1px solid #4b4c4d;
   padding: 15px 25px;
-  margin: 0 0 0 200px;
+ 
   min-height: 45px;
   font-size: 18px;
   font-family: "Poppins";
@@ -171,7 +176,6 @@ body {
   padding: 13px 20px 12px;
   background: #007aff;
   border-radius: 30px !important;
-  margin: 0 0 0 200px;
   border-radius: 4px;
   font-size: 17px;
   font-weight: bold;

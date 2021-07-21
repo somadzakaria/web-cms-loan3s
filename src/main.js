@@ -5,7 +5,6 @@ import store from "./store";
 Vue.config.productionTip = false;
 import VueGoogleCharts from "vue-google-charts";
 import CKEditor from '@ckeditor/ckeditor5-vue2'; 
-
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 // Sweet Alert
@@ -13,6 +12,9 @@ import VueSweetalert2 from 'vue-sweetalert2';
 // If you don't need the styles, do not connect
 import 'sweetalert2/dist/sweetalert2.min.css';
 Vue.use(VueSweetalert2);
+// Vue Moment
+
+Vue.use(require('vue-moment'));
 // Cleave
 import Cleave from 'cleave.js';
 

@@ -238,6 +238,10 @@ body {
   min-height: 100vh;
 }
 
+.card {
+  max-width: 700px;
+  margin: auto;
+}
 .card-description {
   font-family: "Poppins";
   font-size: 19px;

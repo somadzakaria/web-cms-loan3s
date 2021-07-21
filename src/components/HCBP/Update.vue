@@ -54,8 +54,8 @@
                     Notes
                   </h5>
                   <label for="NIK" style="text-align: left">Notes untuk Peminjaman </label>
-                  <textarea class="form-control" id="Nik" :src="dataModal.Notes" cols="30" rows="10" ></textarea>
-                </div>
+                  <textarea class="form-control" id="Nik" v-model="dataModal.Notes" cols="30" rows="10" ></textarea>
+                     </div>
                       <div class="col-lg-12 mt-3 text-center">
                   <button class="btn btn-primary" @click="submit()">Simpan</button>
                 </div>
