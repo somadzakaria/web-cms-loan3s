@@ -98,7 +98,7 @@ export default {
     console.log("data tidak terkirim",error.response)
   })
   },
-    onFileChange(e) {
+   onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.createImage(files[0]);

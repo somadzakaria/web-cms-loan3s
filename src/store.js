@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-import auth from "../src/services/auth.service"
+import authService from "../src/services/auth.service"
 
 Vue.use(Vuex);
 
@@ -39,7 +39,7 @@ export default new Vuex.Store({
       commit("CLEAR_USER_DATA");
     },
     otp({commit},account){
-      return auth.getOtp(account).then(
+      return authService.getOtp(account).then(
         response =>{
           commit('otpSuccces',response.data.data);
           return Promise.resolve(response.data.data);

@@ -12,21 +12,22 @@
                 </p>
                 <form action="#!">
                   <div class="form-group" @submit.prevent="onSubmit">
-                      <div class="col-4">
+                    <div class="col-4">
                       <em>
-                          <img src="../../assets/gmail.png" style="position:absolute; margin:8px 0px 0px 55px; ">
-                     </em>
-                      </div>
-                      <div class="col-12">
-                           <label for="email" class="sr-only">Email</label>
-                    <input
-                      type="text"
-                      id="email"
-                      class="form-control"
-                      v-model="account"
-                      placeholder="E-mail  atau nomor Telepon"
-                    />
-                </div>
+                        <img
+                          src="../../assets/gmail.png"
+                          style="position:absolute; margin:8px 0px 0px 55px; "
+                        />
+                      </em>
+                    </div>
+                    <div class="col-12">
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="account"
+                        placeholder="E-mail  atau nomor Telepon"
+                      />
+                    </div>
                   </div>
                   <input
                     class="btn btn-block login-btn mb-4 mt-4"
@@ -45,7 +46,7 @@
 <script>
 import router from "@/router";
 export default {
-  name: "ForgetPassword",
+  name: "ForgotPassword",
   data() {
     return {
       account: "",
@@ -58,8 +59,8 @@ export default {
       this.$store.dispatch("auth/otp", this.account).then(
         () => {
           loading.hide();
-          sessionStorage.setItem("Otp","reset-password");
-          router.push("Otp");
+          sessionStorage.setItem("Otp", "reset-password");
+          router.push("/Otp");
         },
         (error) => {
           loading.hide();
@@ -114,8 +115,8 @@ body {
 }
 .login-card-description {
   font-size: 30px;
-   color: #444444;
-     font-style: normal;
+  color: #444444;
+  font-style: normal;
   font-weight: 600;
 
   font-family: "Poppins";
@@ -168,10 +169,10 @@ body {
   color: #007aff;
 } */
 .login-card .forgot-password-link {
-      background: #007aff;
+  background: #007aff;
   font-size: 14px;
   color: #919aa3;
-  
+
   margin-bottom: 12px;
 }
 .login-card-footer-text {

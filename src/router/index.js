@@ -49,7 +49,7 @@ const routes = [
   },
   {
     path: "/Forgot-password",
-    name: "Forgotpassword",
+    name: "ForgotPassword",
     component: Forgotpassword,
   },
   {

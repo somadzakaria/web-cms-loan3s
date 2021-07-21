@@ -118,8 +118,7 @@
                   </div>
                   <div class="col-lg-12 mt-3 text-left">
                     <label for="NIK" style="text-align: left"
-                      >Upload Image</label
-                    >
+                      >Upload Image</label>
                     <input
                       id="file-input"
                       accept="image/*"
@@ -193,12 +192,14 @@ export default {
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.createImage(files[0]);
+ 
     },
     createImage(file) {
       let reader = new FileReader();
       reader.onload = (e) => {
       this.dataModal.DokumenPersetujuan = e.target.result;
       };
+
       reader.readAsDataURL(file);
     },
   },
