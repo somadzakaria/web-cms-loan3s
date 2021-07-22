@@ -100,48 +100,41 @@
                     disabled
                   />
                 </div>
-                     <div class="col-lg-4 text-left">
-                  <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
-                   Rekomendasi
+               <div class="col-lg-4 text-left">
+                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
+                Rekomendasi
                   </h5>
-                   <label for="NIK" style="text-align: left">Rekomendasi untuk Peminjaman</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                    v-model="dataModal.HC_Recommendations"
-                    class="form-control"
-                 
-                  />
-                               
-                </div>
-                     <div class="col-lg-4 text-left">
-                  <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
+                        <label for="NIK" style="text-align: left">Rekomendasi untuk Peminjaman  </label>
+                        <select class="form-control" v-model="dataModal.HC_Recommendations">
+                          <option value="" disabled>Pilih</option>
+                          <option value="1">Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+               <div class="col-lg-4 text-left">
+                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                   DSR
                   </h5>
-             <label for="NIK" style="text-align: left">Apakah DSR karyawan mencukupi?</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                    v-model="dataModal.DSR"
-                    class="form-control"
-               
-                  />
-                               
-                </div>
-                     <div class="col-lg-4 text-left">
-                  <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
-                  SP
+                        <label for="NIK" style="text-align: left">Apakah DSR karyawan mencukupi?</label>
+                        <select class="form-control" v-model="dataModal.DSR">
+                          <option value="" disabled>Pilih</option>
+                          <option value="1">Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+               <div class="col-lg-4 text-left">
+                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
+                 SP
                   </h5>
-   <label for="NIK" style="text-align: left">Apakah karyawan ada riwayat SP?</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                    v-model="dataModal.SP"
-                    class="form-control"
-                
-                  />
-                               
-                </div>
+                        <label for="NIK" style="text-align: left">Apakah karyawan ada riwayat SP? </label>
+                        <select class="form-control" v-model="dataModal.SP">
+                          <option value="" disabled>Pilih</option>
+                          <option value="1">Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+               
+        
                 <div class="col-lg-12 mt-3 text-left">
                    <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                 Notes

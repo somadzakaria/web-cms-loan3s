@@ -111,10 +111,10 @@
                   ></textarea>
                 </div>
                 <div class="col-lg-12 mt-5">
-                  <button class="btn btn-danger mt-5 mr-3 btn-lg" @click="back()">
+                  <button type="button" class="btn btn-danger mt-5 mr-3 btn-lg" @click="submit('0')">
                     Reject
                   </button>
-                  <button class="btn btn-success mt-5 btn-lg" @click="submit(dataModal.Approval)">Approve</button>
+                  <button type="button" class="btn btn-success mt-5 btn-lg" @click="submit('1')">Approve</button>
                 </div>
               </div>
             </div>
@@ -149,22 +149,25 @@ export default {
     },
   },
   methods: {
-    submit() {
+    submit(param) {
       let params = {
-        Approval: this.dataModal.Approval,
+        Approval:  param,
       };
+      console.log(params)
       AprovalService.postSubmit(this.dataModal.id,params)
-        .then((response) => {
+        .then((response) =>{  
           console.log(response,"Berhasil Di tambahkan");
+            this.$swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Approval Success",
+          })
           router.go();
         })
         .catch((error) => {
           console.log("Gagal Di tambahkan", error.res);
         });
     },
-    back(){
-      router.go();
-    }
   },
    computed: {
     fullName: {

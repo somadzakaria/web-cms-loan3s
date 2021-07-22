@@ -10,9 +10,7 @@
                 <p class="card-description mb-5">
                   Kode OTP anda sudah dikirim ke email/nomor Anda
                 </p>
-                <div class="m-4">
-         
-                </div> 
+                <div class="m-4"></div>
                 <form
                   class="digit-group"
                   @submit.prevent="handleVerify($event)"
@@ -97,80 +95,99 @@
   </div>
 </template>
 <script>
-import OTP from '../../services/forgotpassword.service';
+import OTP from "../../services/forgotpassword.service";
 import router from "@/router";
 export default {
   name: "otp",
   props: {
-    nextPage: String
+    nextPage: String,
   },
   data() {
     return {
-      countDown: '',
+      countDown: "",
       otp: {
-        code1: '',
-        code2: '',
-        code3: '',
-        code4: '',
-        code5: '',
-        code6: '',
+        code1: "",
+        code2: "",
+        code3: "",
+        code4: "",
+        code5: "",
+        code6: "",
       },
       resend: false,
-      intervalToken: ''
-    }
+      intervalToken: "",
+    };
   },
   methods: {
     handleVerify(event) {
       event.preventDefault();
       let loading = this.$loading.show();
-      let otp = this.otp.code1 + this.otp.code2 + this.otp.code3 + this.otp.code4 + this.otp.code5 + this.otp.code6;
-      OTP.postVerifikaiOtp(this.registerId, otp).then(() => {
-        loading.hide();
-        router.push(sessionStorage.getItem('otp'));
-      }, () => {
-        loading.hide()
-        this.$swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Invalid OTP code !',
-        })
-      })
+      let otp =
+        this.otp.code1 +
+        this.otp.code2 +
+        this.otp.code3 +
+        this.otp.code4 +
+        this.otp.code5 +
+        this.otp.code6;
+        OTP.postVerifikaiOtp(sessionStorage.getItem("otp"), otp).then(
+        () => {
+          loading.hide();
+          router.push("/Reset-password");
+        },
+        () => {
+          loading.hide();
+          this.$swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid OTP code !",
+          });
+        }
+      );
     },
     handleResendOTP(event) {
       event.preventDefault();
       let loading = this.$loading.show();
-      this.$store.dispatch('auth/otp', this.registerId).then(() => {
-        loading.hide()
-        this.otp = {
-          code1: '',
-          code2: '',
-          code3: '',
-          code4: '',
-          code5: '',
-          code6: '',
+      this.$store.dispatch("otp",sessionStorage.getItem("otp")).then(
+        () => {
+          loading.hide();
+          this.otp = {
+            code1: "",
+            code2: "",
+            code3: "",
+            code4: "",
+            code5: "",
+            code6: "",
+          };
+         this.$swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Otp  Terkirim",
+          })
+        },
+        () => {
+          loading.hide();
+          this.$swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Otp Gagal Terkirim",
+          });
         }
-        window.clearInterval(this.intervalToken);
-        this.countTime();
-      }, () => {
-        loading.hide()
-        this.$swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Invalid account!',
-        })
-      })
+      );
     },
     isNumber(evt) {
-      evt = (evt) ? evt : window.event;
-      let charCode = (evt.which) ? evt.which : evt.keyCode;
-      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+      evt = evt ? evt : window.event;
+      let charCode = evt.which ? evt.which : evt.keyCode;
+      if (
+        charCode > 31 &&
+        (charCode < 48 || charCode > 57) &&
+        charCode !== 46
+      ) {
         evt.preventDefault();
       } else {
         return true;
       }
     },
   },
-}
+};
 </script>
 
 <style scoped>

@@ -12,37 +12,37 @@
                 </p>
                 <form action="#!">
                   <div class="form-group" @submit.prevent="onSubmit">
-                      <div class="col-4">
+                    <div class="col-4">
                       <em>
-                          <img src="../../assets/gmail.png" style="position:absolute; margin:8px 0px 0px -100px; ">
-                     </em>
-                      </div>
-                      <div class="col-12">
-                           <label for="email" class="sr-only">Email</label>
-                    <input
-                      type="text"
-                      id="email"
-                      class="form-control"
-                      v-model="account"
-                      placeholder="Password Baru"
-                    />
+                        <img
+                          src="../../assets/gmail.png"
+                          style="position:absolute; margin:8px 0px 0px -100px; "
+                        />
+                      </em>
+                    </div>
+                    <div class="col-12">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Password Baru"
+                      />
                     </div>
                   </div>
                   <div class="form-group" @submit.prevent="onSubmit">
-                      <div class="col-4">
+                    <div class="col-4">
                       <em>
-                          <img src="../../assets/gmail.png" style="position:absolute; margin:8px 0px 0px -100px; ">
-                     </em>
-                      </div>
-                      <div class="col-12">
-                           <label for="email" class="sr-only">Email</label>
-                    <input
-                      type="text"
-                      id="email"
-                      class="form-control"
-                      v-model="account"
-                      placeholder="Confirm Password Baru"
-                    />
+                        <img
+                          src="../../assets/gmail.png"
+                          style="position:absolute; margin:8px 0px 0px -100px; "
+                        />
+                      </em>
+                    </div>
+                    <div class="col-12">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Confirm Password Baru"
+                      />
                     </div>
                   </div>
                   <input
@@ -72,7 +72,7 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       let loading = this.$loading.show();
-      this.$store.dispatch("auth/otp", this.account).then(
+      this.$store.dispatch("otp", this.account).then(
         () => {
           loading.hide();
           sessionStorage.setItem("Otp", "reset-password");
@@ -135,8 +135,8 @@ body {
 }
 .login-card-description {
   font-size: 30px;
-   color: #444444;
-     font-style: normal;
+  color: #444444;
+  font-style: normal;
   font-weight: 600;
 
   font-family: "Poppins";
@@ -144,12 +144,12 @@ body {
 }
 .login-card form {
   max-width: 400px;
-  margin: auto
+  margin: auto;
 }
 .login-card .form-control {
   border: 1px solid #4b4c4d;
   padding: 15px 25px;
- 
+
   min-height: 45px;
   font-size: 18px;
   font-family: "Poppins";
@@ -189,10 +189,10 @@ body {
   color: #007aff;
 } */
 .login-card .forgot-password-link {
-      background: #007aff;
+  background: #007aff;
   font-size: 14px;
   color: #919aa3;
-  
+
   margin-bottom: 12px;
 }
 .login-card-footer-text {

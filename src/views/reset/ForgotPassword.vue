@@ -58,9 +58,9 @@ export default {
       let loading = this.$loading.show();
       this.$store.dispatch('otp',this.account).then(() => {
         loading.hide();
-        sessionStorage.setItem('otp', 'reset-password');
+        sessionStorage.setItem('otp',this.account);
         router.push('/Otp');
-      }, error => {
+      },error => {
         loading.hide();
         this.error = true;
         this.message = error.response.data.message;

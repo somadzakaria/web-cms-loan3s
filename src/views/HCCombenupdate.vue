@@ -132,7 +132,7 @@
                       <tr v-for="comben in combens" :key="comben.id">
                         <td>{{comben.NIK}}</td>
                         <td>{{comben.firstname}} {{comben.lastname}}</td>
-                        <td>{{comben.Jabatan}}</td>
+                        <td>{{comben.jobtitle}}</td>
                         <td>{{comben.WorkLocation}}</td>
                         <td>{{comben.JG}}</td>
                         <td>{{comben.PG}}</td>

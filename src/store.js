@@ -44,7 +44,7 @@ export default new Vuex.Store({
           commit('otpSuccces',response.data.data);
           return Promise.resolve(response.data.data);
         },
-      ).catch(function (error){
+      ).catch(function(error){
         commit('otpFailure');
         return Promise.reject(error);
       })

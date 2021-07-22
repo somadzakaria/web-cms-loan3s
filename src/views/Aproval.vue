@@ -63,15 +63,6 @@
                         >
                           Nama
                         </th>
-                            <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                        Jabatan
-                        </th>
                         <th
                           style="
                             background: #edf2f7;
@@ -153,11 +144,11 @@
                         <td>{{aproval.SubmitDate}}</td>
                         <td>{{aproval.NIK}}</td>
                         <td>{{aproval.firstname}} {{aproval.lastname}}</td>
-                        <td>{{aproval.Jabatan}}</td>
+                 
                         <td>{{aproval.WorkLocation}}</td>
                         <td>{{currency(aproval.LoanAmount)}}</td>
-                        <td>{{aproval.DSR }}</td>
-                        <td>{{aproval.SP}}</td>
+                        <td>{{aproval.DSR  === 1 ? "Ya" : "Tidak" }}</td>
+                        <td>{{aproval.SP === 1 ? "Ya" : "Tidak"}}</td>
                         <td>{{aproval.ApvKetua === 1 ? "Disetujui" : "Ditolak"}}</td>
                         <td>{{aproval.ApvSekretaris  === 1 ? "Disetujui" : "Ditolak" }}</td>
                         <td>{{aproval.ApvBendahara === "1" ? "Disetujui" : "Ditolak"}}</td>

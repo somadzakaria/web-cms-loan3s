@@ -132,12 +132,12 @@
                         <td>{{ comben.SubmitDate }}</td>
                         <td>{{ comben.NIK }}</td>
                         <td>{{ comben.firstname }} {{ comben.lastname }}</td>
-                        <td>{{ comben.Jabatan }}</td>
+                        <td>{{ comben.JobTitle }}</td>
                         <td>{{ currency(comben.LoanAmount) }}</td>
                         <td>{{ comben.WorkLocation }}</td>
-                        <td>{{ comben.HC_Recommendations === "1" ? "Ya"  : "Tidak" }}</td>
-                        <td >{{ comben.DSR === "1" ? "Ya"  : "Tidak"  }}</td>
-                        <td>{{ comben.SP  ==- "1" ? "Ya"  : "Tidak" }}</td>
+                        <td>{{ comben.HC_Recommendations === 1 ? "Ya"  : "Tidak" }}</td>
+                        <td >{{ comben.DSR === 1 ? "Ya"  : "Tidak"  }}</td>
+                        <td>{{ comben.SP  === 1 ? "Ya"  : "Tidak" }}</td>
                         <td>
                           <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(comben.id)"><i class="far fa-eye text-primary"></i></button>
                           <button class="btn btn-universal" data-toggle="modal" data-target="#Edit" @click.prevent="handleupdate(comben.id)"><i class="far fa-edit text-primary"></i></button>

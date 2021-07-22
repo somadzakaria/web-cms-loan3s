@@ -200,17 +200,17 @@ export default {
     },
     HC_Recommendations :{
        get() {
-        return this.dataModal.HC_Recommendations ? "ya" : "tidak";
+        return this.dataModal.HC_Recommendations ? "Ya" : "Tidak";
       },
     },
     DSR:{
        get() {
-        return this.dataModal.DSR ? "ya" : "tidak";
+        return this.dataModal.DSR ? "Ya" : "Tidak";
       },
     },     
     SP:{
        get() {
-        return this.dataModal.SP ? "ya" : "tidak";
+        return this.dataModal.SP ? "Ya" : "Tidak";
       },
     },
 
