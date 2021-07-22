@@ -55,13 +55,7 @@
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left"> Pinjaman</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                  v-model="dataModal.LoanAmount"
-                    class="form-control"
-                    disabled
-                  />
+                  <vue-numeric separator="." v-model="dataModal.LoanAmount"  :read-only="readOnly"  read-only-class="form-control disable" />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left"
@@ -110,7 +104,7 @@
                   <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                    Rekomendasi
                   </h5>
-   <label for="NIK" style="text-align: left">Rekomendasi untuk Peminjaman</label>
+                   <label for="NIK" style="text-align: left">Rekomendasi untuk Peminjaman</label>
                   <input
                     type="text"
                     id="NIK"
@@ -173,13 +167,23 @@
     </div>
   </div>
 </template>
+<style scoped>
+.disable{
+   background-color: #edf2f7;
+}
+</style>
 <script>
+import VueNumeric from 'vue-numeric'
 import router from "@/router"
 import HCcombenService from "../../services/hccomben.service"
 export default {
+       components: {
+    VueNumeric
+  },
   data() {
     return {
       detials: [],
+            readOnly: true
     };
   },
   props: {

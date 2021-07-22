@@ -136,8 +136,8 @@ export default {
     PG : this.dataModal.PG,
     JG : this.dataModal.JG,
     }
-  Combenupdate.postUpdate(this.dataModal.id,params).then((response)=>
-  {
+   Combenupdate.postUpdate(this.dataModal.id,params).then((response)=>
+   {
     console.log(response,"Berhasil Di tambahkan")
     router.go();
     }).catch((error)=>
