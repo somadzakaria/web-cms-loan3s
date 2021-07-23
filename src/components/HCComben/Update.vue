@@ -95,7 +95,6 @@
                     type="text"
                     id="NIK"
                     v-model="dataModal.Tenor" 
-                
                     class="form-control"
                     disabled
                   />
@@ -134,7 +133,6 @@
                         </select>
                       </div>
                
-        
                 <div class="col-lg-12 mt-3 text-left">
                    <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
                 Notes

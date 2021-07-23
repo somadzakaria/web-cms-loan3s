@@ -118,7 +118,7 @@
 
                     <tbody>
                       <tr v-for="hcbp in hcbps" :key="hcbp.id">
-                        <td>{{ hcbp.SubmitDate }}</td>
+                        <td>{{ hcbp.SubmitDate | moment("DD MMMM YYYY HH:mm:s")}}</td>
                         <td>{{ hcbp.NIK }}</td>
                         <td>{{ hcbp.firstname }} {{ hcbp.lastname }}</td>
                         <td>{{ hcbp.JobTitle }}</td>

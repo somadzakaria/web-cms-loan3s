@@ -129,7 +129,7 @@
 
                     <tbody>
                       <tr v-for="comben in combens" :key="comben.id">
-                        <td>{{ comben.SubmitDate }}</td>
+                        <td>{{ comben.SubmitDate | moment("DD MMMM YYYY HH:mm:s")}}</td>
                         <td>{{ comben.NIK }}</td>
                         <td>{{ comben.firstname }} {{ comben.lastname }}</td>
                         <td>{{ comben.JobTitle }}</td>

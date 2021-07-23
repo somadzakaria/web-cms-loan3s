@@ -28,7 +28,7 @@
                     type="text"
                     id="NIK"
                     class="form-control"
-                    v-model="dataModal.ResignDate" 
+                    v-model="dataModal.ResignDate"
                   />
                 </div>
                 <div class="col-lg-6 text-left">
@@ -36,7 +36,7 @@
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.JobTitle"
+                    v-model="dataModal.jobtitle"
                     value="dataModa.jobtitle"
                     class="form-control"
                   />
@@ -46,9 +46,8 @@
                   <input
                     type="text"
                     id="NIK"
-                   v-model="dataModal.NIK"
+                    v-model="dataModal.NIK"
                     class="form-control"
-                    
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
@@ -56,7 +55,7 @@
                   <input
                     type="text"
                     id="NIK"
-                     v-model="dataModal.WorkLocation"
+                    v-model="dataModal.WorkLocation"
                     class="form-control"
                   />
                 </div>
@@ -65,28 +64,29 @@
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.Firstname"
-                    class="form-control"  
+                    v-model="dataModal.firstname"
+                    class="form-control"
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Nama belakang</label>
+                  <label for="NIK" style="text-align: left"
+                    >Nama belakang</label
+                  >
                   <input
                     type="text"
                     id="NIK"
-                    v-model="dataModal.Lastname"
-                    class="form-control"  
+                    v-model="dataModal.lastname"
+                    class="form-control"
                   />
                 </div>
-            
+
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">PG</label>
                   <input
                     type="text"
                     id="NIK"
-             v-model="dataModal.PG"
+                    v-model="dataModal.PG"
                     class="form-control"
-                    
                   />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
@@ -94,13 +94,14 @@
                   <input
                     type="text"
                     id="NIK"
-                  v-model="dataModal.JG"
+                    v-model="dataModal.JG"
                     class="form-control"
-                    
                   />
                 </div>
-                    <div class="col-lg-12 mt-3 text-center">
-                  <button class="btn btn-primary" @click="submit()">Simpan</button>
+                <div class="col-lg-12 mt-3 text-center">
+                  <button class="btn btn-primary" @click="submit()">
+                    Simpan
+                  </button>
                 </div>
               </div>
             </div>
@@ -111,8 +112,8 @@
   </div>
 </template>
 <script>
-import router from "@/router"
-import Combenupdate from "../../services/hccombenupdate.service"
+import router from "@/router";
+import Combenupdate from "../../services/hccombenupdate.service";
 export default {
   data() {
     return {
@@ -124,28 +125,27 @@ export default {
       required: true,
     },
   },
-  methods:{
-  submit(){
-  let params = {
-    ResignDate : this.dataModal.ResignDate,
-    JobTitle : this.dataModal.JobTitle,
-    NIK : this.dataModal.NIK,
-    WorkLocation : this.dataModal.WorkLocation,
-    Firstname : this.dataModal.Firstname,
-    Lastname : this.dataModal.Lastname,
-    PG : this.dataModal.PG,
-    JG : this.dataModal.JG,
-    }
-   Combenupdate.postUpdate(this.dataModal.id,params).then((response)=>
-   {
-    console.log(response,"Berhasil Di tambahkan")
-    router.go();
-    }).catch((error)=>
-    {
-    console.log("data tidak terkirim",error.response)
-  })
+  methods: {
+    submit() {
+      let params = {
+        ResignDate: this.dataModal.ResignDate,
+        JobTitle: this.dataModal.jobtitle,
+        NIK: this.dataModal.NIK,
+        WorkLocation: this.dataModal.WorkLocation,
+        Firstname: this.dataModal.firstname,
+        Lastname: this.dataModal.lastname,
+        PG: this.dataModal.PG,
+        JG: this.dataModal.JG,
+      };
+      Combenupdate.postUpdate(this.dataModal.id, params)
+        .then((response) => {
+          console.log(response, "Berhasil Di tambahkan");
+          router.go();
+        })
+        .catch((error) => {
+          console.log("data tidak terkirim", error.response);
+        });
+    },
   },
-  },
- 
 };
 </script>

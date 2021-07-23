@@ -138,7 +138,7 @@
                         <td>{{comben.PG}}</td>
                         <td>{{comben.DSR === 1 ? "Ya" : "Tidak" }}</td>
                         <td>{{comben.SP === 1 ? "Ya" : "Tidak" }}</td> 
-                        <td>{{comben.ResignDate}}</td>
+                        <td>{{comben.ResignDate | moment("DD MMMM YYYY HH:mm:s")}}</td>
                         <td>
                         <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(comben.id)"><i class="far fa-eye text-primary"></i></button>
                         <button class="btn btn-universal" data-toggle="modal" data-target="#Edit" @click.prevent="handleupdate(comben.id)"><i class="far fa-edit text-primary"></i></button>
@@ -159,10 +159,8 @@
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
-              <Update  :dataModal="dataModal" />
+        <Update  :dataModal="dataModal" />
       </div>
-
-
       <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
@@ -171,7 +169,6 @@
 
 <script>
 // @ is an alias to /src
-
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";

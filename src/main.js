@@ -13,24 +13,16 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 Vue.use(VueSweetalert2);
 // Vue Moment
-
-Vue.use(require('vue-moment'));
-// Cleave
-import Cleave from 'cleave.js';
-
-Vue.directive('cleave', {
-    inserted: (el, binding) => {
-        el.cleave = new Cleave(el, binding.value || {})
-    },
-    update: (el) => {
-        const event = new Event('input', {bubbles: true});
-        setTimeout(function () {
-            el.value = el.cleave.properties.result
-            el.dispatchEvent(event)
-        }, 100);
-    }
+import VueMoment from 'vue-moment';
+import moment from 'moment-timezone';
+Vue.use(VueMoment, {
+  moment,
 })
-// 
+moment.locale('id');
+// Vue Chart Css
+import VueApexCharts from 'vue-apexcharts'
+Vue.use(VueApexCharts)
+// Apk
 Vue.use(Loading,{
   color: '#148DCD',
   height:70,

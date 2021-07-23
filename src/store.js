@@ -2,15 +2,13 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import Forgotpassword from "../src/services/forgotpassword.service"
-
 Vue.use(Vuex);
-
 export default new Vuex.Store({
   state: {
     user: null,
   },
   mutations: {
-    SET_USER_DATA(state, userData) {
+    SET_USER_DATA(state,userData) {
       state.user = userData;
       localStorage.setItem("user", JSON.stringify(userData));
       axios.defaults.headers.common["Authorization"] = "Bearer ${userData.token}";
@@ -27,7 +25,8 @@ export default new Vuex.Store({
      otpFailure(state) {
       state.status.loggedIn = false;
       state.user = null;
-   }
+   },
+   
   },
   actions: {
     login({ commit }, credentials) {

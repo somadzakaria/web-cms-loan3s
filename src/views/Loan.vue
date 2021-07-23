@@ -125,7 +125,7 @@
                     </thead>
                     <tbody>
                       <tr v-for="loan in loans" :key="loan.id">
-                        <td>{{ loan.SubmitDate }}</td>
+                        <td>{{ loan.SubmitDate | moment("DD MMMM YYYY HH:mm:s")}}</td>
                         <td>{{ loan.NIK }}</td>
                         <td>{{ loan.firstname }} {{ loan.lastname }}</td>
                         <td>{{ loan.WorkLocation }}</td>

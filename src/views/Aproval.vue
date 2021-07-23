@@ -141,7 +141,7 @@
 
                     <tbody>
                       <tr v-for="aproval in aprovals" :key="aproval.id">
-                        <td>{{aproval.SubmitDate}}</td>
+                        <td>{{aproval.SubmitDate | moment("DD MMMM YYYY HH:mm:s")}}</td>
                         <td>{{aproval.NIK}}</td>
                         <td>{{aproval.firstname}} {{aproval.lastname}}</td>
                  
