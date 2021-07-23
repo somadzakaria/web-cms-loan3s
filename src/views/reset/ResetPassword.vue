@@ -10,8 +10,8 @@
                 <p class="card-description mb-5">
                   Masukkan password baru Anda
                 </p>
-                <form action="#!">
-                  <div class="form-group" @submit.prevent="onSubmit">
+                <form action="#!" @submit.prevent="handleChange">
+                  <div class="form-group">
                     <div class="col-4">
                       <em>
                         <img
@@ -24,11 +24,12 @@
                       <input
                         type="password"
                         class="form-control"
+                        v-model="user.new_password"
                         placeholder="Password Baru"
                       />
                     </div>
                   </div>
-                  <div class="form-group" @submit.prevent="onSubmit">
+                  <div class="form-group">
                     <div class="col-4">
                       <em>
                         <img
@@ -41,6 +42,7 @@
                       <input
                         type="password"
                         class="form-control"
+                        v-model="user.re_password"
                         placeholder="Confirm Password Baru"
                       />
                     </div>
@@ -60,37 +62,62 @@
   </div>
 </template>
 <script>
-import router from "@/router";
+import ResetService from "../../services/forgotpassword.service";
 export default {
   name: "ForgetPassword",
   data() {
     return {
-      account: "",
+      user: {
+        new_password: "",
+      },
     };
   },
   methods: {
-    onSubmit(event) {
-      event.preventDefault();
-      let loading = this.$loading.show();
-      this.$store.dispatch("otp", this.account).then(
-        () => {
-          loading.hide();
-          sessionStorage.setItem("Otp", "reset-password");
-          router.push("Otp");
-        },
-        (error) => {
-          loading.hide();
-          this.error = true;
-          this.message = error.response.data.message;
-          this.$swal.fire({
-            icon: "error",
-            title: "Opss...",
-            text: "Your account not found",
-          });
-        }
-      );
+    handleChange() {
+      if (this.user.new_password === this.user.re_password) {
+        let loading = this.$loading.show();
+        let params = {
+          id: this.registerId,
+          new_password: this.user.new_password,
+        };
+        ResetService.Resetpassword(params).then((response) => {
+          if (response.code === 200) {
+            this.$swal
+              .fire({
+                icon: "success",
+                title: "Success",
+                text: "Password Berhasil Di Ubah",
+              })
+              .then((result) => {
+                if (result.isConfirmed) {
+                  this.$router.push("login");
+                }
+              })
+          }else{
+            this.$swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: response.message,
+            })
+          }
+        })
+        loading.hide();;
+      }else{
+        this.$swal.fire({
+          icon: 'warning',
+          title: 'Oops...',
+          text: 'New password that is entered is not the same as the confirmation password',
+        })
+      }
+    }
+  },computed: {
+    registerId() {
+      return this.$store.state.auth.user === null ? "" : this.$store.state.auth.user.id;
     },
-  },
+    id() {
+      return this.$store.state.auth.user.id
+    }
+  }
 };
 </script>
 
