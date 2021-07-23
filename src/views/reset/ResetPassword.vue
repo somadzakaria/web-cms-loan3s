@@ -62,6 +62,7 @@
   </div>
 </template>
 <script>
+
 import ResetService from "../../services/forgotpassword.service";
 export default {
   name: "ForgetPassword",
@@ -72,28 +73,27 @@ export default {
       },
     };
   },
-  methods: {
+ methods: {
     handleChange() {
       if (this.user.new_password === this.user.re_password) {
         let loading = this.$loading.show();
-        let params = {
-          id: this.registerId,
-          new_password: this.user.new_password,
-        };
-        ResetService.Resetpassword(params).then((response) => {
+        let params={
+          id:this.registerId,
+          nik:this.nik,
+          new_password: this.user.new_password
+        }
+        ResetService.resetPassword(params).then((response) => {
           if (response.code === 200) {
-            this.$swal
-              .fire({
-                icon: "success",
-                title: "Success",
-                text: "Password Berhasil Di Ubah",
-              })
-              .then((result) => {
-                if (result.isConfirmed) {
-                  this.$router.push("login");
-                }
-              })
-          }else{
+            this.$swal.fire({
+              icon: 'success',
+              text: 'Your password has been reset',
+              confirmButtonText: 'Login Now'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.$router.push('login');
+              }
+            })
+          } else {
             this.$swal.fire({
               icon: 'error',
               title: 'Oops...',
@@ -101,8 +101,8 @@ export default {
             })
           }
         })
-        loading.hide();;
-      }else{
+        loading.hide();
+      } else {
         this.$swal.fire({
           icon: 'warning',
           title: 'Oops...',
@@ -110,12 +110,13 @@ export default {
         })
       }
     }
-  },computed: {
+  },
+  computed: {
     registerId() {
-      return this.$store.state.auth.user === null ? "" : this.$store.state.auth.user.id;
+      return this.$store.state.user === null ? "" : this.$store.state.user.id;
     },
     id() {
-      return this.$store.state.auth.user.id
+      return this.$store.state.user.id
     }
   }
 };
