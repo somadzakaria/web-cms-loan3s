@@ -51,7 +51,7 @@
         </router-link>
       </li>
       <li class="nav-item mt-2">
-        <router-link to="HCBP">
+        <router-link to="/HCBP">
           <a class="nav-link" href="charts.html"> <span>HC BP</span></a>
         </router-link>
       </li>
@@ -74,9 +74,7 @@
       </li>
       <li class="nav-item mt-2">
         <router-link to="/Approval">
-          <a class="nav-link" href="charts.html">
-            <span>Approval</span></a
-          >
+          <a class="nav-link" href="charts.html"> <span>Approval</span></a>
         </router-link>
       </li>
       <li class="nav-item">
@@ -97,10 +95,10 @@
           data-parent="#accordionSidebar"
         >
           <div class="bg-white py-2 collapse-inner rounded">
-            <router-link to="Summary">
+            <router-link to="/Summary">
               <a class="collapse-item" href="login.html">Summary</a>
             </router-link>
-            <router-link to="Reportdetail">
+            <router-link to="/Reportdetail">
               <a class="collapse-item" href="register.html">Detail</a>
             </router-link>
           </div>
@@ -124,35 +122,25 @@
           data-parent="#accordionSidebar"
         >
           <div class="bg-white py-2 collapse-inner rounded">
-            <router-link to="Product">
-              <a class="collapse-item" href="login.html"
-                >Product</a
-              ></router-link
+            <router-link to="/Product">
+              <a class="collapse-item" href="#">Product</a></router-link
             >
-            <router-link to="GeneralSetting">
-              <a class="collapse-item" href="register.html"
-                >General Setting</a
-              ></router-link
+            <router-link to="/GeneralSetting">
+              <a class="collapse-item" href="#">General Setting</a></router-link
             >
-            <router-link to="Promotion">
-              <a class="collapse-item" href="register.html"
-                >Promotion</a
-              ></router-link
+            <router-link to="/Promotion">
+              <a class="collapse-item" href="#">Promotion</a></router-link
             >
-            <router-link to="blog">
-              <a class="collapse-item" href="register.html"
-                >Blog</a
-              ></router-link
+            <router-link to="/blog">
+              <a class="collapse-item" href="#">Blog</a></router-link
             >
-            <router-link to="Organization">
-              <a class="collapse-item" href="register.html"
+            <router-link to="/Organization">
+              <a class="collapse-item" href="#"
                 >Organization Chart</a
               ></router-link
             >
-            <router-link to="Faq">
-              <a class="collapse-item" href="register.html"
-                >FAQ</a
-              ></router-link
+            <router-link to="/Faq">
+              <a class="collapse-item" href="#">FAQ</a></router-link
             >
           </div>
         </div>

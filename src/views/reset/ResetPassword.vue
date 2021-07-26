@@ -62,7 +62,6 @@
   </div>
 </template>
 <script>
-
 import ResetService from "../../services/forgotpassword.service";
 export default {
   name: "ForgetPassword",

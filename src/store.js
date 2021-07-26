@@ -3,6 +3,8 @@ import Vuex from "vuex";
 import axios from "axios";
 import Forgotpassword from "../src/services/forgotpassword.service"
 Vue.use(Vuex);
+
+
 export default new Vuex.Store({
   state: {
     user: null,
@@ -18,6 +20,9 @@ export default new Vuex.Store({
       localStorage.removeItem("user");
       location.reload();
     },
+    SET_PROFILE(state){
+      state.user = JSON.parse(localStorage.getItem("user"));
+    },
     otpSuccess(state, user) {
       state.status.loggedIn = false;
       state.user = user;
@@ -26,7 +31,6 @@ export default new Vuex.Store({
       state.status.loggedIn = false;
       state.user = null;
    },
-   
   },
   actions: {
     login({ commit }, credentials) {
@@ -47,11 +51,14 @@ export default new Vuex.Store({
         commit('otpFailure');
         return Promise.reject(error);
       })
-    }
+    },
   },
   getters: {
     loggedIn(state) {
       return !!state.user;
     },
+    getusers(state){
+      return state.user;
+    }
   },
 });

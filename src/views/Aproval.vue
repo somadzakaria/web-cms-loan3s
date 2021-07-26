@@ -149,8 +149,8 @@
                         <td>{{currency(aproval.LoanAmount)}}</td>
                         <td>{{aproval.DSR  === 1 ? "Ya" : "Tidak" }}</td>
                         <td>{{aproval.SP === 1 ? "Ya" : "Tidak"}}</td>
-                        <td>{{aproval.ApvKetua === 1 ? "Disetujui" : "Ditolak"}}</td>
-                        <td>{{aproval.ApvSekretaris  === 1 ? "Disetujui" : "Ditolak" }}</td>
+                        <td>{{aproval.ApvKetua === "1" ? "Disetujui" : "Ditolak"}}</td>
+                        <td>{{aproval.ApvSekretaris  === "1" ? "Disetujui" : "Ditolak" }}</td>
                         <td>{{aproval.ApvBendahara === "1" ? "Disetujui" : "Ditolak"}}</td>
                         <td>
                           <button class="btn btn-primary" data-toggle="modal" data-target="#Detail"  @click.prevent="handledetail(aproval.id)">
