@@ -56,9 +56,11 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       let loading = this.$loading.show();
-      this.$store.dispatch('otp',this.account).then(() => {
+      this.$store.dispatch('otp',this.account).then((response) => {
+        console.log(response.data);
         loading.hide();
         sessionStorage.setItem('otp',this.account);
+        sessionStorage.setItem('id', response.data.id);
         router.push('/Otp');
       },error => {
         loading.hide();

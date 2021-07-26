@@ -130,6 +130,7 @@ export default {
         this.otp.code6;
         OTP.postVerifikaiOtp(sessionStorage.getItem("otp"), otp).then(
         () => {
+          
           loading.hide();
           router.push("/Reset-password");
         },

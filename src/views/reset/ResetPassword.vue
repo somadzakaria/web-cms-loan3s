@@ -62,6 +62,7 @@
   </div>
 </template>
 <script>
+import router from "@/router";
 import ResetService from "../../services/forgotpassword.service";
 export default {
   name: "ForgetPassword",
@@ -72,52 +73,33 @@ export default {
       },
     };
   },
- methods: {
+  methods: {
     handleChange() {
       if (this.user.new_password === this.user.re_password) {
         let loading = this.$loading.show();
-        let params={
-          id:this.registerId,
-          nik:this.nik,
-          new_password: this.user.new_password
-        }
-        ResetService.resetPassword(params).then((response) => {
-          if (response.code === 200) {
-            this.$swal.fire({
-              icon: 'success',
-              text: 'Your password has been reset',
-              confirmButtonText: 'Login Now'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.$router.push('login');
-              }
-            })
-          } else {
-            this.$swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: response.message,
-            })
-          }
-        })
+        let params = {
+          nik: sessionStorage.getItem("otp"),
+          new_password: this.user.new_password,
+          id: sessionStorage.getItem("id"),
+        };
+        ResetService.resetPassword(params)
+          .then((response) => {
+            if (response.code === 200) {
+              this.$swal.fire({
+                icon: "success",
+                text: "Your password has been reset",
+                confirmButtonText: "Login Now",
+              });
+            }
+            router.push("/");
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
         loading.hide();
-      } else {
-        this.$swal.fire({
-          icon: 'warning',
-          title: 'Oops...',
-          text: 'New password that is entered is not the same as the confirmation password',
-        })
       }
-    }
-  },
-  computed: {
-    registerId() {
-      return this.$store.state.user === null ? "" : this.$store.state.user.id;
     },
-    id() {
-      return this.$store.state.user.id
-    }
-  }
+  },
 };
 </script>
 

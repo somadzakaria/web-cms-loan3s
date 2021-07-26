@@ -12,7 +12,7 @@ class Forgotpassword{
         return axios.get('https://dev-loan-api.sitama.co.id/api/v1/otp/'+ otp);
     }
     resetPassword(params) {
-        return axios.post('https://dev-loan-api.sitama.co.id/api/v1/otp/reset-password', params);
+        return axios.post('https://dev-loan-api.sitama.co.id/api/v1/reset-password', params);
     }
 }
 

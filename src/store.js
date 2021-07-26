@@ -44,8 +44,8 @@ export default new Vuex.Store({
     otp({commit},account){
       return Forgotpassword.getOtp(account).then(
         response =>{
-          commit('otpSuccces',response.data.data);
-          return Promise.resolve(response.data.data);
+          commit('otpSuccces',response.data);
+          return Promise.resolve(response.data);
         },
       ).catch(function(error){
         commit('otpFailure');
