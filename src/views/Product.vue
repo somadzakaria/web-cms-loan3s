@@ -25,13 +25,23 @@
                     </h6>
                   </div>
                   <div class="col-lg-6 text-right">
-                    <button class="btn btn-primary text-left" @click="handleCreate()"><i class="fa fa-plus mr-3"></i> Tambah</button>
+                    <button
+                      class="btn btn-primary text-left"
+                      @click="handleCreate()"
+                    >
+                      <i class="fa fa-plus mr-3"></i> Tambah
+                    </button>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <table
+                    class="table table-bordered"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
+                  >
                     <thead>
                       <tr>
                         <th
@@ -131,10 +141,26 @@
                         <td>{{ Product.Tenor_From }}</td>
                         <td>{{ Product.Tenor_to }}</td>
                         <td>{{ Product.EffectiveRate }}</td>
-                        <td>{{ Product.isactive === "1" ? "ACTIVE"  : "NON ACTIVE" }}</td>
                         <td>
-                          <button class="btn btn-universal" type="submit" @click.prevent="handledelete(Product.id)"><i class="far fa-trash-alt text-primary"></i></button>
-                          <button class="btn btn-universal" type="submit" @click.prevent="handleupdate(Product.id)"><i class="far fa-edit text-primary"></i></button>
+                          {{
+                            Product.isactive === "1" ? "ACTIVE" : "NON ACTIVE"
+                          }}
+                        </td>
+                        <td>
+                          <button
+                            class="btn btn-universal"
+                            type="submit"
+                            @click.prevent="handledelete(Product.id)"
+                          >
+                            <i class="far fa-trash-alt text-primary"></i>
+                          </button>
+                          <button
+                            class="btn btn-universal"
+                            type="submit"
+                            @click.prevent="handleupdate(Product.id)"
+                          >
+                            <i class="far fa-edit text-primary"></i>
+                          </button>
                         </td>
                       </tr>
                     </tbody>
@@ -191,6 +217,11 @@ export default {
       ProductService.getDelete(id)
         .then((response) => {
           console.log(response, "Berhasil Terhapus");
+          this.$swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Produk Success Dihapus",
+          });
           router.go();
         })
         .catch((error) => {

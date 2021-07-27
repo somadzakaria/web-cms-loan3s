@@ -7,6 +7,10 @@ import VueGoogleCharts from "vue-google-charts";
 import CKEditor from '@ckeditor/ckeditor5-vue2'; 
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+// V-viewer
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer';
+Vue.use(Viewer);
 // Sweet Alert
 import VueSweetalert2 from 'vue-sweetalert2';
 // If you don't need the styles, do not connect

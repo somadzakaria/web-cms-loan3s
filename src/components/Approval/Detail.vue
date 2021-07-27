@@ -54,7 +54,12 @@
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Pinjaman</label>
-                    <vue-numeric separator="." v-model="dataModal.LoanAmount"  :read-only="readOnly"  read-only-class="form-control disable" />
+                  <vue-numeric
+                    separator="."
+                    v-model="dataModal.LoanAmount"
+                    :read-only="readOnly"
+                    read-only-class="form-control disable"
+                  />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Lokasi kerja</label>
@@ -96,7 +101,7 @@
                     disabled
                   />
                 </div>
-                <div class="col-lg-6 mt-5">
+                <div class="col-lg-6 mt-5" v-viewer>
                   <img :src="dataModal.DokumenPersetujuan" alt="" />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
@@ -111,36 +116,49 @@
                   ></textarea>
                 </div>
                 <div class="col-lg-12 mt-5">
-                  <button type="button" class="btn btn-danger mt-5 mr-3 btn-lg" @click="submit('0')">
+                  <button
+                    type="button"
+                    class="btn btn-danger mt-5 mr-3 btn-lg"
+                    @click="submit('0')"
+                  >
                     Reject
                   </button>
-                  <button type="button" class="btn btn-success mt-5 btn-lg" @click="submit('1')">Approve</button>
+                  <button
+                    type="button"
+                    class="btn btn-success mt-5 btn-lg"
+                    @click="submit('1')"
+                  >
+                    Approve
+                  </button>
                 </div>
               </div>
             </div>
           </form>
+          <viewer :images="images">
+            <img v-for="src in images" :src="src" :key="src" />
+          </viewer>
         </div>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
-.disable{
-   background-color: #edf2f7;
+.disable {
+  background-color: #edf2f7;
 }
 </style>
 <script>
-import router from "@/router"
+import router from "@/router";
 import AprovalService from "../../services/aproval.service";
-import VueNumeric from 'vue-numeric'
+import VueNumeric from "vue-numeric";
 export default {
-    components: {
-    VueNumeric
+  components: {
+    VueNumeric,
   },
   data() {
     return {
       ochart: [],
-      readOnly: true
+      readOnly: true,
     };
   },
   props: {
@@ -151,17 +169,17 @@ export default {
   methods: {
     submit(param) {
       let params = {
-        Approval:  param,
+        Approval: param,
       };
-      console.log(params)
-      AprovalService.postSubmit(this.dataModal.id,params)
-        .then((response) =>{  
-          console.log(response,"Berhasil Di tambahkan");
-            this.$swal.fire({
+      console.log(params);
+      AprovalService.postSubmit(this.dataModal.id, params)
+        .then((response) => {
+          console.log(response, "Berhasil Di tambahkan");
+          this.$swal.fire({
             icon: "success",
             title: "Success",
             text: "Approval Success",
-          })
+          });
           router.go();
         })
         .catch((error) => {
@@ -169,7 +187,7 @@ export default {
         });
     },
   },
-   computed: {
+  computed: {
     fullName: {
       get() {
         return `${this.dataModal.firstname} ${this.dataModal.lastname}`;
@@ -178,8 +196,8 @@ export default {
         const m = newValue.match(/(\S*)\s+(.*)/);
         this.firsnName = m[1];
         this.lastname = m[2];
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>

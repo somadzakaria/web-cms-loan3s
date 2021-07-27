@@ -125,6 +125,7 @@
                       @change="onFileChange"
                       type="file"
                       class="form-control"
+                      required
                     />
                   </div>
                   <div class="col-lg-12 mt-3 text-left">

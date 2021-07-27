@@ -21,6 +21,7 @@
     "core-js": "^3.15.2",
     "es6-promise": "^4.2.8",
     "moment-timezone": "^0.5.33",
+    "v-viewer": "^1.6.4",
     "vue": "^2.6.11",
     "vue-apexcharts": "^1.6.1",
     "vue-google-charts": "^0.3.3",

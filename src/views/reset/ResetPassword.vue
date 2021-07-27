@@ -84,13 +84,12 @@ export default {
         };
         ResetService.resetPassword(params)
           .then((response) => {
-            if (response.code === 200) {
-              this.$swal.fire({
-                icon: "success",
-                text: "Your password has been reset",
-                confirmButtonText: "Login Now",
-              });
-            }
+            console.log(response, "Berhasil Di tambahkan");
+            this.$swal.fire({
+              icon: "success",
+              title: "Success",
+              text: "Password Berhasil Di Ubah",
+            });
             router.push("/");
           })
           .catch((error) => {

@@ -4,10 +4,18 @@
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title font-weight-bold" style="font-family: 'Poppins'; color: #4a5568">
-            UPDATE
+            <h5
+              class="modal-title font-weight-bold"
+              style="font-family: 'Poppins'; color: #4a5568"
+            >
+              UPDATE
             </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -17,47 +25,114 @@
               <div class="row mt-5">
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> NIK</label>
-                  <input type="text" v-model="dataModal.NIK" class="form-control" disabled />
+                  <input
+                    type="text"
+                    v-model="dataModal.NIK"
+                    class="form-control"
+                    disabled
+                  />
                 </div>
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left"> Jabatan</label>
-                  <input type="text" id="NIK" v-model="dataModal.JobTitle" class="form-control" disabled />
+                  <input
+                    type="text"
+                    id="NIK"
+                    v-model="dataModal.JobTitle"
+                    class="form-control"
+                    disabled
+                  />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Nama</label>
-                  <input type="text" id="NIK" v-model="fullName" class="form-control" disabled />
+                  <input
+                    type="text"
+                    id="NIK"
+                    v-model="fullName"
+                    class="form-control"
+                    disabled
+                  />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Nomor Telepon</label>
-                  <input type="text" id="NIK" v-model="dataModal.mobilephoneno" class="form-control" disabled />
+                  <label for="NIK" style="text-align: left"
+                    >Nomor Telepon</label
+                  >
+                  <input
+                    type="text"
+                    id="NIK"
+                    v-model="dataModal.mobilephoneno"
+                    class="form-control"
+                    disabled
+                  />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Lokasi Kerja</label>
-                  <input type="text" id="NIK"  v-model="dataModal.WorkLocation" class="form-control" disabled />
+                  <input
+                    type="text"
+                    id="NIK"
+                    v-model="dataModal.WorkLocation"
+                    class="form-control"
+                    disabled
+                  />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Email</label>
-                  <input type="text" id="NIK"  v-model="dataModal.email" class="form-control" disabled />
+                  <input
+                    type="text"
+                    id="NIK"
+                    v-model="dataModal.email"
+                    class="form-control"
+                    disabled
+                  />
                 </div>
                 <div class="col-lg-12 text-left">
-                  <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 13px">
+                  <h5
+                    class="mt-4 font-weight-bold"
+                    style="font-family: 'Poppins'; font-size: 13px"
+                  >
                     Dokumen Persetujuan Pinjaman
                   </h5>
-                <img class="mt-3 mb-3" :src="dataModal.DokumenPersetujuan" width="200" alt="" />
+                  <img
+                    class="mt-3 mb-3"
+                    :src="dataModal.DokumenPersetujuan"
+                    width="200"
+                    alt=""
+                    required
+                  />
                 </div>
                 <div class="col-lg-12 mt-3 text-left">
-                <label for="NIK" style="text-align: left">Upload Image</label>
-                <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
+                  <label for="NIK" style="text-align: left">Upload Image</label>
+                  <input
+                    id="file-input"
+                    accept="image/*"
+                    @change="onFileChange"
+                    type="file"
+                    class="form-control"
+                    required
+                  />
                 </div>
                 <div class="col-lg-12 text-left">
-                  <h5 class="mt-4 font-weight-bold" style="font-family: 'Poppins'; font-size: 12px">
+                  <h5
+                    class="mt-4 font-weight-bold"
+                    style="font-family: 'Poppins'; font-size: 12px"
+                  >
                     Notes
                   </h5>
-                  <label for="NIK" style="text-align: left">Notes untuk Peminjaman </label>
-                  <textarea class="form-control" id="Nik" v-model="dataModal.Notes" cols="30" rows="10" ></textarea>
-                     </div>
-                      <div class="col-lg-12 mt-3 text-center">
-                  <button class="btn btn-primary" @click="submit()">Simpan</button>
+                  <label for="NIK" style="text-align: left" required
+                    >Notes untuk Peminjaman
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="Nik"
+                    v-model="dataModal.Notes"
+                    cols="30"
+                    rows="10"
+                    required
+                  ></textarea>
+                </div>
+                <div class="col-lg-12 mt-3 text-center">
+                  <button class="btn btn-primary" @click="submit()">
+                    Simpan
+                  </button>
                 </div>
               </div>
             </div>
@@ -69,8 +144,8 @@
 </template>
 
 <script>
-import router from "@/router"
-import HcbpService from "../../services/hcbp.service"
+import router from "@/router";
+import HcbpService from "../../services/hcbp.service";
 export default {
   data() {
     return {
@@ -82,23 +157,23 @@ export default {
       required: true,
     },
   },
-  methods:{
-  submit(){
-  let params ={
-    NIK : this.dataModal.NIK,
-    DokumenPersetujuan : this.dataModal.DokumenPersetujuan,
-    Notes : this.dataModal.Notes
-    }
-  HcbpService.postUpdate(this.dataModal.id,params).then((response)=>
-  {
-    console.log(response,"Berhasil Di tambahkan")
-     router.go();
-    }).catch((error)=>
-    {
-    console.log("data tidak terkirim",error.response)
-  })
-  },
-   onFileChange(e) {
+  methods: {
+    submit() {
+      let params = {
+        NIK: this.dataModal.NIK,
+        DokumenPersetujuan: this.dataModal.DokumenPersetujuan,
+        Notes: this.dataModal.Notes,
+      };
+      HcbpService.postUpdate(this.dataModal.id, params)
+        .then((response) => {
+          console.log(response, "Berhasil Di tambahkan");
+          router.go();
+        })
+        .catch((error) => {
+          console.log("data tidak terkirim", error.response);
+        });
+    },
+    onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.createImage(files[0]);
@@ -106,12 +181,12 @@ export default {
     createImage(file) {
       let reader = new FileReader();
       reader.onload = (e) => {
-      this.dataModal.DokumenPersetujuan =e.target.result;
+        this.dataModal.DokumenPersetujuan = e.target.result;
       };
       reader.readAsDataURL(file);
-    }
+    },
   },
-   computed: {
+  computed: {
     fullName: {
       get() {
         return `${this.dataModal.firstname} ${this.dataModal.lastname}`;
@@ -120,8 +195,8 @@ export default {
         const m = newValue.match(/(\S*)\s+(.*)/);
         this.firsnName = m[1];
         this.lastname = m[2];
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>

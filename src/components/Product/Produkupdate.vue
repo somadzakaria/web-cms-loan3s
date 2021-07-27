@@ -31,44 +31,104 @@
                   <div class="form">
                     <div class="row">
                       <div class="col-lg-12 text-left">
-                        <label for="NIK" style="text-align: left">Product Name</label>
-                        <input type="text" id="NIK" class="form-control" v-model="Products.ProductName" />
+                        <label for="NIK" style="text-align: left"
+                          >Product Name</label
+                        >
+                        <input
+                          type="text"
+                          id="NIK"
+                          class="form-control"
+                          v-model="Products.ProductName"
+                          required
+                        />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Product Description</label>
-                        <textarea class="form-control" id="Nik" v-model="Products.ProductDescription" cols="30" rows="10"></textarea>
+                        <label for="NIK" style="text-align: left"
+                          >Product Description</label
+                        >
+                        <textarea
+                          class="form-control"
+                          id="Nik"
+                          v-model="Products.ProductDescription"
+                          cols="30"
+                          rows="10"
+                        ></textarea>
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">FinancePurpose</label>
-                        <input type="text" id="NIK" class="form-control" v-model="Products.FinancePurpose" />
+                        <label for="NIK" style="text-align: left"
+                          >FinancePurpose</label
+                        >
+                        <input
+                          type="text"
+                          id="NIK"
+                          class="form-control"
+                          v-model="Products.FinancePurpose"
+                        />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Edit Image</label>
-                        <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
+                        <label for="NIK" style="text-align: left"
+                          >Edit Image</label
+                        >
+                        <input
+                          id="file-input"
+                          accept="image/*"
+                          @change="onFileChange"
+                          type="file"
+                          class="form-control"
+                          required
+                        />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Tenor From</label>
-                        <input type="text" id="NIK" class="form-control" v-model="Products.Tenor_From" />
+                        <label for="NIK" style="text-align: left"
+                          >Tenor From</label
+                        >
+                        <input
+                          type="text"
+                          id="NIK"
+                          class="form-control"
+                          v-model="Products.Tenor_From"
+                        />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Tenor To</label>
-                        <input type="text" id="NIK" class="form-control" v-model="Products.Tenor_to" />
+                        <label for="NIK" style="text-align: left"
+                          >Tenor To</label
+                        >
+                        <input
+                          type="text"
+                          id="NIK"
+                          class="form-control"
+                          v-model="Products.Tenor_to"
+                        />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">EffectiveRate</label>
-                        <input type="text" id="NIK" class="form-control" v-model="Products.EffectiveRate" />
+                        <label for="NIK" style="text-align: left"
+                          >EffectiveRate</label
+                        >
+                        <input
+                          type="text"
+                          id="NIK"
+                          class="form-control"
+                          v-model="Products.EffectiveRate"
+                        />
                       </div>
-
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Status</label>
-                        <select class="form-control" v-model="Products.isactive">
+                        <select
+                          class="form-control"
+                          v-model="Products.isactive"
+                        >
                           <option value="" disabled>Pilih</option>
-                          <option value="1">Active</option>
                           <option value="0">No Active</option>
+                          <option value="1">Active</option>
                         </select>
                       </div>
                       <div class="col-lg-12 mt-4 text-center">
-                        <button class="btn-primary btn-lg text-center" type="submit">Simpan</button>
+                        <button
+                          class="btn-primary btn-lg text-center"
+                          type="submit"
+                        >
+                          Simpan
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -121,15 +181,16 @@ export default {
   },
   methods: {
     getDetail() {
-      ProductService.getShow(this.$route.params.id).then((respon) => {
-        if (respon.code === 200) {
-          (this.Products.ProductName = respon.data.isactive),
-            (this.Products.ProductDescription = respon.data.ProductDescription),
-            (this.Products.FinancePurpose = respon.data.FinancePurpose),
-            (this.Products.Tenor_From = respon.data.Tenor_From),
-            (this.Products.Tenor_to = respon.data.Tenor_to),
-            (this.Products.EffectiveRate = respon.data.EffectiveRate),
-            (this.Products.isactive = respon.data.isactive);
+      ProductService.getShow(this.$route.params.id).then((response) => {
+        if (response.code === 200) {
+          (this.Products.ProductName = response.data.isactive),
+            (this.Products.ProductDescription =
+              response.data.ProductDescription),
+            (this.Products.FinancePurpose = response.data.FinancePurpose),
+            (this.Products.Tenor_From = response.data.Tenor_From),
+            (this.Products.Tenor_to = response.data.Tenor_to),
+            (this.Products.EffectiveRate = response.data.EffectiveRate),
+            (this.Products.isactive = response.data.isactive);
         }
       });
     },
@@ -148,10 +209,20 @@ export default {
       ProductService.postUpdate(this.$route.params.id, params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
+          this.$swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Update Produk Berhasil!",
+          });
           router.back();
         })
         .catch((error) => {
-          console.log("Gagal Di tambahkan", error.res);
+          console.log("Gagal Di tambahkan", error.response);
+          this.$swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Gagal Update Produk !",
+          });
         });
     },
     onFileChange(e) {

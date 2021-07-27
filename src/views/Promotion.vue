@@ -14,31 +14,55 @@
               <div class="card-header py-3">
                 <div class="row ">
                   <div class="col-lg-6 text-left">
-                    <h6 style="font-family: 'Poppins'; font-size: 14px; font-weight: bold;">Promotion</h6>
+                    <h6
+                      style="font-family: 'Poppins'; font-size: 14px; font-weight: bold;"
+                    >
+                      Promotion
+                    </h6>
                   </div>
                   <div class="col-lg-6 text-right">
-                    <button class="btn btn-primary text-left" @click="handleCreate"><i class="fa fa-plus mr-3"></i> Tambah</button>
+                    <button
+                      class="btn btn-primary text-left"
+                      @click="handleCreate"
+                    >
+                      <i class="fa fa-plus mr-3"></i> Tambah
+                    </button>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <table
+                    class="table table-bordered"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
+                  >
                     <thead>
                       <tr>
-                        <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
+                        <th
+                          style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';"
+                        >
                           Produk
                         </th>
-                        <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
+                        <th
+                          style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';"
+                        >
                           Deskripsi
                         </th>
-                        <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
+                        <th
+                          style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';"
+                        >
                           Link
                         </th>
-                        <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
+                        <th
+                          style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';"
+                        >
                           Status
                         </th>
-                        <th style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';">
+                        <th
+                          style="background: #EDF2F7; color: #4A5568; font-family: 'Poppins';"
+                        >
                           Actions
                         </th>
                       </tr>
@@ -49,11 +73,33 @@
                         <td>{{ promotion.ProductID }}</td>
                         <td>{{ promotion.Promotion_Description }}</td>
                         <td>{{ promotion.RedirectTo }}</td>
-                        <td>{{ promotion.isactive }}</td>
                         <td>
-                          <button class="btn btn-universal" data-toggle="modal" data-target="#Detail" @click.prevent="handledetail(promotion.id)"><i class="far fa-eye text-primary"></i></button>
-                          <button class="btn btn-universal" @click.prevent="handleupdate(promotion.id)"><i class="far fa-edit text-primary"></i></button>
-                          <button class="btn btn-universal" type="submit" @click.prevent="handledelete(promotion.id)"><i class="far fa-trash-alt text-primary"></i></button>
+                          {{
+                            promotion.isactive === "1" ? "Active" : "Non active"
+                          }}
+                        </td>
+                        <td>
+                          <button
+                            class="btn btn-universal"
+                            data-toggle="modal"
+                            data-target="#Detail"
+                            @click.prevent="handledetail(promotion.id)"
+                          >
+                            <i class="far fa-eye text-primary"></i>
+                          </button>
+                          <button
+                            class="btn btn-universal"
+                            @click.prevent="handleupdate(promotion.id)"
+                          >
+                            <i class="far fa-edit text-primary"></i>
+                          </button>
+                          <button
+                            class="btn btn-universal"
+                            type="submit"
+                            @click.prevent="handledelete(promotion.id)"
+                          >
+                            <i class="far fa-trash-alt text-primary"></i>
+                          </button>
                         </td>
                       </tr>
                     </tbody>
