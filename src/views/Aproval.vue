@@ -9,7 +9,7 @@
         <div id="content">
           <Navbar />
           <!-- Begin Page Content -->
-          <div class="container-fluid">       
+          <div class="container-fluid">
             <!-- End Filter -->
             <div class="card shadow mt-5">
               <div class="card-header py-3">
@@ -22,7 +22,7 @@
                         font-weight: bold;
                       "
                     >
-                     Approval
+                      Approval
                     </h6>
                   </div>
                 </div>
@@ -106,8 +106,9 @@
                             font-family: 'Poppins';
                           "
                         >
-                       Apv. Ketua
+                          Apv. Bendahara
                         </th>
+
                         <th
                           style="
                             background: #edf2f7;
@@ -115,8 +116,9 @@
                             font-family: 'Poppins';
                           "
                         >
-                     Apv. Sekretaris
+                          Apv. Sekretaris
                         </th>
+
                         <th
                           style="
                             background: #edf2f7;
@@ -124,9 +126,8 @@
                             font-family: 'Poppins';
                           "
                         >
-                     Apv. Bendahara
+                          Apv. Ketua
                         </th>
-                    
                         <th
                           style="
                             background: #edf2f7;
@@ -141,19 +142,44 @@
 
                     <tbody>
                       <tr v-for="aproval in aprovals" :key="aproval.id">
-                        <td>{{aproval.SubmitDate | moment("DD MMMM YYYY HH:mm:s")}}</td>
-                        <td>{{aproval.NIK}}</td>
-                        <td>{{aproval.firstname}} {{aproval.lastname}}</td>
-                 
-                        <td>{{aproval.WorkLocation}}</td>
-                        <td>{{currency(aproval.LoanAmount)}}</td>
-                        <td>{{aproval.DSR  === 1 ? "Ya" : "Tidak" }}</td>
-                        <td>{{aproval.SP === 1 ? "Ya" : "Tidak"}}</td>
-                        <td>{{aproval.ApvKetua === "1" ? "Disetujui" : "Ditolak"}}</td>
-                        <td>{{aproval.ApvSekretaris  === "1" ? "Disetujui" : "Ditolak" }}</td>
-                        <td>{{aproval.ApvBendahara === "1" ? "Disetujui" : "Ditolak"}}</td>
                         <td>
-                          <button class="btn btn-primary" data-toggle="modal" data-target="#Detail"  @click.prevent="handledetail(aproval.id)">
+                          {{
+                            aproval.SubmitDate | moment("DD MMMM YYYY HH:mm:s")
+                          }}
+                        </td>
+                        <td>{{ aproval.NIK }}</td>
+                        <td>{{ aproval.firstname }} {{ aproval.lastname }}</td>
+
+                        <td>{{ aproval.WorkLocation }}</td>
+                        <td>{{ currency(aproval.LoanAmount) }}</td>
+                        <td>{{ aproval.DSR === 1 ? "Ya" : "Tidak" }}</td>
+                        <td>{{ aproval.SP === 1 ? "Ya" : "Tidak" }}</td>
+                        <td>
+                          {{
+                            aproval.ApvBendahara === "1"
+                              ? "Disetujui"
+                              : "Ditolak"
+                          }}
+                        </td>
+                        <td>
+                          {{
+                            aproval.ApvSekretaris === "1"
+                              ? "Disetujui"
+                              : "Ditolak"
+                          }}
+                        </td>
+                        <td>
+                          {{
+                            aproval.ApvKetua === "1" ? "Disetujui" : "Ditolak"
+                          }}
+                        </td>
+                        <td>
+                          <button
+                            class="btn btn-primary"
+                            data-toggle="modal"
+                            data-target="#Detail"
+                            @click.prevent="handledetail(aproval.id)"
+                          >
                             Approval
                           </button>
                         </td>
@@ -167,7 +193,7 @@
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
-    <Detail :dataModal="dataModal" />
+        <Detail :dataModal="dataModal" />
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
@@ -192,15 +218,15 @@ export default {
     Sidebar,
     Navbar,
     Footer,
-    Detail
+    Detail,
   },
-  data(){
-      return{
-          aprovals:[],
-          dataModal: "",
-      }
+  data() {
+    return {
+      aprovals: [],
+      dataModal: "",
+    };
   },
-  created(){
+  created() {
     AprovalService.getAll()
       .then((response) => {
         this.aprovals = response.data;
@@ -209,8 +235,8 @@ export default {
         console.log("Eror Data Tidak Di Temukan", error.response);
       });
   },
- methods:{
-      handledetail(id) {
+  methods: {
+    handledetail(id) {
       AprovalService.getShow(id)
         .then((response) => {
           this.dataModal = response.data;
@@ -219,11 +245,10 @@ export default {
           console.log("Eror Data Tidak Di Temukan", error.response);
         });
     },
-       currency(nominal) {
+    currency(nominal) {
       return Utils.currencyRp(nominal);
     },
-  
-  }
+  },
 };
 </script>
 
@@ -238,5 +263,3 @@ export default {
   color: #ffff;
 }
 </style>
-
-

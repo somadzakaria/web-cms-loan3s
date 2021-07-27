@@ -20,122 +20,128 @@
             </button>
           </div>
           <div class="modal-body text-center">
-            <div class="form">
-              <img :src="dataModal.FileAttachment_KTP" width="200" alt="" />
-              <div class="row mt-5">
-                <div class="col-lg-6 text-left">
-                  <label for="NIK" style="text-align: left"> NIK</label>
-                  <input
-                    type="text"
-                    v-model="dataModal.NIK"
-                    class="form-control"
-                    disabled
-                  />
-                </div>
-                <div class="col-lg-6 text-left">
-                  <label for="NIK" style="text-align: left"> Jabatan</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                    v-model="dataModal.JobTitle"
-                    class="form-control"
-                    disabled
-                  />
-                </div>
-                <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Nama</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                    v-model="fullName"
-                    class="form-control"
-                    disabled
-                  />
-                </div>
-                <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left"
-                    >Nomor Telepon</label
-                  >
-                  <input
-                    type="text"
-                    id="NIK"
-                    v-model="dataModal.mobilephoneno"
-                    class="form-control"
-                    disabled
-                  />
-                </div>
-                <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Lokasi Kerja</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                    v-model="dataModal.WorkLocation"
-                    class="form-control"
-                    disabled
-                  />
-                </div>
-                <div class="col-lg-6 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Email</label>
-                  <input
-                    type="text"
-                    id="NIK"
-                    v-model="dataModal.email"
-                    class="form-control"
-                    disabled
-                  />
-                </div>
-                <div class="col-lg-12 text-left">
-                  <h5
-                    class="mt-4 font-weight-bold"
-                    style="font-family: 'Poppins'; font-size: 13px"
-                  >
-                    Dokumen Persetujuan Pinjaman
-                  </h5>
-                  <img
-                    class="mt-3 mb-3"
-                    :src="dataModal.DokumenPersetujuan"
-                    width="200"
-                    alt=""
-                    required
-                  />
-                </div>
-                <div class="col-lg-12 mt-3 text-left">
-                  <label for="NIK" style="text-align: left">Upload Image</label>
-                  <input
-                    id="file-input"
-                    accept="image/*"
-                    @change="onFileChange"
-                    type="file"
-                    class="form-control"
-                    required
-                  />
-                </div>
-                <div class="col-lg-12 text-left">
-                  <h5
-                    class="mt-4 font-weight-bold"
-                    style="font-family: 'Poppins'; font-size: 12px"
-                  >
-                    Notes
-                  </h5>
-                  <label for="NIK" style="text-align: left" required
-                    >Notes untuk Peminjaman
-                  </label>
-                  <textarea
-                    class="form-control"
-                    id="Nik"
-                    v-model="dataModal.Notes"
-                    cols="30"
-                    rows="10"
-                    required
-                  ></textarea>
-                </div>
-                <div class="col-lg-12 mt-3 text-center">
-                  <button class="btn btn-primary" @click="submit()">
-                    Simpan
-                  </button>
+            <form role="form" @submit.prevent="submit($event)">
+              <div class="form">
+                <img :src="dataModal.FileAttachment_KTP" width="200" alt="" />
+                <div class="row mt-5">
+                  <div class="col-lg-6 text-left">
+                    <label for="NIK" style="text-align: left"> NIK</label>
+                    <input
+                      type="text"
+                      v-model="dataModal.NIK"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col-lg-6 text-left">
+                    <label for="NIK" style="text-align: left"> Jabatan</label>
+                    <input
+                      type="text"
+                      id="NIK"
+                      v-model="dataModal.JobTitle"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col-lg-6 mt-3 text-left">
+                    <label for="NIK" style="text-align: left">Nama</label>
+                    <input
+                      type="text"
+                      id="NIK"
+                      v-model="fullName"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col-lg-6 mt-3 text-left">
+                    <label for="NIK" style="text-align: left"
+                      >Nomor Telepon</label
+                    >
+                    <input
+                      type="text"
+                      id="NIK"
+                      v-model="dataModal.mobilephoneno"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col-lg-6 mt-3 text-left">
+                    <label for="NIK" style="text-align: left"
+                      >Lokasi Kerja</label
+                    >
+                    <input
+                      type="text"
+                      id="NIK"
+                      v-model="dataModal.WorkLocation"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col-lg-6 mt-3 text-left">
+                    <label for="NIK" style="text-align: left">Email</label>
+                    <input
+                      type="text"
+                      id="NIK"
+                      v-model="dataModal.email"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
+                  <div class="col-lg-12 text-left">
+                    <h5
+                      class="mt-4 font-weight-bold"
+                      style="font-family: 'Poppins'; font-size: 13px"
+                    >
+                      Dokumen Persetujuan Pinjaman
+                    </h5>
+                    <img
+                      class="mt-3 mb-3"
+                      :src="dataModal.DokumenPersetujuan"
+                      width="200"
+                      alt=""
+                      required
+                    />
+                  </div>
+                  <div class="col-lg-12 mt-3 text-left">
+                    <label for="NIK" style="text-align: left"
+                      >Upload Image</label
+                    >
+                    <input
+                      id="file-input"
+                      accept="image/*"
+                      @change="onFileChange"
+                      type="file"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="col-lg-12 text-left">
+                    <h5
+                      class="mt-4 font-weight-bold"
+                      style="font-family: 'Poppins'; font-size: 12px"
+                    >
+                      Notes
+                    </h5>
+                    <label for="NIK" style="text-align: left" required
+                      >Notes untuk Peminjaman
+                    </label>
+                    <textarea
+                      class="form-control"
+                      id="Nik"
+                      v-model="dataModal.Notes"
+                      cols="30"
+                      rows="10"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="col-lg-12 mt-3 text-center">
+                    <button class="btn btn-primary">
+                      Simpan
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -158,7 +164,8 @@ export default {
     },
   },
   methods: {
-    submit() {
+    submit(event) {
+      event.preventDefault();
       let params = {
         NIK: this.dataModal.NIK,
         DokumenPersetujuan: this.dataModal.DokumenPersetujuan,

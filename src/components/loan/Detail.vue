@@ -21,8 +21,13 @@
           </div>
           <div class="modal-body text-center">
             <form>
-              <div class="form">
-                <img :src="dataModal.FileAttachment_KTP" width="350" alt="" />
+              <div class="form" v-viewer>
+                <img
+                  :src="dataModal.FileAttachment_KTP"
+                  width="350"
+                  alt=""
+                  style="cursor:pointer;"
+                />
                 <div class="row mt-5">
                   <div class="col-lg-12 text-left">
                     <label class="h5 mb-4">Data Karyawan</label>
