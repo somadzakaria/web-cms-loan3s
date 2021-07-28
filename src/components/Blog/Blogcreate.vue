@@ -112,7 +112,6 @@ export default {
         WritenBy: "",
         isactive: "",
       },
-     
     };
   },
   methods: {

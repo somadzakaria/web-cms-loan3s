@@ -20,7 +20,7 @@
             </button>
           </div>
           <div class="modal-body text-center">
-            <form>
+            <form role="form" @submit.prevent="submit($event)">
               <div class="form" v-viewer>
                 <img
                   :src="dataModal.FileAttachment_KTP"
@@ -117,6 +117,18 @@
                       disabled
                     />
                   </div>
+                  <div class="col-lg-12 mt-3 text-left">
+                    <label for="NIK" style="text-align: left"
+                      >Payment Periode</label
+                    >
+                    <input
+                      type="text"
+                      id="NIK"
+                      v-model="dataModal.PaymentPeriode"
+                      class="form-control"
+                      disabled
+                    />
+                  </div>
                   <div class="col-lg-6 mt-3 text-left" v-viewer>
                     <p>Document</p>
                     <img
@@ -138,7 +150,7 @@
                     ></textarea>
                   </div>
                   <div class="col-lg-12 mt-3 text-center">
-                    <button class="btn btn-primary" @click="submit()">
+                    <button class="btn btn-primary" type="submit">
                       <i class="fas fa-dollar-sign mr-3"></i>Cairkan
                     </button>
                   </div>
@@ -161,7 +173,8 @@
 }
 </style>
 <script>
-import LoanService from "../../services/aproval.service";
+import router from "@/router";
+import LoanService from "../../services/loan.service";
 import VueNumeric from "vue-numeric";
 export default {
   components: {
@@ -179,16 +192,23 @@ export default {
     },
   },
   methods: {
-    submit() {
+    submit(event) {
+      event.preventDefault();
       let params = {
-        loan_amount: this.dataModal.loan_amount,
-        term_years: this.dataModal.term_years,
-        terms: this.dataModal.terms,
+        loan_amount: this.dataModal.LoanAmount,
+        term_years: this.dataModal.PaymentPeriode,
+        interest: this.dataModal.EffectiveRate,
+        terms: this.dataModal.Tenor,
       };
-
-      LoanService.postActivation(this.dataModal.id, params)
+      LoanService.postAktivasi(this.dataModal.id, params)
         .then((response) => {
-          console.log(response, "Berhasil Di tambahkan");
+          console.log(response.data, "Berhasil Di tambahkan");
+          this.$swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Success Dicairkan",
+          });
+          router.go();
         })
         .catch((error) => {
           console.log("data tidak terkirim", error.response);
