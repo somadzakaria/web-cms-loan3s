@@ -30,21 +30,46 @@
                 <form role="form" @submit.prevent="submit($event)">
                   <div class="form">
                     <div class="row">
-                            <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Upload Image</label>
-                        <input id="file-input" accept="image/*" @change="onFileChange" type="file" class="form-control" />
+                      <div class="col-lg-12 mt-3 text-left">
+                        <label for="NIK" style="text-align: left"
+                          >Upload Image</label
+                        >
+                        <input
+                          id="file-input"
+                          accept="image/*"
+                          @change="onFileChange"
+                          type="file"
+                          class="form-control"
+                        />
                       </div>
                       <div class="col-lg-12 text-left">
                         <label for="NIK" style="text-align: left">Judul</label>
-                        <input type="text" id="NIK" class="form-control" v-model="blog.TitleName" />
+                        <input
+                          type="text"
+                          id="NIK"
+                          class="form-control"
+                          v-model="blog.TitleName"
+                        />
                       </div>
                       <div class="col-lg-6 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Pilih Kategori</label>
-                        <input type="text" id="NIK" class="form-control" v-model="blog.Category" />
+                        <label for="NIK" style="text-align: left"
+                          >Pilih Kategori</label
+                        >
+                        <input
+                          type="text"
+                          id="NIK"
+                          class="form-control"
+                          v-model="blog.Category"
+                        />
                       </div>
                       <div class="col-lg-6 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Tags</label>
-                        <input type="text" id="NIK" class="form-control" v-model="blog.Tags" />
+                        <input
+                          type="text"
+                          id="NIK"
+                          class="form-control"
+                          v-model="blog.Tags"
+                        />
                       </div>
                       <!-- <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Tanggal Upload</label>
@@ -52,12 +77,27 @@
                       </div> -->
 
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align: left">Isi Blog</label>
-                        <textarea class="form-control" id="Nik" v-model="blog.Blog_Description" cols="30" rows="10"></textarea>
+                        <label for="NIK" style="text-align: left"
+                          >Isi Blog</label
+                        >
+                        <textarea
+                          class="form-control"
+                          id="Nik"
+                          v-model="blog.Blog_Description"
+                          cols="30"
+                          rows="10"
+                        ></textarea>
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
-                        <label for="NIK" style="text-align:left">Di Tulis Oleh.</label>
-                        <input type="text" id="NIK" class="form-control" v-model="blog.WritenBy" />
+                        <label for="NIK" style="text-align:left"
+                          >Di Tulis Oleh.</label
+                        >
+                        <input
+                          type="text"
+                          id="NIK"
+                          class="form-control"
+                          v-model="blog.WritenBy"
+                        />
                       </div>
                       <div class="col-lg-12 mt-3 text-left">
                         <label for="NIK" style="text-align: left">Status</label>
@@ -67,7 +107,12 @@
                         </select>
                       </div>
                       <div class="col-lg-12 mt-4 text-center">
-                        <button class="btn-primary btn-lg text-center" type="submit">Simpan</button>
+                        <button
+                          class="btn-primary btn-lg text-center"
+                          type="submit"
+                        >
+                          Simpan
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -110,7 +155,7 @@ export default {
         TitleName: "",
         Category: "",
         Tags: "",
-              ImagesPath: "",
+        ImagesPath: "",
         Createdate: "",
         Blog_Description: "",
         WritenBy: "",
@@ -124,7 +169,7 @@ export default {
         if (response.code === 200) {
           this.blog.TitleName = response.data.TitleName;
           this.blog.Category = response.data.Category;
-          this.blog.Tags = response.data.Tags  ;
+          this.blog.Tags = response.data.Tags;
           // this.blog.Createdate = response.data.Createdate;
           this.blog.Blog_Description = response.data.Blog_Description;
           this.blog.WritenBy = response.data.WritenBy;
@@ -143,7 +188,7 @@ export default {
         WritenBy: this.blog.WritenBy,
         isactive: this.blog.isactive,
       };
-      BlogService.postUpdate(this.$route.params.id,params)
+      BlogService.postUpdate(this.$route.params.id, params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
           router.back();
@@ -152,7 +197,7 @@ export default {
           console.log("Gagal Di tambahkan", error.res);
         });
     },
-     onFileChange(e) {
+    onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.createImage(files[0]);
@@ -160,7 +205,7 @@ export default {
     createImage(file) {
       let reader = new FileReader();
       reader.onload = (e) => {
-      this.blog.ImagesPath=e.target.result;
+        this.blog.ImagesPath = e.target.result;
       };
       reader.readAsDataURL(file);
     },

@@ -66,129 +66,25 @@
                 </div>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-            
-                    width="100%"
-                    cellspacing="0"
-                  >
-                    <thead>
-                      <tr>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Tgl Pengajuan
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          NIK
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Nama
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Lokasi Kerja
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Pinjaman
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          DSR
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          SP
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Status
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Actions
-                        </th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>
-                          <button
-                            class="btn btn-universal"
-                            data-toggle="modal"
-                            data-target="#exampleModal"
-                          >
-                            <i class="far fa-eye text-primary"></i>
-                          </button>
-                          <button
-                            class="btn btn-universal"
-                            data-toggle="modal"
-                            data-target="#EditDetail"
-                          >
-                            <i class="far fa-edit text-primary"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <vue-good-table
+                  :columns="columns"
+                  :rows="rows"
+                  :search-options="{
+                    enabled: true,
+                  }"
+                  :pagination-options="{
+                    enabled: true,
+                  }"
+                >
+                  <template slot="table-row" slot-scope="props">
+                    <span v-if="props.column.field == 'action'">
+                      <button class="btn btn-primary">action</button>
+                    </span>
+                    <span v-else>
+                      {{ props.formattedRow[props.column.field] }}
+                    </span>
+                  </template>
+                </vue-good-table>
               </div>
             </div>
           </div>
@@ -219,6 +115,49 @@ export default {
     Navbar,
     Footer,
   },
+  data() {
+    return {
+      columns: [
+        {
+          label: "Tgl Pengajuan",
+          field: "name",
+        },
+        {
+          label: "Nama",
+          field: "name",
+        },
+        {
+          label: "NIK",
+          field: "age",
+          type: "number",
+        },
+        {
+          label: "Lokasi Kerja",
+          field: "name",
+        },
+        {
+          label: "Pinjaman",
+          field: "name",
+        },
+        {
+          label: "DSR",
+          field: "name",
+        },
+        {
+          label: "SP",
+          field: "name",
+        },
+       
+        {
+          label: "Action",
+          field: "action",
+        },
+      ],
+      rows: [
+        { id: 1, name: "John", age: 20, createdAt: "", score: "", action: "" }, 
+      ],
+    };
+  },
 };
 </script>
 
@@ -233,5 +172,3 @@ export default {
   color: #ffff;
 }
 </style>
-
-

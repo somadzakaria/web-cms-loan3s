@@ -4,9 +4,12 @@ import router from "./router";
 import store from "./store";
 Vue.config.productionTip = false;
 import VueGoogleCharts from "vue-google-charts";
-import CKEditor from '@ckeditor/ckeditor5-vue2'; 
-import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+// Good Table
+import VueGoodTablePlugin from 'vue-good-table';
+// import the styles
+import 'vue-good-table/dist/vue-good-table.css'
+
+Vue.use(VueGoodTablePlugin);
 // V-viewer
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer';
@@ -27,11 +30,14 @@ moment.locale('id');
 import VueApexCharts from 'vue-apexcharts'
 Vue.use(VueApexCharts)
 // Apk
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 Vue.use(Loading,{
   color: '#148DCD',
   height:70,
   zIndex:99999999
 });
+import CKEditor from '@ckeditor/ckeditor5-vue2'; 
 Vue.use( CKEditor );
 Vue.use(VueGoogleCharts);
 new Vue({
