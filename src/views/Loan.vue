@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <!-- Page Wrapper -->
     <div id="wrapper">
       <Sidebar />
@@ -27,8 +27,26 @@
                 </div>
               </div>
               <div class="card-body">
+                <div class="row text-right">
+                  <div class="col-lg-3 text-right">
+                    <div class="input-group x mb-3 ">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Seach"
+                        aria-label="Recipient's username"
+                        aria-describedby="button-addon2"
+                      />
+                    </div>
+                  </div>
+                </div>
                 <div class="table-responsive">
-                  <table class="table table-bordered"  width="100%" cellspacing="0">
+                  <table
+                    class="table table-bordered"
+                    width="100%"
+                    id="dataTable"
+                    cellspacing="0"
+                  >
                     <thead>
                       <tr>
                         <th
@@ -125,20 +143,36 @@
                     </thead>
                     <tbody>
                       <tr v-for="loan in loans" :key="loan.id">
-                        <td>{{ loan.SubmitDate | moment("DD MMMM YYYY HH:mm:s")}}</td>
+                        <td>
+                          {{ loan.SubmitDate | moment("DD MMMM YYYY HH:mm:s") }}
+                        </td>
                         <td>{{ loan.NIK }}</td>
                         <td>{{ loan.firstname }} {{ loan.lastname }}</td>
                         <td>{{ loan.WorkLocation }}</td>
                         <td>{{ currency(loan.LoanAmount) }}</td>
-                        <td>{{ loan.DSR  === 1 ? "Ya" : "Tidak" }}</td>
-                        <td>{{ loan.SP === 1 ? "Ya" : "Tidak"}}</td>
-                        <td>{{ loan.Status}}</td>
+                        <td>{{ loan.DSR === 1 ? "Ya" : "Tidak" }}</td>
+                        <td>{{ loan.SP === 1 ? "Ya" : "Tidak" }}</td>
+                        <td>{{ loan.Status }}</td>
                         <td style="width: 219px;">
-                          <button class="btn btn-universal" data-toggle="modal" data-target="#exampleModal" @click.prevent="handledetail(loan.id)">
+                          <button
+                            class="btn btn-universal"
+                            data-toggle="modal"
+                            data-target="#exampleModal"
+                            @click.prevent="handledetail(loan.id)"
+                          >
                             <i class="far fa-eye text-primary"></i>
                           </button>
-                         <button class="btn btn-universal" data-toggle="modal" data-target="#EditModal" @click.prevent="handleUpdate(loan.id)"><i class="far fa-edit text-primary"></i></button>
-                         <button class="btn btn-primary"><i class="fas fa-dollar-sign mr-3"></i>Cairkan</button>
+                          <button
+                            class="btn btn-universal"
+                            data-toggle="modal"
+                            data-target="#EditModal"
+                            @click.prevent="handleUpdate(loan.id)"
+                          >
+                            <i class="far fa-edit text-primary"></i>
+                          </button>
+                          <button class="btn btn-primary">
+                            <i class="fas fa-dollar-sign mr-3"></i>Cairkan
+                          </button>
                         </td>
                       </tr>
                     </tbody>
@@ -164,7 +198,11 @@
     <!-- End of Page Wrapper -->
   </div>
 </template>
-
+<style scoped>
+.dataTables_empty {
+  border-bottom: none !important ;
+}
+</style>
 <script>
 // @ is an alias to /src
 
@@ -182,7 +220,7 @@ export default {
     Navbar,
     Footer,
     Detail,
-    Edit
+    Edit,
   },
   data() {
     return {
@@ -218,10 +256,9 @@ export default {
           console.log("Eror Data Tidak Di Temukan", error.response);
         });
     },
-     currency(nominal) {
+    currency(nominal) {
       return Utils.currencyRp(nominal);
     },
   },
- 
 };
 </script>

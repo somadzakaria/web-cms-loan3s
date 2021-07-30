@@ -77,6 +77,18 @@
                   }"
                 >
                   <template slot="table-row" slot-scope="props">
+                    <span v-if="props.column.field == 'Tglpengajuan'">
+                      {{}}
+                    </span>
+                    <span v-else>
+                      {{ props.formattedRow[props.column.field] }}
+                    </span>
+                    <span v-if="props.column.field == 'action'">
+                      <button class="btn btn-primary">action</button>
+                    </span>
+                    <span v-else>
+                      {{ props.formattedRow[props.column.field] }}
+                    </span>
                     <span v-if="props.column.field == 'action'">
                       <button class="btn btn-primary">action</button>
                     </span>
@@ -107,7 +119,7 @@
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
-
+import LoanService from "../services/loan.service";
 export default {
   name: "Home",
   components: {
@@ -120,7 +132,7 @@ export default {
       columns: [
         {
           label: "Tgl Pengajuan",
-          field: "name",
+          field: "Tglpengajuan",
         },
         {
           label: "Nama",
@@ -137,26 +149,58 @@ export default {
         },
         {
           label: "Pinjaman",
-          field: "name",
+          field: "Pinjaman",
         },
         {
           label: "DSR",
-          field: "name",
+          field: "DSR",
         },
         {
           label: "SP",
-          field: "name",
+          field: "SP",
         },
-       
+
         {
           label: "Action",
           field: "action",
         },
       ],
       rows: [
-        { id: 1, name: "John", age: 20, createdAt: "", score: "", action: "" }, 
+        {
+          id: 1,
+          name: "John",
+          age: 20,
+          Pinjaman: "wkwkw",
+          score: "",
+          action: "",
+        },
+        {
+          id: 2,
+          name: "Kantong",
+          age: 20,
+          Pinjaman: "wkwkw",
+          score: "",
+          action: "",
+        },
       ],
     };
+  },
+  created() {
+    LoanService.getAll()
+      .then((response) => {
+        this.loans = response.data;
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  },
+  methods: {
+    loadItems() {
+      LoanService.getAll(this.serverParams).then((response) => {
+        this.totalRecords = response.totalRecords;
+        this.rows = response.rows;
+      });
+    },
   },
 };
 </script>
