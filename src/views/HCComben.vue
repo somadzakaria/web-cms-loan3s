@@ -10,22 +10,13 @@
           <Navbar />
           <!-- Begin Page Content -->
           <div class="container-fluid">
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">HC Comben Recommendation</h1>
+            </div>
             <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <div class="row">
-                  <div class="col-lg-6 text-left">
-                    <h6
-                      style="
-                        font-family: 'Poppins';
-                        font-size: 14px;
-                        font-weight: bold;
-                      "
-                    >
-                      HC Comben Recommendation
-                    </h6>
-                  </div>
-                </div>
-              </div>
+            
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

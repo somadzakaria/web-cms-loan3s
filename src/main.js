@@ -6,9 +6,7 @@ Vue.config.productionTip = false;
 import VueGoogleCharts from "vue-google-charts";
 // Good Table
 import VueGoodTablePlugin from 'vue-good-table';
-// import the styles
 import 'vue-good-table/dist/vue-good-table.css'
-
 Vue.use(VueGoodTablePlugin);
 // V-viewer
 import 'viewerjs/dist/viewer.css'
@@ -29,7 +27,6 @@ moment.locale('id');
 // Vue Chart Css
 import VueApexCharts from 'vue-apexcharts'
 Vue.use(VueApexCharts)
-// Apk
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 Vue.use(Loading,{
@@ -40,6 +37,17 @@ Vue.use(Loading,{
 import CKEditor from '@ckeditor/ckeditor5-vue2'; 
 Vue.use( CKEditor );
 Vue.use(VueGoogleCharts);
+
+// import "bootstrap/dist/css/bootstrap.min.css";
+import "datatables.net-bs4"
+import "datatables.net-bs4/css/dataTables.bootstrap4.css"
+import "jszip"
+import "datatables.net-buttons-bs4"
+import "datatables.net-buttons-bs4/css/buttons.bootstrap4.css";
+import "datatables.net-buttons/js/buttons.colVis"
+import "datatables.net-buttons/js/buttons.flash"
+import "datatables.net-buttons/js/buttons.html5"
+import "datatables.net-buttons/js/buttons.print"
 new Vue({
   router,
   store,

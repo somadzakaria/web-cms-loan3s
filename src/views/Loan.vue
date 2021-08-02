@@ -10,41 +10,18 @@
           <Navbar />
           <!-- Begin Page Content -->
           <div class="container-fluid">
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">Loan Admin</h1>
+            </div>
             <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <div class="row">
-                  <div class="col-lg-6 text-left">
-                    <h6
-                      style="
-                        font-family: 'Poppins';
-                        font-size: 14px;
-                        font-weight: bold;
-                      "
-                    >
-                      Loan Admin
-                    </h6>
-                  </div>
-                </div>
-              </div>
               <div class="card-body">
-                <div class="row text-right">
-                  <div class="col-lg-3 text-right">
-                    <div class="input-group x mb-3 ">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Seach"
-                        aria-label="Recipient's username"
-                        aria-describedby="button-addon2"
-                      />
-                    </div>
-                  </div>
-                </div>
                 <div class="table-responsive">
                   <table
                     class="table table-bordered"
                     width="100%"
-                    id="dataTable"
+                    id="MeTable "
                     cellspacing="0"
                   >
                     <thead>
@@ -121,15 +98,7 @@
                         >
                           Status
                         </th>
-                        <!-- <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Status
-                        </th> -->
+
                         <th
                           style="
                             background: #edf2f7;
@@ -205,7 +174,6 @@
 </style>
 <script>
 // @ is an alias to /src
-
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
@@ -213,6 +181,7 @@ import Detail from "../components/loan/Detail.vue";
 import Edit from "../components/loan/Edit.vue";
 import Utils from "@/utils/index";
 import LoanService from "../services/loan.service";
+import $ from "jquery";
 export default {
   name: "Loan",
   components: {
@@ -231,6 +200,25 @@ export default {
   created() {
     LoanService.getAll()
       .then((response) => {
+        $("#MeTable").DataTable({
+          data: response.data,
+          columns: [
+            { data: "SubmitDate" },
+            { data: "NIK" },
+            { data: "firstname" },
+            { data: "WorkLocation" },
+            { data: "LoanAmount" },
+            { data: "DSR" },
+            { data: "SP" },
+            { data: "Status" },
+            {
+              data: "id",
+              render: function(data) {
+                return `<button data-id="${data}" class="btn btn-universal" data-toggle="modal" data-target="#exampleModal" @click.prevent="handledetail(loan.id)<i class="far fa-eye text-primary"></i></button>`;
+              },
+            },
+          ],
+        });
         this.loans = response.data;
       })
       .catch((error) => {

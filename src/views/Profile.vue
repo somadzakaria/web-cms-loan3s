@@ -48,6 +48,19 @@ font-size: 20px;"
                           <div class="col-lg-6">
                             <div class="form-group">
                               <label for="exampleFormControlInput1"
+                                >Nik</label
+                              >
+                              <input
+                                type="email"
+                                class="form-control"
+                                v-model="users.data.user.NIK"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="form-group">
+                              <label for="exampleFormControlInput1"
                                 >Nama Lengkap</label
                               >
                               <input
@@ -87,8 +100,8 @@ font-size: 20px;"
                         </div>
                       </div>
                     </div>
-                    <hr />
-                    <div class="row">
+                    <hr style="margin-top:100px" />
+                    <div class="row" >
                       <div class="col-lg-12 text-center">
                         <button
                           class="btn btn-primary"
