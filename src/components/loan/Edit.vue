@@ -20,7 +20,7 @@
             </button>
           </div>
           <div class="modal-body text-center">
-            <form>
+            <form @submit.prevent="submit($event)">
               <div class="form">
                 <img :src="dataModal.FileAttachment_KTP" width="350" alt="" />
                 <div class="row mt-5">
@@ -164,6 +164,7 @@
 }
 </style>
 <script>
+import router from "@/router";
 import LoanService from "../../services/loan.service";
 import VueNumeric from "vue-numeric";
 export default {
@@ -182,7 +183,8 @@ export default {
     },
   },
   methods: {
-    submit() {
+    submit(event) {
+      event.preventDefault();
       let params = {
         NIK: this.dataModal.NIK,
         DokumenPersetujuan: this.dataModal.DokumenPersetujuan,
@@ -190,6 +192,12 @@ export default {
       LoanService.postUpdate(this.dataModal.id, params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
+          this.$swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Update Loan Berhasil!",
+          });
+            router.go();
         })
         .catch((error) => {
           console.log("data tidak terkirim", error.response);
