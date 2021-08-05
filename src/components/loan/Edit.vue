@@ -124,7 +124,7 @@
                       accept="image/*"
                       @change="onFileChange"
                       type="file"
-                      class="form-control"
+                      class="form-control custom-file"
                       required
                     />
                   </div>
@@ -156,6 +156,11 @@
 <style scoped>
 .disable {
   background-color: #edf2f7;
+}
+
+.custom-file {
+  height: 55px !important;
+  padding: 10px;
 }
 </style>
 <script>

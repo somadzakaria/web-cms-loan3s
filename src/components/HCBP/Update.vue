@@ -103,15 +103,15 @@
                     />
                   </div>
                   <div class="col-lg-12 mt-3 text-left">
-                    <label for="NIK" style="text-align: left"
+                    <label for="file" style="text-align: left"
                       >Upload Image</label
                     >
                     <input
-                      id="file-input"
+                      id="file"
                       accept="image/*"
                       @change="onFileChange"
                       type="file"
-                      class="form-control"
+                      class="form-control custom-file"
                       required
                     />
                   </div>
@@ -148,7 +148,12 @@
     </div>
   </div>
 </template>
-
+<style scoped>
+.custom-file {
+  height: 55px !important;
+  padding: 10px;
+}
+</style>
 <script>
 import router from "@/router";
 import HcbpService from "../../services/hcbp.service";

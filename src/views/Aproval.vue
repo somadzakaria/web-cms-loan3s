@@ -11,10 +11,12 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- End Filter -->
-              <div
+            <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">Approval</h1>
+              <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">
+                 Approval
+              </h1>
             </div>
             <div class="card shadow mt-5">
               <div class="card-body">

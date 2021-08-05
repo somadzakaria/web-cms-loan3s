@@ -74,7 +74,7 @@
                           accept="image/*"
                           @change="onFileChange"
                           type="file"
-                          class="form-control"
+                          class="form-control custom-file"
                           required
                         />
                       </div>
@@ -150,6 +150,12 @@
     <!-- End of Page Wrapper -->
   </div>
 </template>
+<style scoped>
+.custom-file {
+  height: 55px !important;
+  padding: 10px;
+}
+</style>
 <script>
 import router from "@/router";
 import Sidebar from "../navigation/Sidebar.vue";

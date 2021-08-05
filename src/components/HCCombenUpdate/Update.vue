@@ -25,7 +25,7 @@
                 <div class="col-lg-6 text-left">
                   <label for="NIK" style="text-align: left">Resign Date</label>
                   <input
-                    type="date"
+                    type="datetime-local"
                     id="NIK"
                     class="form-control"
                     v-model="dataModal.ResignDate"
