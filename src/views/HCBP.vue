@@ -13,7 +13,7 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">HCBP</h1>
+              <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">Pengajuan Pinjaman</h1>
             </div>
             <div class="card shadow mb-4">
           
