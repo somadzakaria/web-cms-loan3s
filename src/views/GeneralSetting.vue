@@ -81,7 +81,7 @@
                         <td>{{ general.GSValue }}</td>
                         <td>
                           <button class="btn btn-universal" @click.prevent="handleupdate(general.id)"><i class="far fa-edit text-primary"></i></button>
-                          <button class="btn btn-universal" type="submit" @click.prevent="handledelete(general.id)"><i class="far fa-trash-alt text-primary"></i></button>
+                          <!-- <button class="btn btn-universal" type="submit" @click.prevent="handledelete(general.id)"><i class="far fa-trash-alt text-primary"></i></button> -->
                         </td>
                       </tr>
                     </tbody>

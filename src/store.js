@@ -3,16 +3,17 @@ import Vuex from "vuex";
 import axios from "axios";
 import Forgotpassword from "../src/services/forgotpassword.service"
 Vue.use(Vuex);
-
-
 export default new Vuex.Store({
   state: {
     user: null,
+    menu:[],
   },
   mutations: {
     SET_USER_DATA(state,userData) {
+      console.log(userData);
       state.user = userData;
       localStorage.setItem("user", JSON.stringify(userData));
+      localStorage.setItem("id", JSON.stringify(userData.data.user.id));
       axios.defaults.headers.common["Authorization"] = "Bearer ${userData.token}";
       userData.token;
     },
@@ -23,7 +24,10 @@ export default new Vuex.Store({
     SET_PROFILE(state){
       state.user = JSON.parse(localStorage.getItem("user"));
     },
-    otpSuccess(state, user) {
+    SET_MENU(state,menu){
+      state.menu = menu;
+    },
+    otpSuccess(state,user) {
       state.status.loggedIn = false;
       state.user = user;
     },
@@ -38,6 +42,7 @@ export default new Vuex.Store({
         commit("SET_USER_DATA", data);
       });
     },
+  
     logout({ commit }) {
       commit("CLEAR_USER_DATA");
     },
@@ -59,6 +64,9 @@ export default new Vuex.Store({
     },
     getusers(state){
       return state.user;
+    },
+    getmenu(state){
+      return state.menu;
     }
   },
 });

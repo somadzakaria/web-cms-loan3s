@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 class Forgotpassword{
     postVerifikaiOtp(account,otp){
         return axios.post('https://dev-loan-api.sitama.co.id/api/v1/otp/verifikasi', {

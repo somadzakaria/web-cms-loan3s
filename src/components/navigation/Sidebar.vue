@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="menus.length > 0">
     <!-- Sidebar -->
     <ul
       class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
@@ -23,9 +23,7 @@
           Bakti Fajar Idaman
         </div>
       </a>
-
       <!-- Divider -->
-
       <!-- Divider -->
       <hr class="sidebar-divider" />
 
@@ -42,41 +40,43 @@
           Main Menu
         </h6>
       </div>
-
       <!-- Nav Item - Pages Collapse Menu -->
       <!-- Nav Item - Charts -->
-      <li class="nav-item mt-2">
-        <router-link to="/loan">
-          <a class="nav-link" href="charts.html"> <span>Loan Admin</span></a>
+      <li class="nav-item mt-2" v-for="menu in menus" :key="menu.id">
+        <router-link :to="menu.url">
+          <a class="nav-link"
+            ><span>{{ menu.nama }}</span></a
+          >
         </router-link>
       </li>
-      <li class="nav-item mt-2">
+      <!-- <li class="nav-item mt-2">
         <router-link to="/HCBP">
-          <a class="nav-link" href="charts.html"> <span>HC BP</span></a>
+          <a class="nav-link" href="charts.html"
+            ><span>Pengajuan Pinjaman</span></a
+          >
         </router-link>
       </li>
       <li class="nav-item mt-2">
-        <router-link to="/HCComben">
+        <router-link>
           <a class="nav-link" href="charts.html">
-            <span
-              >HC Comben <br />
-              Recommendation</span
-            ></a
+            <span>Rekomendasi Pinjaman</span></a
           >
         </router-link>
       </li>
       <li class="nav-item mt-2">
         <router-link to="/HCCombenupdate">
           <a class="nav-link" href="charts.html">
-            <span>HC Comben Update</span></a
+            <span>Pengikian Data Karyawan</span></a
           >
         </router-link>
       </li>
       <li class="nav-item mt-2">
         <router-link to="/Approval">
-          <a class="nav-link" href="charts.html"> <span>Approval</span></a>
+          <a class="nav-link" href="charts.html"
+            ><span>Persetujuan Pinjaman</span></a
+          >
         </router-link>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a
           class="nav-link collapsed"
@@ -149,3 +149,23 @@
     <!-- End of Sidebar -->
   </div>
 </template>
+<script>
+import Menuservice from "../../services/menu.service";
+export default {
+  computed: {
+    menus(){
+      return this.$store.getters.getmenu
+    },
+  },
+  created() {
+    Menuservice.getMenu(localStorage.getItem("id"))
+      .then((response) => {
+        this.$store.commit("SET_MENU", response.data);
+        response.data;
+      })
+      .catch((error) => {
+        console.log("Ditemukan", error.response);
+      });
+  },
+};
+</script>
