@@ -99,7 +99,7 @@
                           <p
                             style="font-size: 20px; font-weight: 500; font-family: Poppins; color: #007AFF;"
                           >
-                            {{ pinjamantersalurkan.rata - rata }}
+                            {{ pinjamantersalurkan.ratarata }}
                           </p>
                         </div>
                       </div>
@@ -137,7 +137,7 @@
                           <p
                             style="font-size: 20px; font-weight: 500; font-family: Poppins; color: #007AFF;"
                           >
-                            {{ pinjamanproses.rata - rata }}
+                            {{ pinjamanproses.ratarata }}
                           </p>
                         </div>
                       </div>
@@ -258,28 +258,35 @@ font-weight: bold;"
             </div>
             <div class="row">
               <div class="col-lg-4 my-auto">
-                <div class="card px-5 py-4">
+                <div class="card p-2">
                   <apexcharts
+                    height="200"
                     width="100%"
                     type="bar"
                     :options="chartOptions"
-                    :series="series"
+                    :series="barseries"
                   ></apexcharts>
                 </div>
               </div>
               <div class="col-lg-4 my-auto">
-                <div class="card px-5 py-4">
+                <div class="card p-2">
                   <apexcharts
+                    height="200"
                     width="100%"
                     type="bar"
                     :options="chartOptions"
-                    :series="series"
+                    :series="barseries"
                   ></apexcharts>
                 </div>
               </div>
               <div class="col-lg-4 my-auto">
-                <div class="card">
-                  <div ref="chart" class="chart"></div>
+                <div class="card ">
+                  <apexcharts
+                    type="radialBar"
+                    height="200"
+                    :options="chartOptions"
+                    :series="series"
+                  />
                 </div>
               </div>
             </div>
@@ -390,38 +397,106 @@ export default {
     Footer,
     apexcharts: VueApexCharts,
   },
+
   data() {
     return {
+      barseries: [
+        {
+          name: "Net Profit",
+          data: [20, 55, 57, 56, 61, 58, 63, 60, 66],
+        },
+      ],
+      series: [76, 67, 61, 90],
+      chartOptions: {
+        colors: ["#008FFB", "#00E396", "#FEB019", "#D15F5F"],
+        animations: {
+          enabled: true,
+          easing: "easeinout",
+          speed: 1000,
+        },
+        fill: {
+          type: "gradient",
+          gradient: {
+            shade: "dark",
+            type: "vertical",
+            shadeIntensity: 0.05,
+            inverseColors: false,
+            opacityFrom: 1,
+            opacityTo: 0.9,
+            stops: [0, 100],
+          },
+        },
+        chart: {
+          toolbar: {
+            show: true,
+          },
+        },
+        title: {
+          text: "Multiple Radial Bars",
+          align: "left",
+          style: {
+            color: "#FFF",
+          },
+        },
+        plotOptions: {
+          radialBar: {
+            offsetY: -10,
+            offsetX: 0,
+            startAngle: 0,
+            endAngle: 250,
+            hollow: {
+              margin: 5,
+              size: "30%",
+              background: "transparent",
+              image: undefined,
+            },
+            dataLabels: {
+              name: {
+                show: false,
+              },
+              value: {
+                show: false,
+              },
+            },
+          },
+        },
+        labels: ["Vimeo", "Messenger", "Facebook", "LinkedIn"],
+        legend: {
+          show: false,
+          floating: true,
+          fontSize: "16px",
+          position: "left",
+          offsetX: -20,
+          offsetY: 80,
+          labels: {
+            useSeriesColors: true,
+          },
+          markers: {
+            size: 0,
+          },
+          formatter: function(seriesName, opts) {
+            return (
+              seriesName + ":  " + opts.w.globals.series[opts.seriesIndex] + "%"
+            );
+          },
+          itemMargin: {
+            horizontal: 1,
+          },
+        },
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              legend: {
+                show: false,
+              },
+            },
+          },
+        ],
+      },
       karyawanaktif: [],
       pinjamans: [],
       approveds: [],
-      chartOptions: {
-        chart: {
-          id: "vuechart-example",
-        },
-        xaxis: {
-          categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-        },
-      },
-      series: [
-        {
-          name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91],
-        },
-      ],
     };
   },
   created() {
@@ -444,9 +519,10 @@ export default {
       });
   },
   mounted() {
+    // code from Example: https://apexcharts.com/javascript-chart-demos/area-charts/spline/
     var options = {
       chart: {
-        height: 500,
+        height: 300,
         type: "radialBar",
       },
       series: [70, 60, 50, 40],
@@ -456,13 +532,14 @@ export default {
         radialBar: {
           dataLabels: {
             total: {
-              show: false,
+              show: true,
             },
           },
         },
       },
     };
     if (this.$refs.chart) {
+      // HTML element exists
       var chart = new ApexCharts(this.$refs.chart, options);
       chart.render();
     }
