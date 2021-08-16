@@ -30,12 +30,12 @@
                         Karyawan Aktif
                       </div>
                       <div class="col-4">
-                        <div class="header   mt-4 text-center">
+                        <div class="header mt-4 text-center">
                           <h6>Active</h6>
                           <p
                             style="font-size: 20px; font-weight: 500; font-family: Poppins; color: #007AFF;"
                           >
-                            20
+                            {{ karyawanaktif.active }}
                           </p>
                         </div>
                       </div>
@@ -48,7 +48,7 @@
                           <p
                             style="font-size: 20px; font-weight: 500; font-family: Poppins; color: #007AFF;"
                           >
-                            20
+                            {{ karyawanaktif.borrower }}
                           </p>
                         </div>
                       </div>
@@ -61,7 +61,7 @@
                           <p
                             style="font-size: 20px; font-weight: 500; font-family: Poppins; color: #007AFF;"
                           >
-                            20
+                            {{ karyawanaktif.bulanini }}
                           </p>
                         </div>
                       </div>
@@ -86,7 +86,7 @@
                           <p
                             style="font-size: 20px; font-weight: 500; font-family: Poppins; color: #007AFF;"
                           >
-                            20
+                            {{ pinjamantersalurkan.bulanini }}
                           </p>
                         </div>
                       </div>
@@ -99,7 +99,7 @@
                           <p
                             style="font-size: 20px; font-weight: 500; font-family: Poppins; color: #007AFF;"
                           >
-                            20
+                            {{ pinjamantersalurkan.rata - rata }}
                           </p>
                         </div>
                       </div>
@@ -124,7 +124,7 @@
                           <p
                             style="font-size: 20px; font-weight: 500; font-family: Poppins; color: #007AFF;"
                           >
-                            20
+                            {{ pinjamanproses.jumlah }}
                           </p>
                         </div>
                       </div>
@@ -137,7 +137,7 @@
                           <p
                             style="font-size: 20px; font-weight: 500; font-family: Poppins; color: #007AFF;"
                           >
-                            20
+                            {{ pinjamanproses.rata - rata }}
                           </p>
                         </div>
                       </div>
@@ -166,7 +166,7 @@
 font-style: normal;
 font-weight: bold;"
                           >
-                            20
+                            {{ hcbp }}
                           </h6>
                         </div>
                       </div>
@@ -190,10 +190,10 @@ font-weight: bold;"
                         <div class="header mt-4 text-center">
                           <h6
                             style="color: #007AFF; font-size: 24px; font-family: Poppins;
-font-style: normal;
+                            font-style: normal;
 font-weight: bold;"
                           >
-                            20
+                            {{ hccomben }}
                           </h6>
                         </div>
                       </div>
@@ -220,7 +220,7 @@ font-weight: bold;"
 font-style: normal;
 font-weight: bold;"
                           >
-                            20
+                            {{ loanapproval }}
                           </h6>
                         </div>
                       </div>
@@ -247,7 +247,7 @@ font-weight: bold;"
 font-style: normal;
 font-weight: bold;"
                           >
-                            20
+                            {{ loanapproved }}
                           </h6>
                         </div>
                       </div>
@@ -279,67 +279,58 @@ font-weight: bold;"
               </div>
               <div class="col-lg-4 my-auto">
                 <div class="card">
-                  <div ref="chart" class="chart">
-                  </div>
+                  <div ref="chart" class="chart"></div>
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-12">
                 <div class="card my-5 mx-2">
                   <h4
                     class="my-3 mx-4"
-                    style="color:#404040; font-family: Poppins;
-font-style: normal;
-font-weight: 600;"
+                    style="color:#404040; font-family: Poppins; font-style: normal; font-weight: 600;"
                   >
                     Pinjaman dalam proses
                   </h4>
-                  <table class="table my-2 ">
-                    <thead class="mx-2">
-                      <tr>
-                        <th scope="col">Borrower</th>
-                        <th scope="col">NIK</th>
-                        <th scope="col">Lokasi</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Amount</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Ann Marlin</th>
-                        <td>082123</td>
-                        <td>Head Office</td>
-                        <td>31 Nov 2020</td>
-                        <td>10.000.000</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Ann Marlin</th>
-                        <td>082123</td>
-                        <td>Head Office</td>
-                        <td>31 Nov 2020</td>
-                        <td>10.000.000</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Ann Marlin</th>
-                        <td>082123</td>
-                        <td>Head Office</td>
-                        <td>31 Nov 2020</td>
-                        <td>10.000.000</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Ann Marlin</th>
-                        <td>082123</td>
-                        <td>Head Office</td>
-                        <td>31 Nov 2020</td>
-                        <td>10.000.000</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div class="table-responsive">
+                    <table class="table my-2">
+                      <thead class="mx-2">
+                        <tr>
+                          <th scope="col">Borrower</th>
+                          <th scope="col">NIK</th>
+                          <th scope="col">Lokasi</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="pinjaman in pinjamans" :key="pinjaman.id">
+                          <th
+                            scope="row"
+                            style="font-size:13px; font-family: Poppins;"
+                          >
+                            {{ pinjaman.EmployeeName }}
+                          </th>
+                          <td style=" font-family: Poppins;">
+                            {{ pinjaman.EmployeeID }}
+                          </td>
+                          <td style=" font-family: Poppins;">
+                            {{ pinjaman.WorkLocation }}
+                          </td>
+                          <td style=" font-family: Poppins;">
+                            {{ pinjaman.SubmitDate | moment("DD MMMM YYYY") }}
+                          </td>
+                          <td style=" font-family: Poppins;">
+                            {{ pinjaman.LoanAmount }}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-              <div class="col-lg-6">
-                <div class="card my-5 mx-2">
+              <div class="col-lg-12">
+                <div class="card mx-2">
                   <h4
                     class="my-3 mx-4"
                     style="color:#404040; font-family: Poppins;
@@ -359,33 +350,12 @@ font-weight: 600;"
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">Ann Marlin</th>
-                        <td>082123</td>
-                        <td>Head Office</td>
-                        <td>31 Nov 2020</td>
-                        <td>10.000.000</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Ann Marlin</th>
-                        <td>082123</td>
-                        <td>Head Office</td>
-                        <td>31 Nov 2020</td>
-                        <td>10.000.000</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Ann Marlin</th>
-                        <td>082123</td>
-                        <td>Head Office</td>
-                        <td>31 Nov 2020</td>
-                        <td>10.000.000</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Ann Marlin</th>
-                        <td>082123</td>
-                        <td>Head Office</td>
-                        <td>31 Nov 2020</td>
-                        <td>10.000.000</td>
+                      <tr v-for="approved in approveds" :key="approved.id">
+                        <th scope="row">{{ approved.EmployeeName }}</th>
+                        <td>{{ approved.EmployeeID }}</td>
+                        <td>{{ approved.WorkLocation }}</td>
+                        <td>{{ approved.SubmitDate }}</td>
+                        <td>{{ approved.LoanAmount }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -396,7 +366,6 @@ font-weight: 600;"
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
-
         <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
@@ -405,7 +374,6 @@ font-weight: 600;"
     <!-- End of Page Wrapper -->
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
 import Sidebar from "../components/navigation/Sidebar.vue";
@@ -413,6 +381,7 @@ import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
 import ApexCharts from "apexcharts/dist/apexcharts.js";
 import VueApexCharts from "vue-apexcharts";
+import dashboardService from "../services/dashboard.service";
 export default {
   name: "Home",
   components: {
@@ -421,15 +390,30 @@ export default {
     Footer,
     apexcharts: VueApexCharts,
   },
-
   data() {
     return {
+      karyawanaktif: [],
+      pinjamans: [],
+      approveds: [],
       chartOptions: {
         chart: {
           id: "vuechart-example",
         },
         xaxis: {
-          categories: ["Jan", "Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
         },
       },
       series: [
@@ -440,11 +424,29 @@ export default {
       ],
     };
   },
+  created() {
+    dashboardService
+      .getAll()
+      .then((response) => {
+        this.karyawanaktif = response.data.karyawanaktif;
+        this.pinjamantersalurkan = response.data.pinjamantersalurkan;
+        this.pinjamanproses = response.data.pinjamanproses;
+        this.hcbp = response.data.hcbp;
+        this.hccomben = response.data.hccomben;
+        this.loanapproval = response.data.loanapproval;
+        this.loanapproved = response.data.loanapproved;
+        this.pinjamans = response.data.pinjamandalamproses;
+        this.approveds = response.data.approvedloan;
+        console.log(response.data.karyawanaktif.active);
+      })
+      .catch((error) => {
+        console.log("Eror Data Tidak Di Temukan", error.response);
+      });
+  },
   mounted() {
-    // code from Example: https://apexcharts.com/javascript-chart-demos/area-charts/spline/
     var options = {
       chart: {
-        height: 300,
+        height: 500,
         type: "radialBar",
       },
       series: [70, 60, 50, 40],
@@ -460,9 +462,7 @@ export default {
         },
       },
     };
-
     if (this.$refs.chart) {
-      // HTML element exists
       var chart = new ApexCharts(this.$refs.chart, options);
       chart.render();
     }

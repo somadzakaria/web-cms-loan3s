@@ -1,37 +1,58 @@
 <template>
-<div class="home">
+  <div class="home">
     <div class="bg-login">
-    <header>
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-xl-12 col-sm-12">
-            <img src="../assets/bfi.png" alt="" class="bfi" />
-            <form @submit.prevent="login"  novalidate="true">
-              <div class="col-3 mt-5 mx-auto">
-                <label class="sr-only" for="inlineFormInputGroup">Email</label>
-                <div class="input-group mb-4">
-                  <input type="text" class="form-control" id="inlineFormInputGroup" v-model="email" placeholder="E-mail" style="color: #fff" required />
+      <header>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-xl-12 col-sm-12">
+              <img src="../assets/bfi.png" alt="" class="bfi" />
+              <form @submit.prevent="login" novalidate="true">
+                <div class="col-3 mt-5 mx-auto">
+                  <label class="sr-only" for="inlineFormInputGroup"
+                    >Email</label
+                  >
+                  <div class="input-group mb-4">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inlineFormInputGroup"
+                      v-model="email"
+                      placeholder="E-mail"
+                      style="color: #fff"
+                      required
+                    />
+                  </div>
+                  <div class="input-group mb-4">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="inlineFormInputGroup"
+                      v-model="password"
+                      placeholder="password"
+                      required
+                    />
+                  </div>
+                  <div class="form-group mt-3">
+                    <button class="btn btn-login" type="submit">Masuk</button>
+                  </div>
+                  <div class="form-group mt-3">
+                    <a
+                      href="/Forgot-password"
+                      style="color:white; font-family:'Poppins';"
+                      >Lupa Password</a
+                    >
+                  </div>
                 </div>
-                <div class="input-group mb-4">
-                  <input type="password" class="form-control" id="inlineFormInputGroup" v-model="password" placeholder="password" required />
-                </div>
-                <div class="form-group mt-3">
-                  <button class="btn btn-login" type="submit">Masuk</button>
-                </div>
-                <div class="form-group mt-3">
-                  <a href="/Forgot-password" style="color:white; font-family:'Poppins';">Lupa Password</a>
-                </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   </div>
-</div>
 </template>
 <script>
-import router from "@/router"
+import router from "@/router";
 export default {
   data() {
     return {
@@ -43,26 +64,30 @@ export default {
     login() {
       let loading = this.$loading.show();
       this.$store
-        .dispatch('login', {
+        .dispatch("login", {
           email: this.email,
           password: this.password,
         })
-        .then(() => {
-          loading.hide();
-          this.$router.push({
-            name: "Summary",
-          });
+        .then(
+          () => {
+            loading.hide();
+            this.$router.push({
+              name: "Summary",
+            });
             router.go();
-        },
-        (error)=>{
+          },
+          (error) => {
             loading.hide();
             this.$swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Invalid Email or password !",
-          });
-          this.message = (error.response && error.response.data) || error.message || error.toString()
-        } 
+              icon: "error",
+              title: "Oops...",
+              text: "Invalid Email or password !",
+            });
+            this.message =
+              (error.response && error.response.data) ||
+              error.message ||
+              error.toString();
+          }
         );
     },
   },
