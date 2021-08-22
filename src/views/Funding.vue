@@ -15,7 +15,7 @@
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
               <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">
-                Persetujuan Pinjaman
+            Funding Batch
               </h1>
             </div>
             <div class="card shadow mt-5">
@@ -30,27 +30,7 @@
                     enabled: true,
                   }"
                 >
-                  <template slot="table-row" slot-scope="props">
-                    <span v-if="props.column.field == 'action'">
-                      <button
-                        class="btn btn-primary"
-                        data-toggle="modal"
-                        data-target="#Detail"
-                        @click.prevent="handledetail(props.row.id)"
-                      >
-                        Approval
-                      </button>
-                    </span>
-                    <span v-else>
-                      {{ props.formattedRow[props.column.field] }}
-                    </span>
-                    <span v-if="props.column.field === 'ApvBendahara'">
-                      {{ props.row.ApvBendahara === 1 ? "Ya" : "Tidak" }}
-                    </span>
-                    <span v-else>
-                      {{ props.formattedRow[props.column.Apvbendahara] }}
-                    </span>
-                  </template>
+           
                 </vue-good-table>
               </div>
             </div>
@@ -74,8 +54,8 @@
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
-import AprovalService from "../services/aproval.service";
-import Utils from "@/utils/index";
+// import AprovalService from "../services/aproval.service";
+// import Utils from "@/utils/index";
 import Detail from "../components/Approval/Detail.vue";
 export default {
   name: "Home",
@@ -93,8 +73,8 @@ export default {
           field: "SubmitDate",
         },
         {
-          label: "Nama",
-          field: "firstname",
+          label: "No. Pengajuan",
+          field: "SubmitDate",
         },
         {
           label: "NIK",
@@ -102,33 +82,30 @@ export default {
           type: "number",
         },
         {
-          label: "Lokasi Kerja",
+          label: "Nama",
           field: "WorkLocation",
         },
         {
-          label: "Pinjaman",
+          label: "Lokasi Kerja",
           field: "LoanAmount",
         },
         {
-          label: "DSR",
+          label: "Pinjaman",
           field: "DSR",
         },
         {
-          label: "SP",
+          label: "Tujuan",
           field: "SP",
         },
         {
-          label: "Apv.Bendahara",
-          field: "ApvBendahara",
+          label: "No. Rekening",
+          field: "SP",
         },
         {
-          label: "ApvKetua",
-          field: "ApvKetua",
+          label: "Tanggal Batch",
+          field: "SP",
         },
-        {
-          label: "Apv.Ketua",
-          field: "ApvKetua",
-        },
+      
         {
           label: "Action",
           field: "action",
@@ -136,45 +113,45 @@ export default {
       ],
       rows: [
         {
-          SubmitDate: "",
-          firstname: "",
-          NIK: "",
-          WorkLocation: "",
-          LoanAmount: "",
-          DSR: "",
-          SP: "",
-          ApvBendahara: "",
-          ApvSekretaris: "",
-          ApvKetua: "",
+          SubmitDate: 1,
+          firstname: "2",
+          NIK: "3",
+          WorkLocation: "4",
+          LoanAmount: "3",
+          DSR: "5",
+          SP: "5",
+          ApvBendahara: "5",
+          ApvSekretaris: "5",
+          ApvKetua: "5",
           action: "",
         },
       ],
       dataModal: "",
     };
   },
-  created() {
-    AprovalService.getAll()
-      .then((response) => {
-        this.rows = response.data;
-      })
-      .catch((error) => {
-        console.log("Eror Data Tidak Di Temukan", error.response);
-      });
-  },
-  methods: {
-    handledetail(id) {
-      AprovalService.getShow(id)
-        .then((response) => {
-          this.dataModal = response.data;
-        })
-        .catch((error) => {
-          console.log("Eror Data Tidak Di Temukan", error.response);
-        });
-    },
-    currency(nominal) {
-      return Utils.currencyRp(nominal);
-    },
-  },
+//   created() {
+//     AprovalService.getAll()
+//       .then((response) => {
+//         this.rows = response.data;
+//       })
+//       .catch((error) => {
+//         console.log("Eror Data Tidak Di Temukan", error.response);
+//       });
+//   },
+//   methods: {
+//     handledetail(id) {
+//       AprovalService.getShow(id)
+//         .then((response) => {
+//           this.dataModal = response.data;
+//         })
+//         .catch((error) => {
+//           console.log("Eror Data Tidak Di Temukan", error.response);
+//         });
+//     },
+//     currency(nominal) {
+//       return Utils.currencyRp(nominal);
+//     },
+//   },
 };
 </script>
 

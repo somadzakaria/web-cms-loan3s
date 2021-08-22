@@ -32,8 +32,9 @@ import Notfound from "../views/404.vue";
 import Forgotpassword from "../views/reset/ForgotPassword.vue"
 import Otp from "../views/reset/Otp.vue"
 import ResetPassword from "../views/reset/ResetPassword.vue"
-
 import profile from "../views/Profile.vue"
+import Funding from "../views/Funding.vue"
+import Transfer from "../views/Transfer.vue"
 Vue.use(VueRouter);
 
 const routes = [
@@ -56,6 +57,16 @@ const routes = [
     path: "/Otp",
     name: "Otp",
     component: Otp,
+  },
+  {
+    path: "/Funding",
+    name: "Funding",
+    component: Funding,
+  },
+  {
+    path: "/Transfer",
+    name: "Transfer",
+    component: Transfer,
   },
   {
     path: "/Reset-password",
@@ -191,7 +202,7 @@ const routes = [
       meta:{requiresAuth:true}
   },
   {
-    path: "/Summary",
+    path: "/Dashboard",
     name: "Summary",
     component: Summary,
       meta:{requiresAuth:true}

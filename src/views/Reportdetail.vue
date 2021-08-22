@@ -83,18 +83,7 @@
                     <span v-else>
                       {{ props.formattedRow[props.column.field] }}
                     </span>
-                    <span v-if="props.column.field == 'action'">
-                      <button class="btn btn-primary">action</button>
-                    </span>
-                    <span v-else>
-                      {{ props.formattedRow[props.column.field] }}
-                    </span>
-                    <span v-if="props.column.field == 'action'">
-                      <button class="btn btn-primary">action</button>
-                    </span>
-                    <span v-else>
-                      {{ props.formattedRow[props.column.field] }}
-                    </span>
+                   
                   </template>
                 </vue-good-table>
               </div>

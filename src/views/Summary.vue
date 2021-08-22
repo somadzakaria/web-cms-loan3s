@@ -292,48 +292,32 @@ font-weight: bold;"
             </div>
             <div class="row">
               <div class="col-lg-12">
-                <div class="card my-5 mx-2">
+                <div class="card my-5 mx-2 p-3">
                   <h4
                     class="my-3 mx-4"
                     style="color:#404040; font-family: Poppins; font-style: normal; font-weight: 600;"
                   >
                     Pinjaman dalam proses
                   </h4>
-                  <div class="table-responsive">
-                    <table class="table my-2">
-                      <thead class="mx-2">
-                        <tr>
-                          <th scope="col">Borrower</th>
-                          <th scope="col">NIK</th>
-                          <th scope="col">Lokasi</th>
-                          <th scope="col">Date</th>
-                          <th scope="col">Amount</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="pinjaman in pinjamans" :key="pinjaman.id">
-                          <th
-                            scope="row"
-                            style="font-size:13px; font-family: Poppins;"
-                          >
-                            {{ pinjaman.EmployeeName }}
-                          </th>
-                          <td style=" font-family: Poppins;">
-                            {{ pinjaman.EmployeeID }}
-                          </td>
-                          <td style=" font-family: Poppins;">
-                            {{ pinjaman.WorkLocation }}
-                          </td>
-                          <td style=" font-family: Poppins;">
-                            {{ pinjaman.SubmitDate | moment("DD MMMM YYYY") }}
-                          </td>
-                          <td style=" font-family: Poppins;">
-                            {{ pinjaman.LoanAmount }}
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                  <vue-good-table
+                    :columns="columns"
+                    :rows="rows"
+                    :search-options="{
+                      enabled: true,
+                    }"
+                    :pagination-options="{
+                      enabled: true,
+                    }"
+                  >
+                    <template slot="table-row" slot-scope="props">
+                      <span v-if="props.column.field == 'SubmitDate'">
+                       {{ props.row.SubmitDate| moment("DD MMMM YYYY ") }}
+                      </span>
+                      <span v-else>
+                        {{ props.formattedRow[props.column.field] }}
+                      </span>
+                    </template>
+                  </vue-good-table>
                 </div>
               </div>
               <div class="col-lg-12">
@@ -397,9 +381,49 @@ export default {
     Footer,
     apexcharts: VueApexCharts,
   },
-
   data() {
     return {
+      columns: [
+        {
+          label: "Borrower",
+          field: "EmployeeName",
+        },
+        {
+          label: "NIK",
+          field: "EmployeeID",
+        },
+
+        {
+          label: "Lokasi",
+          field: "WorkLocation",
+        },
+        {
+          label: "Date",
+          field: "SubmitDate",
+        },
+        {
+          label: "Ammont",
+          field: "LoanAmount",
+        },
+      ],
+      rows: [
+        {
+          id: 1,
+          name: "John",
+          age: 20,
+          Pinjaman: "wkwkw",
+          score: "",
+          action: "",
+        },
+        {
+          id: 2,
+          name: "Kantong",
+          age: 20,
+          Pinjaman: "wkwkw",
+          score: "",
+          action: "",
+        },
+      ],
       barseries: [
         {
           name: "Net Profit",
@@ -512,6 +536,7 @@ export default {
         this.loanapproved = response.data.loanapproved;
         this.pinjamans = response.data.pinjamandalamproses;
         this.approveds = response.data.approvedloan;
+        this.rows = response.data.pinjamandalamproses;
         console.log(response.data.karyawanaktif.active);
       })
       .catch((error) => {
