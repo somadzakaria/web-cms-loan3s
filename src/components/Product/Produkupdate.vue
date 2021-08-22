@@ -194,7 +194,7 @@ export default {
               response.data.ProductDescription),
             (this.Products.FinancePurpose = response.data.FinancePurpose),
             (this.Products.Tenor_From = response.data.Tenor_From),
-            (this.Products.Tenor_to = response.data.Tenor_to),
+            (this.Products.Tenor_to = response.data.Tenor_to), 
             (this.Products.EffectiveRate = response.data.EffectiveRate),
             (this.Products.isactive = response.data.isactive);
         }
@@ -244,7 +244,6 @@ export default {
       reader.readAsDataURL(file);
     },
   },
-
   mounted() {
     this.getDetail();
   },

@@ -39,7 +39,7 @@ export default {
 
    getDelete(id) {
     return axios.get(
-      "https://dev-loan-api.sitama.co.id//api/v1/cms/blog/delete/"+id,
+      "https://dev-loan-api.sitama.co.id/api/v1/cms/blog/delete/"+id,
         {   headers: {
             'Authorization': "Bearer " + user.data.access_token,
             'X_USER_ID': user.data.id,
