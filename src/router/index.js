@@ -36,7 +36,6 @@ import profile from "../views/Profile.vue"
 import Funding from "../views/Funding.vue"
 import Transfer from "../views/Transfer.vue"
 Vue.use(VueRouter);
-
 const routes = [
   {
     path: "*",
