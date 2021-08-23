@@ -43,36 +43,75 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <!-- Nav Item - Charts -->
       <li class="nav-item mt-2" v-for="menu in menus" :key="menu.id">
-        <router-link v-if="menu.id_induk == null" :to="menu.url" >
+        <router-link v-if="menu.id_induk == null" :to="menu.url">
           <a class="nav-link"
             ><span>{{ menu.nama }}</span></a
           >
         </router-link>
-        <router-link v-if="menu.nama == 'Data Setting'" :to="menu.url == null ? '#' : '#'" >
-             <a
-          class="nav-link collapsed"
-          href="#"
-          data-toggle="collapse"
-          data-target="#collapsePages"
-          aria-expanded="true"
-          aria-controls="collapsePages"
+        <router-link
+          v-if="menu.nama == 'Data Setting'"
+          :to="menu.url == null ? '#' : '#'"
         >
-          <span>{{menu.nama}}</span>
-        </a>
-        <div
-          id="collapsePages"
-          class="collapse"
-          aria-labelledby="headingPages"
-          data-parent="#accordionSidebar"
-        >
-          <div class="bg-white py-2 collapse-inner rounded">
-            <router-link  v-for="menu in menus" :key="menu.id" :to="menu.url">
-              <a v-if="menu.id_induk == 10" class="collapse-item" href="login.html">{{menu.nama}}</a>
-            </router-link>
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapsePages"
+            aria-expanded="true"
+            aria-controls="collapsePages"
+          >
+            <span>{{ menu.nama }}</span>
+          </a>
+          <div
+            id="collapsePages"
+            class="collapse"
+            aria-labelledby="headingPages"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <router-link v-for="menu in menus" :key="menu.id" :to="menu.url">
+                <a
+                  v-if="menu.id_induk == 10"
+                  class="collapse-item"
+                  href="login.html"
+                  >{{ menu.nama }}</a
+                >
+              </router-link>
+            </div>
           </div>
-        </div>
         </router-link>
-
+        <router-link
+          v-if="menu.nama == 'Report'"
+          :to="menu.url == null ? '#' : '#'"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapsePages"
+            aria-expanded="true"
+            aria-controls="collapsePages"
+          >
+            <span>{{ menu.nama }}</span>
+          </a>
+          <div
+            id="collapsePages"
+            class="collapse"
+            aria-labelledby="headingPages"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <router-link v-for="menu in menus" :key="menu.id" :to="menu.url">
+                <a
+                  v-if="menu.id_induk == 7"
+                  class="collapse-item"
+                  href="login.html"
+                  >{{ menu.nama }}</a
+                >
+              </router-link>
+            </div>
+          </div>
+        </router-link>
       </li>
       <!-- <li class="nav-item mt-2">
         <router-link to="/HCBP">
@@ -102,7 +141,7 @@
           >
         </router-link>
       </li> -->
-   
+
       <!-- <li class="nav-item">
         <a
           class="nav-link collapsed"
@@ -152,8 +191,8 @@
 import Menuservice from "../../services/menu.service";
 export default {
   computed: {
-    menus(){
-      return this.$store.getters.getmenu
+    menus() {
+      return this.$store.getters.getmenu;
     },
   },
   created() {
