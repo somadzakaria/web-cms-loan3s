@@ -31,6 +31,9 @@
                   }"
                 >
                   <template slot="table-row" slot-scope="props">
+                    <span v-if="props.column.field === 'waktu'">
+                      {{ props.row.SubmitDate | moment("DD MMMM YYYY") }}
+                    </span>
                     <span v-if="props.column.field == 'action'">
                       <button
                         class="btn btn-primary"
@@ -44,11 +47,24 @@
                     <span v-else>
                       {{ props.formattedRow[props.column.field] }}
                     </span>
-                    <span v-if="props.column.field === 'ApvBendahara'">
-                      {{ props.row.ApvBendahara === 1 ? "Ya" : "Tidak" }}
+                    <span v-if="props.column.field === 'dsrcuy'">
+                      {{ props.row.DSR == 1 ? "Ya" : "Tidak Disetujui" }}
+                    </span>
+                    <span v-if="props.column.field === 'spcuy'">
+                      {{ props.row.SP == 1 ? "Ya" : "Tidak Disetujui" }}
+                    </span>
+                    <span v-if="props.column.field === 'Bendahara'">
+                      {{
+                        props.row.ApvBendahara == 1
+                          ? "Disetujui"
+                          : "Tidak Disetujui"
+                      }}
                     </span>
                     <span v-else>
                       {{ props.formattedRow[props.column.Apvbendahara] }}
+                    </span>
+                    <span v-if="props.column.field === 'Pinjaman'">
+                      {{ currency(props.row.LoanAmount) }}
                     </span>
                   </template>
                 </vue-good-table>
@@ -77,6 +93,7 @@ import Footer from "../components/navigation/Footer.vue";
 import AprovalService from "../services/aproval.service";
 import Utils from "@/utils/index";
 import Detail from "../components/Approval/Detail.vue";
+
 export default {
   name: "Home",
   components: {
@@ -90,7 +107,7 @@ export default {
       columns: [
         {
           label: "Tgl Pengajuan",
-          field: "SubmitDate",
+          field: "waktu",
         },
         {
           label: "Nama",
@@ -107,26 +124,22 @@ export default {
         },
         {
           label: "Pinjaman",
-          field: "LoanAmount",
+          field: "Pinjaman",
         },
         {
           label: "DSR",
-          field: "DSR",
+          field: "dsrcuy",
         },
         {
           label: "SP",
-          field: "SP",
+          field: "spcuy",
         },
         {
-          label: "Apv.Bendahara",
-          field: "ApvBendahara",
+          label: "Bendahara",
+          field: "Bendahara",
         },
         {
-          label: "ApvKetua",
-          field: "ApvKetua",
-        },
-        {
-          label: "Apv.Ketua",
+          label: "Ketua",
           field: "ApvKetua",
         },
         {
@@ -144,7 +157,6 @@ export default {
           DSR: "",
           SP: "",
           ApvBendahara: "",
-          ApvSekretaris: "",
           ApvKetua: "",
           action: "",
         },

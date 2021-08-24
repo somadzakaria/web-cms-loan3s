@@ -13,140 +13,69 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">Administrasi Pinjaman</h1>
+              <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">
+                Administrasi Pinjaman
+              </h1>
             </div>
             <div class="card shadow mb-4">
               <div class="card-body">
-                <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    width="100%"
-                    id="MeTable "
-                    cellspacing="0"
-                  >
-                    <thead>
-                      <tr>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Tgl Pengajuan
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          NIK
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Nama
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Lokasi Kerja
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Pinjaman
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          DSR
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          SP
-                        </th>
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Status
-                        </th>
-
-                        <th
-                          style="
-                            background: #edf2f7;
-                            color: #4a5568;
-                            font-family: 'Poppins';
-                          "
-                        >
-                          Actions
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="loan in loans" :key="loan.id">
-                        <td>
-                          {{ loan.SubmitDate | moment("DD MMMM YYYY HH:mm:s") }}
-                        </td>
-                        <td>{{ loan.NIK }}</td>
-                        <td>{{ loan.firstname }} {{ loan.lastname }}</td>
-                        <td>{{ loan.WorkLocation }}</td>
-                        <td>{{ currency(loan.LoanAmount) }}</td>
-                        <td>{{ loan.DSR === 1 ? "Ya" : "Tidak" }}</td>
-                        <td>{{ loan.SP === 1 ? "Ya" : "Tidak" }}</td>
-                        <td>{{ loan.Status }}</td>
-                        <td style="width: 219px;">
-                          <button
-                            class="btn btn-universal"
-                            data-toggle="modal"
-                            data-target="#exampleModal"
-                            @click.prevent="handledetail(loan.id)"
-                          >
-                            <i class="far fa-eye text-primary"></i>
-                          </button>
-                          <button
-                            class="btn btn-universal"
-                            data-toggle="modal"
-                            data-target="#EditModal"
-                            @click.prevent="handleUpdate(loan.id)"
-                          >
-                            <i class="far fa-edit text-primary"></i>
-                          </button>
-                          <button class="btn btn-primary">
-                            <i class="fas fa-dollar-sign mr-3"></i>Cairkan
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <vue-good-table
+                  :columns="columns"
+                  :rows="rows"
+                  :search-options="{
+                    enabled: true,
+                  }"
+                  :pagination-options="{
+                    enabled: true,
+                    perPage: 5,
+                  }"
+                >
+                  <template slot="table-row" slot-scope="props">
+                    <span v-if="props.column.field === 'waktu'">
+                      {{ props.row.SubmitDate | moment("DD MMMM YYYY") }}
+                    </span>
+                    <span v-if="props.column.field === 'NIK'">
+                      {{ props.row.NIK }}
+                    </span>
+                    <span v-if="props.column.field === 'nama'">
+                      {{ props.row.firstname }}
+                      {{ props.row.lastname }}
+                    </span>
+                    <span v-if="props.column.field === 'WorkLocation'">
+                      {{ props.row.WorkLocation }}
+                    </span>
+                    <span v-if="props.column.field === 'Pinjaman'">
+                      {{ currency(props.row.LoanAmount) }}
+                    </span>
+                    <span v-if="props.column.field === 'dsrcuy'">
+                      {{ props.row.DSR == 1 ? "Ya" : "Tidak" }}
+                    </span>
+                    <span v-if="props.column.field === 'spcuy'">
+                      {{ props.row.SP == 1 ? "Ya" : "Tidak" }}
+                    </span>
+                    <span v-if="props.column.field == 'action'">
+                      <button
+                        class="btn btn-universal"
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        @click.prevent="handledetail(props.row.id)"
+                      >
+                        <i class="far fa-eye text-primary"></i>
+                      </button>
+                      <button
+                        class="btn btn-universal"
+                        data-toggle="modal"
+                        data-target="#EditModal"
+                        @click.prevent="handleUpdate(props.row.id)"
+                      >
+                        <i class="far fa-edit text-primary"></i>
+                      </button>
+                      <button class="btn btn-primary">
+                        <i class="fas fa-dollar-sign mr-3"></i>Cairkan
+                      </button>
+                    </span>
+                  </template>
+                </vue-good-table>
               </div>
             </div>
           </div>
@@ -181,7 +110,6 @@ import Detail from "../components/loan/Detail.vue";
 import Edit from "../components/loan/Edit.vue";
 import Utils from "@/utils/index";
 import LoanService from "../services/loan.service";
-import $ from "jquery";
 export default {
   name: "Loan",
   components: {
@@ -193,6 +121,41 @@ export default {
   },
   data() {
     return {
+      columns: [
+        {
+          label: "Tgl Pengajuan",
+          field: "waktu",
+        },
+        {
+          label: "Nik",
+          field: "NIK",
+        },
+        {
+          label: "Nama",
+          field: "nama",
+        },
+        {
+          label: "Lokasi Kerja",
+          field: "WorkLocation",
+        },
+        {
+          label: "Pinjaman",
+          field: "Pinjaman",
+        },
+        {
+          label: "DSR",
+          field: "dsrcuy",
+        },
+        {
+          label: "SP",
+          field: "spcuy",
+        },
+        {
+          label: "action",
+          field: "action",
+        },
+      ],
+      rows: [],
       loans: "",
       dataModal: "",
     };
@@ -200,26 +163,8 @@ export default {
   created() {
     LoanService.getAll()
       .then((response) => {
-        $("#MeTable").DataTable({
-          data: response.data,
-          columns: [
-            { data: "SubmitDate" },
-            { data: "NIK" },
-            { data: "firstname" },
-            { data: "WorkLocation" },
-            { data: "LoanAmount" },
-            { data: "DSR" },
-            { data: "SP" },
-            { data: "Status" },
-            {
-              data: "id",
-              render: function(data) {
-                return `<button data-id="${data}" class="btn btn-universal" data-toggle="modal" data-target="#exampleModal" @click.prevent="handledetail(loan.id)<i class="far fa-eye text-primary"></i></button>`;
-              },
-            },
-          ],
-        });
         this.loans = response.data;
+        this.rows = response.data;
       })
       .catch((error) => {
         console.log(error.response);

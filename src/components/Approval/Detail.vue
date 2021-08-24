@@ -175,15 +175,10 @@ export default {
       AprovalService.postSubmit(this.dataModal.id, params)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
-          this.$swal.fire({
-            icon: "success",
-            title: "Success",
-            text: "Approval Success",
-          });
           router.go();
         })
         .catch((error) => {
-          console.log("Gagal Di tambahkan", error.res);
+          console.log("Gagal Di tambahkan", error.response);
         });
     },
   },
