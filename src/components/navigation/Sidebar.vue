@@ -71,7 +71,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <router-link v-for="menu in menus" :key="menu.id" :to="menu.url">
                 <a
-                  v-if="menu.id_induk == 10"
+                  v-if="menu.id_induk == 13"
                   class="collapse-item"
                   href="login.html"
                   >{{ menu.nama }}</a
@@ -102,12 +102,38 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <router-link v-for="menu in menus" :key="menu.id" :to="menu.url">
-                <a
-                  v-if="menu.id_induk == 7"
-                  class="collapse-item"
-                  href="login.html"
-                  >{{ menu.nama }}</a
-                >
+                <a v-if="menu.id_induk == 10" class="collapse-item">{{
+                  menu.nama
+                }}</a>
+              </router-link>
+            </div>
+          </div>
+        </router-link>
+        <router-link
+          v-if="menu.nama == 'Proses Pencairan (Funding)'"
+          :to="menu.url == null ? '#' : '#'"
+        >
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapsePages3"
+            aria-expanded="true"
+            aria-controls="collapsePages"
+          >
+            <span>{{ menu.nama }}</span>
+          </a>
+          <div
+            id="collapsePages3"
+            class="collapse"
+            aria-labelledby="headingPages"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <router-link v-for="menu in menus" :key="menu.id" :to="menu.url">
+                <a v-if="menu.id_induk == 6" class="collapse-item">{{
+                  menu.nama
+                }}</a>
               </router-link>
             </div>
           </div>

@@ -104,15 +104,13 @@
                   </div>
                   <div class="col-lg-12 mt-3 text-left">
                     <label for="file" style="text-align: left"
-                      >Upload Image</label
+                      >Dokumen Persetujuan (file .pdf)</label
                     >
                     <input
-                      id="file"
-                      accept="image/*"
-                      @change="onFileChange"
                       type="file"
-                      class="form-control custom-file"
-                      required
+                      @change="onFileChange"
+                      class="form-control"
+                      id="inputFile"
                     />
                   </div>
                   <div class="col-lg-12 text-left">
@@ -155,7 +153,7 @@
 }
 </style>
 <script>
-import router from "@/router";
+// import router from "@/router";
 import HcbpService from "../../services/hcbp.service";
 export default {
   data() {
@@ -171,15 +169,15 @@ export default {
   methods: {
     submit(event) {
       event.preventDefault();
-      let params = {
-        NIK: this.dataModal.NIK,
-        DokumenPersetujuan: this.dataModal.DokumenPersetujuan,
-        Notes: this.dataModal.Notes,
-      };
-      HcbpService.postUpdate(this.dataModal.id, params)
+      var imageInput = document.getElementById("inputFile").files[0];
+      var formData = new FormData();
+      formData.append("NIK", this.dataModal.NIK);
+      formData.append("DokumenPersetujuan", imageInput);
+      formData.append("Notes", this.dataModal.Notes);
+      HcbpService.postUpdate(this.dataModal.id, formData)
         .then((response) => {
           console.log(response, "Berhasil Di tambahkan");
-          router.go();
+          // router.go();
         })
         .catch((error) => {
           console.log("data tidak terkirim", error.response);
