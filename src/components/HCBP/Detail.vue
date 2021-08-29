@@ -94,14 +94,14 @@
                   class="mt-4 font-weight-bold"
                   style="font-family: 'Poppins'; font-size: 13px"
                 >
-                  Dokumen Persetujuan Pinjaman
+                  Dokumen Pendukung Pinjaman
                 </h5>
                 <div class="col-lg-12 border-detail text-left" v-viewer>
                   <div class="row">
                     <div class="col-lg-4">
                       <img
                         class="mt-3 mb-3"
-                        :src="dataModal.FileAttachment_KTP"
+                        :src="dataModal.FileAttachment_DocPendukung"
                         style="cursor:pointer"
                         width="200"
                         height="auto"
