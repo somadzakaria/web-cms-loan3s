@@ -11527,7 +11527,7 @@ a:focus {
 
 .sidebar {
     width: 6.5rem;
-    min-height: 270vh ;
+    min-height: 340vh ;
 }
 
 .sidebar .nav-item {
@@ -11715,7 +11715,7 @@ a:focus {
 
 @media (min-width:768px) {
     .sidebar {
-        width: 14rem !important;
+     width: 14rem !important;
      height: 100px !important;
     }
 

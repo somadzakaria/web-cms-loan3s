@@ -68,20 +68,24 @@ export default {
     return {
       columns: [
         {
-          label: "Tgl Pengajuan",
+          label: "No. Payment Voucher",
           field: "SubmitDate",
         },
         {
-          label: "No. Pengajuan",
+          label: "Jumlah Transaksi",
           field: "SubmitDate",
         },
         {
-          label: "Total Transaction",
+          label: "Nominal",
           field: "NIK",
           type: "number",
         },
         {
-          label: "Funding Amount",
+          label: "Funding",
+          field: "SubmitDate",
+        },
+        {
+          label: "Status",
           field: "SubmitDate",
         },
       ],

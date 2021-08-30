@@ -33,7 +33,7 @@ import Forgotpassword from "../views/reset/ForgotPassword.vue"
 import Otp from "../views/reset/Otp.vue"
 import ResetPassword from "../views/reset/ResetPassword.vue"
 import profile from "../views/Profile.vue"
-import Funding from "../views/Funding.vue"
+import Funding from "../views/Fundingbatch.vue"
 import Transfer from "../views/Transfer.vue"
 Vue.use(VueRouter);
 const routes = [
@@ -58,9 +58,14 @@ const routes = [
     component: Otp,
   },
   {
-    path: "/Funding",
+    path: "/FundingBatch",
     name: "Funding",
     component: Funding,
+  },
+  {
+    path: "/funding-show/",
+    name: "fundingshow",
+    component: () => import("../components/Funding/Detail.vue"),
   },
   {
     path: "/Transfer",

@@ -15,7 +15,7 @@
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
               <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">
-            Funding Batch
+                Funding Batch
               </h1>
             </div>
             <div class="card shadow mt-5">
@@ -30,16 +30,32 @@
                     enabled: true,
                   }"
                 >
-           
+                  <template slot="table-row" slot-scope="props">
+                    <span v-if="props.column.field == 'action'">
+                      <button
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#Detail"
+                      >
+                        Approval
+                      </button>
+                    </span>
+                    <span v-if="props.column.field == 'view'">
+                      <button
+                        class="btn btn-universal"
+                        @click.prevent="handleShow()"
+                      >
+                        <i class="far fa-eye text-primary"></i>
+                      </button>
+                    </span>
+                  </template>
                 </vue-good-table>
               </div>
             </div>
           </div>
           <!-- /.container-fluid -->
         </div>
-        <!-- End of Main Content -->
         <Detail :dataModal="dataModal" />
-        <!-- Footer -->
         <Footer />
         <!-- End of Footer -->
       </div>
@@ -50,13 +66,11 @@
 
 <script>
 // @ is an alias to /src
-// import router from "@/router";
+import router from "@/router";
 import Sidebar from "../components/navigation/Sidebar.vue";
 import Navbar from "../components/navigation/Navbar.vue";
 import Footer from "../components/navigation/Footer.vue";
-// import AprovalService from "../services/aproval.service";
-// import Utils from "@/utils/index";
-import Detail from "../components/Approval/Detail.vue";
+import Detail from "../components/Funding/Approval.vue";
 export default {
   name: "Home",
   components: {
@@ -69,43 +83,30 @@ export default {
     return {
       columns: [
         {
-          label: "Tgl Pengajuan",
+          label: "No. Payment Voucher",
           field: "SubmitDate",
         },
         {
-          label: "No. Pengajuan",
+          label: "Jumlah Transaksi",
           field: "SubmitDate",
         },
         {
-          label: "NIK",
+          label: "Nominal",
           field: "NIK",
           type: "number",
         },
         {
-          label: "Nama",
+          label: "Funding",
           field: "WorkLocation",
         },
         {
-          label: "Lokasi Kerja",
-          field: "LoanAmount",
+          label: "Status",
+          field: "WorkLocation",
         },
         {
-          label: "Pinjaman",
-          field: "DSR",
+          label: "View",
+          field: "view",
         },
-        {
-          label: "Tujuan",
-          field: "SP",
-        },
-        {
-          label: "No. Rekening",
-          field: "SP",
-        },
-        {
-          label: "Tanggal Batch",
-          field: "SP",
-        },
-      
         {
           label: "Action",
           field: "action",
@@ -114,44 +115,25 @@ export default {
       rows: [
         {
           SubmitDate: 1,
-          firstname: "2",
-          NIK: "3",
-          WorkLocation: "4",
-          LoanAmount: "3",
-          DSR: "5",
-          SP: "5",
-          ApvBendahara: "5",
-          ApvSekretaris: "5",
-          ApvKetua: "5",
-          action: "",
         },
       ],
       dataModal: "",
     };
   },
-//   created() {
-//     AprovalService.getAll()
-//       .then((response) => {
-//         this.rows = response.data;
-//       })
-//       .catch((error) => {
-//         console.log("Eror Data Tidak Di Temukan", error.response);
-//       });
-//   },
-//   methods: {
-//     handledetail(id) {
-//       AprovalService.getShow(id)
-//         .then((response) => {
-//           this.dataModal = response.data;
-//         })
-//         .catch((error) => {
-//           console.log("Eror Data Tidak Di Temukan", error.response);
-//         });
-//     },
-//     currency(nominal) {
-//       return Utils.currencyRp(nominal);
-//     },
-//   },
+  //   created() {
+  //     AprovalService.getAll()
+  //       .then((response) => {
+  //         this.rows = response.data;
+  //       })
+  //       .catch((error) => {
+  //         console.log("Eror Data Tidak Di Temukan", error.response);
+  //       });
+  //   },
+  methods: {
+    handleShow() {
+      router.push("/funding-show/");
+    },
+  },
 };
 </script>
 

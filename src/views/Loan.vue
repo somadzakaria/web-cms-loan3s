@@ -151,8 +151,9 @@ export default {
           field: "spcuy",
         },
         {
-          label: "action",
+          label: "Action",
           field: "action",
+          width: "220px",
         },
       ],
       rows: [],

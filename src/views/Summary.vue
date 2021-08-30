@@ -307,21 +307,26 @@ font-weight: bold;"
                     }"
                     :pagination-options="{
                       enabled: true,
+                      perPage: 5,
                     }"
                   >
                     <template slot="table-row" slot-scope="props">
                       <span v-if="props.column.field == 'SubmitDate'">
-                       {{ props.row.SubmitDate| moment("DD MMMM YYYY ") }}
+                        {{ props.row.SubmitDate | moment("DD MMMM YYYY ") }}
                       </span>
                       <span v-else>
                         {{ props.formattedRow[props.column.field] }}
                       </span>
+                      <span v-if="props.column.field == 'amount'">
+                        {{ currency(props.row.LoanAmount) }}
+                      </span>
                     </template>
+                  
                   </vue-good-table>
                 </div>
               </div>
               <div class="col-lg-12">
-                <div class="card mx-2">
+                <div class="card my-5 mx-2 p-3">
                   <h4
                     class="my-3 mx-4"
                     style="color:#404040; font-family: Poppins;
@@ -330,26 +335,36 @@ font-weight: 600;"
                   >
                     Approved Loan
                   </h4>
-                  <table class="table my-2 ">
-                    <thead class="mx-2">
-                      <tr>
-                        <th scope="col">Borrower</th>
-                        <th scope="col">NIK</th>
-                        <th scope="col">Lokasi</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Amount</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="approved in approveds" :key="approved.id">
-                        <th scope="row">{{ approved.EmployeeName }}</th>
-                        <td>{{ approved.EmployeeID }}</td>
-                        <td>{{ approved.WorkLocation }}</td>
-                        <td>{{ approved.SubmitDate }}</td>
-                        <td>{{ approved.LoanAmount }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <vue-good-table
+                    :columns="columns2"
+                    :rows="rows2"
+                    :search-options="{
+                      enabled: true,
+                    }"
+                    :pagination-options="{
+                      enabled: true,
+                      perPage: 5,
+                    }"
+                  >
+                    <template slot="table-row" slot-scope="props">
+                      
+                       <span v-if="props.column.field == 'EmployeeName2'">
+                        {{ props.row.EmployeeName }}
+                      </span>
+                       <span v-if="props.column.field == 'NIK2'">
+                        {{ props.row.EmployeeID }}
+                      </span>
+                       <span v-if="props.column.field == 'LOKASI'">
+                        {{ props.row.WorkLocation }}
+                      </span>
+                       <span v-if="props.column.field == 'SubmitDate2'">
+                        {{ props.row.SubmitDate | moment("DD MMMM YYYY ") }}
+                      </span>
+                      <span v-if="props.column.field == 'LoanAmount'">
+                        {{ currency(props.row.LoanAmount) }}
+                      </span>
+                    </template>
+                  </vue-good-table>
                 </div>
               </div>
             </div>
@@ -373,6 +388,7 @@ import Footer from "../components/navigation/Footer.vue";
 import ApexCharts from "apexcharts/dist/apexcharts.js";
 import VueApexCharts from "vue-apexcharts";
 import dashboardService from "../services/dashboard.service";
+import Utils from "@/utils/index";
 export default {
   name: "Home",
   components: {
@@ -392,7 +408,6 @@ export default {
           label: "NIK",
           field: "EmployeeID",
         },
-
         {
           label: "Lokasi",
           field: "WorkLocation",
@@ -403,27 +418,33 @@ export default {
         },
         {
           label: "Ammont",
+          field: "amount",
+        },
+      ],
+      columns2: [
+        {
+          label: "Borrower",
+          field: "EmployeeName2",
+        },
+        {
+          label: "NIK",
+          field: "NIK2",
+        },
+        {
+          label: "Lokasi",
+          field: "LOKASI",
+        },
+        {
+          label: "Date",
+          field: "SubmitDate2",
+        },
+        {
+          label: "Ammont",
           field: "LoanAmount",
         },
       ],
-      rows: [
-        {
-          id: 1,
-          name: "John",
-          age: 20,
-          Pinjaman: "wkwkw",
-          score: "",
-          action: "",
-        },
-        {
-          id: 2,
-          name: "Kantong",
-          age: 20,
-          Pinjaman: "wkwkw",
-          score: "",
-          action: "",
-        },
-      ],
+      rows: [],
+      rows2: [],
       barseries: [
         {
           name: "Net Profit",
@@ -535,13 +556,18 @@ export default {
         this.loanapproval = response.data.loanapproval;
         this.loanapproved = response.data.loanapproved;
         this.pinjamans = response.data.pinjamandalamproses;
-        this.approveds = response.data.approvedloan;
+        this.rows2 = response.data.approvedloan;
         this.rows = response.data.pinjamandalamproses;
-        console.log(response.data.karyawanaktif.active);
+        console.log(response.data.approvedloan);
       })
       .catch((error) => {
         console.log("Eror Data Tidak Di Temukan", error.response);
       });
+  },
+  methods: {
+    currency(nominal) {
+      return Utils.currencyRp(nominal);
+    },
   },
   mounted() {
     // code from Example: https://apexcharts.com/javascript-chart-demos/area-charts/spline/

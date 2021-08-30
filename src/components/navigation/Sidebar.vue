@@ -102,9 +102,12 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <router-link v-for="menu in menus" :key="menu.id" :to="menu.url">
-                <a v-if="menu.id_induk == 10" class="collapse-item">{{
-                  menu.nama
-                }}</a>
+                <a
+                  v-if="menu.id_induk == 10"
+                  class="collapse-item"
+                  style="font-size:13px; padding:7px;"
+                  >{{ menu.nama }}</a
+                >
               </router-link>
             </div>
           </div>
@@ -131,88 +134,30 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <router-link v-for="menu in menus" :key="menu.id" :to="menu.url">
-                <a v-if="menu.id_induk == 6" class="collapse-item">{{
-                  menu.nama
-                }}</a>
+                <a
+                  v-if="menu.id_induk == 6"
+                  class="collapse-item"
+                  style="font-size:13px; padding:7px;"
+                  >{{ menu.nama }}</a
+                >
               </router-link>
             </div>
           </div>
         </router-link>
       </li>
-      <!-- <li class="nav-item mt-2">
-        <router-link to="/HCBP">
-          <a class="nav-link" href="charts.html"
-            ><span>Pengajuan Pinjaman</span></a
-          >
-        </router-link>
-      </li>
-      <li class="nav-item mt-2">
-        <router-link>
-          <a class="nav-link" href="charts.html">
-            <span>Rekomendasi Pinjaman</span></a
-          >
-        </router-link>
-      </li>
-      <li class="nav-item mt-2">
-        <router-link to="/HCCombenupdate">
-          <a class="nav-link" href="charts.html">
-            <span>Pengikian Data Karyawan</span></a
-          >
-        </router-link>
-      </li>
-      <li class="nav-item mt-2">
-        <router-link to="/Approval">
-          <a class="nav-link" href="charts.html"
-            ><span>Persetujuan Pinjaman</span></a
-          >
-        </router-link>
-      </li> -->
-
-      <!-- <li class="nav-item">
-        <a
-          class="nav-link collapsed"
-          href="#"
-          data-toggle="collapse"
-          data-target="#collapsePages1"
-          aria-expanded="true"
-          aria-controls="collapsePages"
-        >
-          <span>Settings</span>
-        </a>
-        <div
-          id="collapsePages1"
-          class="collapse"
-          aria-labelledby="headingPages"
-          data-parent="#accordionSidebar"
-        >
-          <div class="bg-white py-2 collapse-inner rounded">
-            <router-link to="/Product">
-              <a class="collapse-item" href="#">Product</a></router-link
-            >
-            <router-link to="/GeneralSetting">
-              <a class="collapse-item" href="#">General Setting</a></router-link
-            >
-            <router-link to="/Promotion">
-              <a class="collapse-item" href="#">Promotion</a></router-link
-            >
-            <router-link to="/blog">
-              <a class="collapse-item" href="#">Blog</a></router-link
-            >
-            <router-link to="/Organization">
-              <a class="collapse-item" href="#"
-                >Organization Chart</a
-              ></router-link
-            >
-            <router-link to="/Faq">
-              <a class="collapse-item" href="#">FAQ</a></router-link
-            >
-          </div>
-        </div>
-      </li> -->
     </ul>
     <!-- End of Sidebar -->
   </div>
 </template>
+<style scoped>
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+</style>
 <script>
 import Menuservice from "../../services/menu.service";
 export default {

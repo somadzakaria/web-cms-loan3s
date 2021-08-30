@@ -93,7 +93,6 @@ import Footer from "../components/navigation/Footer.vue";
 import AprovalService from "../services/aproval.service";
 import Utils from "@/utils/index";
 import Detail from "../components/Approval/Detail.vue";
-
 export default {
   name: "Home",
   components: {
