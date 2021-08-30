@@ -22,9 +22,21 @@
           <form>
             <div class="form">
               <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 border py-3">
+                  <div class="row">
+                    <div class="col-lg-6 text-left">
+                      <img src="../../assets/bfi.png" width="100px" />
+                    </div>
+                    <div class="col-lg-6 text-right">
+                      <p
+                        style="background:yellow; color:black; height:50px !important; border:1px solid !important; width:200px; padding:10px;"
+                      >
+                        MDR2372.210810.0002
+                      </p>
+                    </div>
+                  </div>
                   <div class="table-responsive">
-                      
+                    <table class="table table-bordered"></table>
                   </div>
                 </div>
 
@@ -53,6 +65,10 @@
   </div>
 </template>
 <style scoped>
+.border {
+  border-radius: 2px;
+  border: 1px solid black !important;
+}
 .disable {
   background-color: #edf2f7;
 }
