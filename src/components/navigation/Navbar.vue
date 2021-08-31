@@ -120,7 +120,7 @@
       <div class="topbar-divider d-none d-sm-block"></div>
 
       <!-- Nav Item - User Information -->
-      <li class="nav-item dropdown no-arrow">
+      <li class="nav-item dropdown no-arrow" v-if="users">
         <a
           class="nav-link dropdown-toggle"
           href="#"

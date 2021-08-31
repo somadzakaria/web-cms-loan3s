@@ -56,6 +56,7 @@
                         <div
                           class="header border-left-dark  mt-4 text-center"
                           style="border-left: 1px solid rgba(166, 172, 190, 0.5) !important;"
+                          v-if="karyawanaktif"
                         >
                           <h6>Bulan ini</h6>
                           <p
@@ -81,7 +82,10 @@
                         Pinjaman tersalurkan
                       </div>
                       <div class="col-6">
-                        <div class="header   mt-4 text-center">
+                        <div
+                          class="header   mt-4 text-center"
+                          v-if="pinjamantersalurkan"
+                        >
                           <h6>Bulan ini</h6>
                           <p
                             style="font-size: 20px; font-weight: 500; font-family: Poppins; color: #007AFF;"
@@ -94,6 +98,7 @@
                         <div
                           class="header border-left-dark  mt-4 text-center"
                           style="border-left: 1px solid rgba(166, 172, 190, 0.5) !important;"
+                          v-if="pinjamantersalurkan"
                         >
                           <h6>Rata-rata</h6>
                           <p
@@ -399,6 +404,7 @@ export default {
   },
   data() {
     return {
+      datenow: new Date(),
       columns: [
         {
           label: "Borrower",
@@ -546,7 +552,7 @@ export default {
   },
   created() {
     dashboardService
-      .getAll()
+      .getAll(this.$moment(this.datenow).format("YYYY"))
       .then((response) => {
         this.karyawanaktif = response.data.karyawanaktif;
         this.pinjamantersalurkan = response.data.pinjamantersalurkan;
@@ -558,11 +564,8 @@ export default {
         this.pinjamans = response.data.pinjamandalamproses;
         this.rows2 = response.data.approvedloan;
         this.rows = response.data.pinjamandalamproses;
-        console.log(response.data.approvedloan);
       })
-      .catch((error) => {
-        console.log("Eror Data Tidak Di Temukan", error.response);
-      });
+      .catch(() => {});
   },
   methods: {
     currency(nominal) {
