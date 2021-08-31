@@ -80,7 +80,9 @@
                           </tr>
                         </thead>
                         <tfoot>
-                          <th colspan="4" class="text-left table-active">Total Bank IN</th>
+                          <th colspan="4" class="text-left table-active">
+                            Total Bank IN
+                          </th>
                           <th class="table-active">0.00</th>
                         </tfoot>
                         <tbody>
@@ -120,7 +122,9 @@
                           </tr>
                         </tbody>
                         <tfoot>
-                          <th colspan="3" class="text-left table-active">Total Bank Out</th>
+                          <th colspan="3" class="text-left table-active">
+                            Total Bank Out
+                          </th>
                           <th class="table-active">311,851,829,00</th>
                         </tfoot>
                       </table>
