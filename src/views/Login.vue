@@ -102,6 +102,7 @@ export default {
 
 .bfi {
   margin-top: 130px;
+  
 }
 
 .form-control {
