@@ -23,7 +23,7 @@
                 <vue-good-table
                   :columns="columns"
                   :rows="rows"
-                       :line-numbers="true"
+                  :line-numbers="true"
                   :sort-options="{
                     enabled: false,
                   }"
@@ -109,6 +109,7 @@ export default {
         {
           label: "Tgl Pengajuan",
           field: "waktu",
+          width: "150px",
         },
         {
           label: "Nama",
