@@ -302,11 +302,12 @@ font-weight: bold;"
                   <vue-good-table
                     :columns="columns"
                     :rows="rows"
-                    :search-options="{
-                      enabled: true,
+                    :sort-options="{
+                      enabled: false,
                     }"
                     :pagination-options="{
                       enabled: true,
+                      mode: 'pages',
                       perPage: 5,
                     }"
                   >
@@ -321,7 +322,6 @@ font-weight: bold;"
                         {{ currency(props.row.LoanAmount) }}
                       </span>
                     </template>
-                  
                   </vue-good-table>
                 </div>
               </div>
@@ -338,26 +338,26 @@ font-weight: 600;"
                   <vue-good-table
                     :columns="columns2"
                     :rows="rows2"
-                    :search-options="{
-                      enabled: true,
+                    :sort-options="{
+                      enabled: false,
                     }"
                     :pagination-options="{
                       enabled: true,
+                      mode: 'pages',
                       perPage: 5,
                     }"
                   >
                     <template slot="table-row" slot-scope="props">
-                      
-                       <span v-if="props.column.field == 'EmployeeName2'">
+                      <span v-if="props.column.field == 'EmployeeName2'">
                         {{ props.row.EmployeeName }}
                       </span>
-                       <span v-if="props.column.field == 'NIK2'">
+                      <span v-if="props.column.field == 'NIK2'">
                         {{ props.row.EmployeeID }}
                       </span>
-                       <span v-if="props.column.field == 'LOKASI'">
+                      <span v-if="props.column.field == 'LOKASI'">
                         {{ props.row.WorkLocation }}
                       </span>
-                       <span v-if="props.column.field == 'SubmitDate2'">
+                      <span v-if="props.column.field == 'SubmitDate2'">
                         {{ props.row.SubmitDate | moment("DD MMMM YYYY ") }}
                       </span>
                       <span v-if="props.column.field == 'LoanAmount'">

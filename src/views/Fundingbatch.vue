@@ -23,11 +23,12 @@
                 <vue-good-table
                   :columns="columns"
                   :rows="rows"
-                  :search-options="{
-                    enabled: true,
+                    :sort-options="{
+                    enabled: false,
                   }"
                   :pagination-options="{
                     enabled: true,
+                    mode: 'pages',
                   }"
                 >
                   <template slot="table-row" slot-scope="props">

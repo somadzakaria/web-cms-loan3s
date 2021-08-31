@@ -22,11 +22,13 @@
                 <vue-good-table
                   :columns="columns"
                   :rows="rows"
-                  :search-options="{
-                    enabled: true,
+                  :line-numbers="true"
+                  :sort-options="{
+                    enabled: false,
                   }"
                   :pagination-options="{
                     enabled: true,
+                    mode: 'pages',
                     perPage: 5,
                   }"
                 >

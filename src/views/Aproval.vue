@@ -23,11 +23,13 @@
                 <vue-good-table
                   :columns="columns"
                   :rows="rows"
-                  :search-options="{
-                    enabled: true,
+                       :line-numbers="true"
+                  :sort-options="{
+                    enabled: false,
                   }"
                   :pagination-options="{
                     enabled: true,
+                    mode: 'pages',
                   }"
                 >
                   <template slot="table-row" slot-scope="props">
@@ -115,7 +117,6 @@ export default {
         {
           label: "NIK",
           field: "NIK",
-          type: "number",
         },
         {
           label: "Lokasi Kerja",
@@ -146,20 +147,7 @@ export default {
           field: "action",
         },
       ],
-      rows: [
-        {
-          SubmitDate: "",
-          firstname: "",
-          NIK: "",
-          WorkLocation: "",
-          LoanAmount: "",
-          DSR: "",
-          SP: "",
-          ApvBendahara: "",
-          ApvKetua: "",
-          action: "",
-        },
-      ],
+      rows: [],
       dataModal: "",
     };
   },

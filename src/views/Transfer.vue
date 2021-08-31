@@ -23,11 +23,13 @@
                 <vue-good-table
                   :columns="columns"
                   :rows="rows"
-                  :search-options="{
-                    enabled: true,
+                  :sort-options="{
+                    enabled: false,
                   }"
                   :pagination-options="{
                     enabled: true,
+                    mode: 'pages',
+                    perPage: 5,
                   }"
                 >
                 </vue-good-table>
@@ -36,7 +38,9 @@
             <div class="col-lg-12 mt-5 text-center">
               <button type="button" class="btn btn-primary">
                 <i class="fas fa-download mr-2"></i>
-                <span style="font-size: 14px; font-family: 'Poppins';">Download</span>
+                <span style="font-size: 14px; font-family: 'Poppins';"
+                  >Download</span
+                >
               </button>
             </div>
           </div>
