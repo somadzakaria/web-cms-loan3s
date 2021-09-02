@@ -110,7 +110,9 @@
                       type="file"
                       @change="onFileChange"
                       class="form-control"
+                      max-size="5000"
                       id="inputFile"
+                      accept="application/pdf, image/*"
                     />
                   </div>
                   <div class="col-lg-12 text-left">
