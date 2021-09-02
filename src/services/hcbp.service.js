@@ -44,7 +44,6 @@ export default {
           X_USER_ID: user.data.id,
           "Content-Type": "application/json",
           'Access-Control-Allow-Origin': '*',
-          
         },
       })
       .then((response) => {

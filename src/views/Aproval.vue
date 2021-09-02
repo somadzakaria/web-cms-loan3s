@@ -50,10 +50,10 @@
                       {{ props.formattedRow[props.column.field] }}
                     </span>
                     <span v-if="props.column.field === 'dsrcuy'">
-                      {{ props.row.DSR == 1 ? "Ya" : "Tidak Disetujui" }}
+                      {{ props.row.DSR == 1 ? "Ya" : "Tidak" }}
                     </span>
                     <span v-if="props.column.field === 'spcuy'">
-                      {{ props.row.SP == 1 ? "Ya" : "Tidak Disetujui" }}
+                      {{ props.row.SP == 1 ? "Ya" : "Tidak" }}
                     </span>
                     <span v-if="props.column.field === 'Bendahara'">
                       {{

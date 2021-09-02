@@ -11,9 +11,7 @@ export default {
             'Authorization': "Bearer " + user.data.access_token,
             'X_USER_ID': user.data.user.id,
             'Content-Type': "application/json",
-          },
-  
-         
+          },   
       })
         .then((response) => {
           return response.data;

@@ -405,6 +405,14 @@ export default {
   data() {
     return {
       datenow: new Date(),
+      pinjamantersalurkan:"",
+      images:'',
+      pinjamanproses:"",
+      jumlah:"",
+      hcbp:'',
+      hccomben:"",
+      loanapproval:'',
+      loanapproved:'',
       columns: [
         {
           label: "Borrower",
@@ -450,7 +458,7 @@ export default {
         },
       ],
       rows: [],
-      rows2: [],
+      rows2: [],   
       barseries: [
         {
           name: "Net Profit",

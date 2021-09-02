@@ -158,6 +158,7 @@ export default {
       ],
       rows: [],
       dataModal: "",
+      images:'',
     };
   },
   created() {

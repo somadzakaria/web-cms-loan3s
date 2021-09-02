@@ -21,7 +21,13 @@
           </div>
           <div class="modal-body text-center">
             <div class="form" @submit.prevent="submit($event)">
-              <img :src="dataModal.FileAttachment_KTP" width="350" alt="" />
+              <img
+                :src="dataModal.FileAttachment_KTP"
+                style="border-radius:10px; cursor:pointer;"
+                height="150PX"
+                class="mb-4"
+                alt=""
+              />
               <form role="form">
                 <div class="row mt-5">
                   <div class="col-lg-6 text-left">
