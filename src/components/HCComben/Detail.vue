@@ -141,36 +141,6 @@
                           :src="dataModal.FileAttachment_DocPendukung"
                         />
                       </div>
-                      <div class="col-4 mb-3">
-                        <img
-                          style="border-radius:10px !important; cursor:pointer; width:240px; height: 141px;"
-                          :src="dataModal.FileAttachment_DocPendukung"
-                        />
-                      </div>
-                      <div class="col-4 mb-3">
-                        <img
-                          style="border-radius:10px !important; cursor:pointer; width:240px; height: 141px;"
-                          :src="dataModal.FileAttachment_DocPendukung"
-                        />
-                      </div>
-                      <div class="col-4">
-                        <img
-                          style="border-radius:10px !important; cursor:pointer; width:240px; height: 141px;"
-                          :src="dataModal.FileAttachment_DocPendukung"
-                        />
-                      </div>
-                      <div class="col-4">
-                        <img
-                          style="border-radius:10px !important; cursor:pointer; width:240px; height: 141px;"
-                          :src="dataModal.FileAttachment_DocPendukung"
-                        />
-                      </div>
-                      <div class="col-4">
-                        <img
-                          style="border-radius:10px !important; cursor:pointer; width:240px; height: 141px;"
-                          :src="dataModal.FileAttachment_DocPendukung"
-                        />
-                      </div>
                     </div>
                   </div>
 
@@ -285,7 +255,7 @@ export default {
     return {
       detials: [],
       readOnly: true,
-      images:'',
+      images: "",
     };
   },
   props: {

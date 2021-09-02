@@ -168,6 +168,7 @@ export default {
   },
   methods: {
     submit(event) {
+      let loading = this.$loading.show();
       event.preventDefault();
       var imageInput = document.getElementById("inputFile").files[0];
       var formData = new FormData();
@@ -176,8 +177,9 @@ export default {
       formData.append("Notes", this.dataModal.Notes);
       HcbpService.postUpdate(this.dataModal.id, formData)
         .then((response) => {
+          loading.hide();
+          router.back();
           console.log(response, "Berhasil Di tambahkan");
-          router.go();
         })
         .catch((error) => {
           console.log("data tidak terkirim", error.response);
