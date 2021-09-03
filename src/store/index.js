@@ -18,12 +18,12 @@ export default new Vuex.Store({
   },
   actions: {
     register({ commit }, credentials) {
-      return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/daftar", credentials).then(({ data }) => {
+      return axios.post("${process.env.VUE_APP_URL}/api/v1/cms/daftar", credentials).then(({ data }) => {
         commit("SET_USER_DATA", data);
       });
     },
     login({ commit }, credentials) {
-      return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/login", credentials).then(({ data }) => {
+      return axios.post("${process.env.VUE_APP_URL}/api/v1/cms/login", credentials).then(({ data }) => {
         commit("SET_USER_DATA", data);
       });
     },

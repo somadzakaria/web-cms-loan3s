@@ -4,7 +4,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 export default {
   getAll() {
     return axios
-      .get("https://dev-loan-api.sitama.co.id/api/v1/cms/loan/HCCombenRecommendationList", {
+      .get(`${process.env.VUE_APP_URL}api/v1/cms/loan/HCCombenRecommendationList`, {
         headers: {
           Authorization: "Bearer " + user.data.access_token,
           X_USER_ID: user.data.id,
@@ -21,7 +21,7 @@ export default {
 
   getShow(id) {
     return axios
-      .get("https://dev-loan-api.sitama.co.id/api/v1/cms/loan/HCCombenRecommendationShow/" + id, {
+      .get(`${process.env.VUE_APP_URL}api/v1/cms/loan/HCCombenRecommendationShow/` + id, {
         headers: {
           Authorization: "Bearer " + user.data.access_token,
           X_USER_ID: user.data.id,
@@ -36,10 +36,9 @@ export default {
       });
   },
 
-
   postUpdate(id, params) {
     return axios
-      .post("https://dev-loan-api.sitama.co.id/api/v1/cms/loan/HCCombenRecommendationUpdate/" + id, params, {
+      .post(`${process.env.VUE_APP_URL}api/v1/cms/loan/HCCombenRecommendationUpdate/` + id, params, {
         headers: {
           Authorization: "Bearer " + user.data.access_token,
           X_USER_ID: user.data.id,

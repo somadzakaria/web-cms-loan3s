@@ -2,7 +2,7 @@ import axios from "axios";
 const user = JSON.parse(localStorage.getItem("user"));
 export default {
   getAll() {
-    return axios.get("https://dev-loan-api.sitama.co.id/api/v1/cms/generalsetting",
+    return axios.get(`${process.env.VUE_APP_URL}api/v1/cms/generalsetting`,
         {
         headers: {
             'Authorization': "Bearer " + user.data.access_token,
@@ -20,7 +20,7 @@ export default {
 
    getDelete(id) {
     return axios.get(
-      "https://dev-loan-api.sitama.co.id/api/v1/cms/generalsetting/delete/"+id,
+      `${process.env.VUE_APP_URL}api/v1/cms/generalsetting/delete/`+id,
         {   headers: {
             'Authorization': "Bearer " + user.data.access_token,
             'X_USER_ID': user.data.id,
@@ -37,7 +37,7 @@ export default {
 
    getShow(id) {
     return axios.get(
-      "https://dev-loan-api.sitama.co.id/api/v1/cms/generalsetting/show/"+id,
+      `${process.env.VUE_APP_URL}api/v1/cms/generalsetting/show/`+id,
         {   headers: {
             'Authorization': "Bearer " + user.data.access_token,
             'X_USER_ID': user.data.id,
@@ -53,7 +53,7 @@ export default {
   },
 
   postCrate(params){
-    return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/generalsetting/create",params,{
+    return axios.post(`${process.env.VUE_APP_URL}api/v1/cms/generalsetting/create`,params,{
       headers: {
           'Authorization': "Bearer " + user.data.access_token,
           'X_USER_ID': user.data.id,
@@ -68,7 +68,7 @@ export default {
   },
 
   postUpdate(id,params){
-    return axios.post("https://dev-loan-api.sitama.co.id/api/v1/cms/generalsetting/update/"+id,params,{
+    return axios.post(`${process.env.VUE_APP_URL}api/v1/cms/generalsetting/update/`+id,params,{
         headers: {
             'Authorization': "Bearer " + user.data.access_token,
             'X_USER_ID': user.data.id,

@@ -3,7 +3,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 export default {
     getAll(years) {
         return axios({method: 'post',
-        url:"https://dev-loan-api.sitama.co.id/api/v1/cms/dashboard",
+        url:`${process.env.VUE_APP_URL}api/v1/cms/dashboard`,
         data:{
           'year':years
         },
