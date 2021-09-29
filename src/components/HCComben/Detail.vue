@@ -22,15 +22,18 @@
           <div class="container-fluid">
             <div class="modal-body text-center">
               <div class="form" v-viewer>
-                <img
-                  :src="dataModal.FileAttachment_KTP"
-                  style="border-radius:10px; cursor:pointer;"
-                  height="150PX"
-                  alt=""
-                />
+                <div>
+                  <img
+                    :src="dataModal.FileAttachment_KTP"
+                    style="border-radius:10px; cursor:pointer;"
+                    height="150PX"
+                    alt=""
+                  />
+                </div>
+
                 <div class="row mt-5">
                   <div class="col-lg-6 text-left">
-                    <label for="NIK" style="text-align: left"> NIK</label>
+                    <label for="NIK" style="text-align: left">NIK</label>
                     <input
                       type="text"
                       id="NIK"
@@ -62,11 +65,12 @@
                     />
                   </div>
                   <div class="col-lg-6 mt-3 text-left">
-                    <label for="NIK" style="text-align: left"> Pinjaman</label>
+                    <label for="NIK" style="text-align:left">Pinjaman</label>
                     <vue-numeric
                       separator="."
                       v-model="dataModal.LoanAmount"
                       :read-only="readOnly"
+                      currency="Rp."
                       read-only-class="form-control disable"
                     />
                   </div>
@@ -114,7 +118,104 @@
                       disabled
                     />
                   </div>
+                  <!-- NST -->
 
+                  <div class="col-lg-12 mt-3 text-left">
+                    <h5
+                      class=" font-weight-800 mt-4 font-weight-bold mb-3"
+                      style="font-family:'Poppins'; font-size:15px;"
+                    >
+                      NST
+                    </h5>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="inlineCheckbox1"
+                        value="option1"
+                      />
+                      <label class="form-check-label" for="inlineCheckbox1"
+                        >NST</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline  mb-1">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="inlineCheckbox2"
+                        value="option2"
+                      />
+                      <label class="form-check-label" for="inlineCheckbox2"
+                        >Non-NST</label
+                      >
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 mt-3 text-left">
+                    <label for="OutstandingKoperasi"
+                      >Outstanding Koperasi</label
+                    >
+                    <vue-numeric
+                      id="OutstandingKoperasi"
+                      separator="."
+                      v-model="dataModal.LoanAmount"
+                      :read-only="readOnly"
+                      currency="Rp."
+                      read-only-class="form-control disable"
+                    />
+                  </div>
+                  <div class="col-lg-6 mt-3 text-left">
+                    <label for="AdminFee">Admin Fee</label>
+                    <vue-numeric
+                      id="AdminFee"
+                      separator="."
+                      v-model="dataModal.LoanAmount"
+                      :read-only="readOnly"
+                      currency="Rp."
+                      read-only-class="form-control disable"
+                    />
+                  </div>
+                  <div class="col-lg-12  text-left">
+                    <h5
+                      class=" font-weight-800 mt-4 font-weight-bold mb-3"
+                      style="font-family:'Poppins'; font-size:15px;"
+                    >
+                      PTA
+                    </h5>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="inlineCheckbox1"
+                        value="option1"
+                      />
+                      <label class="form-check-label" for="inlineCheckbox1"
+                        >Ya</label
+                      >
+                    </div>
+                  </div>
+                  <div class="col-lg-6 text-left mt-3">
+                    <label for="AdminFee">Admin Fee</label>
+                    <vue-numeric
+                      id="AdminFee"
+                      separator="."
+                      v-model="dataModal.LoanAmount"
+                      :read-only="readOnly"
+                      currency="Rp."
+                      read-only-class="form-control disable"
+                    />
+                  </div>
+                  <div class="col-lg-6 text-left mt-3">
+                    <label for="AdminFee">Admin Fee</label>
+                    <vue-numeric
+                      id="AdminFee"
+                      separator="."
+                      v-model="dataModal.LoanAmount"
+                      :read-only="readOnly"
+                      currency="Rp."
+                      read-only-class="form-control disable"
+                    />
+                  </div>
                   <div class="col-lg-12 mt-3 text-left">
                     <h5
                       class="mt-4 font-weight-800 mb-3"
@@ -246,16 +347,17 @@
 }
 </style>
 <script>
+// import Money from "v-money";
 import VueNumeric from "vue-numeric";
 export default {
   components: {
     VueNumeric,
+    // Money,
   },
   data() {
     return {
       detials: [],
       readOnly: true,
-      images: "",
     };
   },
   props: {
