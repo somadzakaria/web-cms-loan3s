@@ -307,6 +307,7 @@ font-weight: bold;"
                   <vue-good-table
                     :columns="columns"
                     :rows="rows"
+                    :line-numbers="true"
                     :sort-options="{
                       enabled: false,
                     }"
@@ -343,6 +344,7 @@ font-weight: 600;"
                   <vue-good-table
                     :columns="columns2"
                     :rows="rows2"
+                    :line-numbers="true"
                     :sort-options="{
                       enabled: false,
                     }"
@@ -405,14 +407,14 @@ export default {
   data() {
     return {
       datenow: new Date(),
-      pinjamantersalurkan:"",
-      images:'',
-      pinjamanproses:"",
-      jumlah:"",
-      hcbp:'',
-      hccomben:"",
-      loanapproval:'',
-      loanapproved:'',
+      pinjamantersalurkan: "",
+      images: "",
+      pinjamanproses: "",
+      jumlah: "",
+      hcbp: "",
+      hccomben: "",
+      loanapproval: "",
+      loanapproved: "",
       columns: [
         {
           label: "Borrower",
@@ -458,7 +460,7 @@ export default {
         },
       ],
       rows: [],
-      rows2: [],   
+      rows2: [],
       barseries: [
         {
           name: "Net Profit",

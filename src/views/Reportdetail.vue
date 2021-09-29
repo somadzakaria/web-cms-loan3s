@@ -83,7 +83,7 @@
                     <span v-else>
                       {{ props.formattedRow[props.column.field] }}
                     </span>
-                   
+        
                   </template>
                 </vue-good-table>
               </div>
