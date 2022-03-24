@@ -102,7 +102,7 @@
                   />
                 </div>
                 <div class="col-lg-6 mt-5" v-viewer>
-                  <img :src="dataModal.DokumenPersetujuan" alt="" />
+                  <img :src="dataModal.DokumenPersetujuan" alt=""  width="500px"/>
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Note</label>

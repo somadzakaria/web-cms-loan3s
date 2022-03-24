@@ -161,12 +161,13 @@ export default {
   data() {
     return {
       HCBP: [],
+      dataModals: []
     };
   },
   props: {
     dataModal: {
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     submit(event) {
@@ -178,12 +179,12 @@ export default {
       formData.append("DokumenPersetujuan", imageInput);
       formData.append("Notes", this.dataModal.Notes);
       HcbpService.postUpdate(this.dataModal.id, formData)
-        .then((response) => {
+        .then(response => {
           loading.hide();
           router.back();
           console.log(response, "Berhasil Di tambahkan");
         })
-        .catch((error) => {
+        .catch(error => {
           console.log("data tidak terkirim", error.response);
         });
     },
@@ -194,11 +195,11 @@ export default {
     },
     createImage(file) {
       let reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = e => {
         this.dataModal.DokumenPersetujuan = e.target.result;
       };
       reader.readAsDataURL(file);
-    },
+    }
   },
   computed: {
     fullName: {
@@ -209,8 +210,8 @@ export default {
         const m = newValue.match(/(\S*)\s+(.*)/);
         this.firsnName = m[1];
         this.lastname = m[2];
-      },
-    },
-  },
+      }
+    }
+  }
 };
 </script>

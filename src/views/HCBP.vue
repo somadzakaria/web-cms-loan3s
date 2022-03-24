@@ -24,11 +24,11 @@
                   :rows="rows"
                   :line-numbers="true"
                   :sort-options="{
-                    enabled: false,
+                    enabled: false
                   }"
                   :pagination-options="{
                     enabled: true,
-                    mode: 'pages',
+                    mode: 'pages'
                   }"
                 >
                   <template slot="table-row" slot-scope="props">
@@ -66,7 +66,7 @@
                         class="btn btn-universal"
                         data-toggle="modal"
                         data-target="#Edit"
-                        @click.prevent="handleUpdate(props.row.id)"
+                        @click.prevent="handleupdate(props.row.id)"
                       >
                         <i class="far fa-edit text-primary"></i>
                       </button>
@@ -111,80 +111,80 @@ export default {
     Navbar,
     Footer,
     Detail,
-    Update,
+    Update
   },
   data() {
     return {
       columns: [
         {
           label: "Tgl Pengajuan",
-          field: "SubmitDate",
+          field: "SubmitDate"
         },
         {
           label: "NIK",
           field: "NIK",
-          type: "number",
+          type: "number"
         },
         {
           label: "Jabatan",
-          field: "JobTitle",
+          field: "JobTitle"
         },
         {
           label: "Lokasi Kerja",
-          field: "WorkLocation",
+          field: "WorkLocation"
         },
         {
           label: "Pinjaman",
-          field: "Pinjaman",
+          field: "Pinjaman"
         },
         {
           label: "Angsuran",
-          field: "InstallmentAmount",
+          field: "InstallmentAmount"
         },
         {
           label: "Tenor",
-          field: "Tenor",
+          field: "Tenor"
         },
         {
           label: "Action",
-          field: "action",
-        },
+          field: "action"
+        }
       ],
       rows: [],
-      dataModal: "",
+      dataModal: ""
     };
   },
   created() {
     HCBPService.getAll()
-      .then((response) => {
+      .then(response => {
         this.rows = response.data;
       })
-      .catch((error) => {
+      .catch(error => {
         console.log("data tidak ditemukan", error.response);
       });
   },
   methods: {
     handledetail(id) {
       HCBPService.getShow(id)
-        .then((response) => {
+        .then(response => {
           this.dataModal = response.data;
         })
-        .catch((error) => {
+        .catch(error => {
           console.log("Eror Data Tidak Di Temukan", error.response);
         });
     },
     handleupdate(id) {
       HCBPService.getShow(id)
-        .then((response) => {
+        .then(response => {
           this.dataModal = response.data;
         })
-        .catch((error) => {
+        .catch(error => {
           console.log("Eror Data Tidak Di Temukan", error.response);
         });
     },
     currency(nominal) {
       return Utils.currencyRp(nominal);
-    },
-  },
+    }
+  }
 };
 </script>

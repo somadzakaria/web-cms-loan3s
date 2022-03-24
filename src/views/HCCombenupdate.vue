@@ -67,7 +67,7 @@
                         class="btn btn-universal"
                         data-toggle="modal"
                         data-target="#Edit"
-                        @click.prevent="handleUpdate(props.row.id)"
+                        @click.prevent="handleupdate(props.row.id)"
                       >
                         <i class="far fa-edit text-primary"></i>
                       </button>
