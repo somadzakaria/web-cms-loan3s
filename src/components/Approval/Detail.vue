@@ -102,7 +102,11 @@
                   />
                 </div>
                 <div class="col-lg-6 mt-5" v-viewer>
-                  <img :src="dataModal.DokumenPersetujuan" alt=""  width="500px"/>
+                  <img
+                    :src="dataModal.DokumenPersetujuan"
+                    alt=""
+                    width="500px"
+                  />
                 </div>
                 <div class="col-lg-6 mt-3 text-left">
                   <label for="NIK" style="text-align: left">Note</label>
@@ -153,34 +157,34 @@ import AprovalService from "../../services/aproval.service";
 import VueNumeric from "vue-numeric";
 export default {
   components: {
-    VueNumeric,
+    VueNumeric
   },
   data() {
     return {
       ochart: [],
-      readOnly: true,
+      readOnly: true
     };
   },
   props: {
     dataModal: {
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     submit(param) {
       let params = {
-        Approval: param,
+        Approval: param
       };
       console.log(params);
       AprovalService.postSubmit(this.dataModal.id, params)
-        .then((response) => {
+        .then(response => {
           console.log(response, "Berhasil Di tambahkan");
           router.go();
         })
-        .catch((error) => {
+        .catch(error => {
           console.log("Gagal Di tambahkan", error.response);
         });
-    },
+    }
   },
   computed: {
     fullName: {
@@ -191,8 +195,8 @@ export default {
         const m = newValue.match(/(\S*)\s+(.*)/);
         this.firsnName = m[1];
         this.lastname = m[2];
-      },
-    },
-  },
+      }
+    }
+  }
 };
 </script>

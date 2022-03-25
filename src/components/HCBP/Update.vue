@@ -182,6 +182,7 @@ export default {
         .then(response => {
           loading.hide();
           router.back();
+          router.go();
           console.log(response, "Berhasil Di tambahkan");
         })
         .catch(error => {
