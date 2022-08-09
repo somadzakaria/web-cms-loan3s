@@ -129,7 +129,7 @@ import Sidebar from "../navigation/Sidebar.vue";
 import Navbar from "../navigation/Navbar.vue";
 import Footer from "../navigation/Footer.vue";
 import PromotionService from "../../services/promotion.service";
-import ProductService from "../../services/produk.service";
+import ProductService from "../../services/produkv1.service";
 export default {
   name: "Home",
   components: {

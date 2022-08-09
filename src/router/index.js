@@ -35,6 +35,7 @@ import ResetPassword from "../views/reset/ResetPassword.vue"
 import profile from "../views/Profile.vue"
 import Funding from "../views/Fundingbatch.vue"
 import Transfer from "../views/Transfer.vue"
+import PersetujuanPV from "../views/PersetujuanPV";
 Vue.use(VueRouter);
 const routes = [
   {
@@ -71,6 +72,11 @@ const routes = [
     path: "/Transfer",
     name: "Transfer",
     component: Transfer,
+  },
+  {
+      path: "/PersetujuanPV",
+      name: "PersetujuanPV",
+      component: PersetujuanPV,
   },
   {
     path: "/Reset-password",

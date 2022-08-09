@@ -1,149 +1,120 @@
 <template>
   <div class="home">
-    <!-- Page Wrapper -->
     <div id="wrapper">
-      <Sidebar />
-      <!-- Content Wrapper -->
+      <Sidebar/>
+
       <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Main Content -->
+
         <div id="content">
-          <Navbar />
-          <!-- Begin Page Content -->
+          <Navbar/>
           <div class="container-fluid">
-            <!-- End Filter -->
-            <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
-              <h1 class="h3 mb-3 text-gray-800" style="font-family: 'Poppins';">
-                Transfer
-              </h1>
-            </div>
-            <div class="card shadow mt-5">
-              <div class="card-body">
-                <vue-good-table
-                  :columns="columns"
-                  :rows="rows"
-                  :sort-options="{
-                    enabled: false,
-                  }"
-                  :pagination-options="{
-                    enabled: true,
-                    mode: 'pages',
-                    perPage: 5,
-                  }"
-                >
-                </vue-good-table>
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <div class="row">
+                  <div class="col-lg-6 text-left">
+                    <h6 style="
+                font-family: 'Poppins';
+                font-size: 14px;
+                font-weight: bold;">Transfer</h6>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-lg-12 mt-5 text-center">
-              <button type="button" class="btn btn-primary">
-                <i class="fas fa-download mr-2"></i>
-                <span style="font-size: 14px; font-family: 'Poppins';"
-                  >Download</span
-                >
-              </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered"
+                     id="dataTable"
+                     width="100%"
+                     cellspacing="0">
+                <thead>
+                <tr>
+                  <th style="
+              background: #edf2f7;
+              color: #4A5568;
+              font-family: 'Poppins';">Tanggal
+                  </th>
+                  <th style="
+              background: #edf2f7;
+              color: #4A5568;
+              font-family: 'Poppins';">No. Batching
+                  </th>
+                  <th style="
+              background: #edf2f7;
+              color: #4A5568;
+              font-family: 'Poppins';">Total Account
+                  </th>
+                  <th style="
+              background: #edf2f7;
+              color: #4A5568;
+              font-family: 'Poppins';">Total Amount
+                  </th>
+                  <th style="
+              background: #edf2f7;
+              color: #4A5568;
+              font-family: 'Poppins';">Status
+                  </th>
+                  <th style="
+              background: #edf2f7;
+              color: #4A5568;
+              font-family: 'Poppins';">Action
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>02-Agus-2022</td>
+                  <td>SIP-0010</td>
+                  <td>2</td>
+                  <td>Rp 10.000.000</td>
+                  <td>NEW</td>
+                  <td>
+                    <button class="btn btn-primary text-left mr-3"
+                            style="font-family: Poppins">
+                      Paid
+                    </button>
+
+                    <button class="btn btn-primary"
+                            style="font-family: Poppins">
+                      <i class="fa fa-download mr-3"></i> Download
+                    </button>
+                  </td>
+                </tr>
+
+                </tbody>
+
+              </table>
+
             </div>
           </div>
-          <!-- /.container-fluid -->
+
         </div>
-        <!-- End of Main Content -->
-        <Detail :dataModal="dataModal" />
-        <!-- Footer -->
-        <Footer />
-        <!-- End of Footer -->
+
+        <Detail/>
+
+
+        <Footer/>
+
       </div>
+
+
+      <Update/>
+
     </div>
-    <!-- End of Page Wrapper -->
+
   </div>
+
+
 </template>
 
 <script>
-// @ is an alias to /src
-// import router from "@/router";
-import Sidebar from "../components/navigation/Sidebar.vue";
-import Navbar from "../components/navigation/Navbar.vue";
-import Footer from "../components/navigation/Footer.vue";
-// import AprovalService from "../services/aproval.service";
-// import Utils from "@/utils/index";
-import Detail from "../components/Approval/Detail.vue";
-export default {
-  name: "Home",
-  components: {
-    Sidebar,
-    Navbar,
-    Footer,
-    Detail,
-  },
-  data() {
-    return {
-      columns: [
-        {
-          label: "No. Payment Voucher",
-          field: "SubmitDate",
-        },
-        {
-          label: "Jumlah Transaksi",
-          field: "SubmitDate",
-        },
-        {
-          label: "Nominal",
-          field: "NIK",
-          type: "number",
-        },
-        {
-          label: "Funding",
-          field: "SubmitDate",
-        },
-        {
-          label: "Status",
-          field: "SubmitDate",
-        },
-      ],
-      rows: [
-        {
-          SubmitDate: 1,
-          firstname: "2",
-          firstname2: "2",
-          NIK: "3",
-        },
-      ],
-      dataModal: "",
-    };
-  },
-  //   created() {
-  //     AprovalService.getAll()
-  //       .then((response) => {
-  //         this.rows = response.data;
-  //       })
-  //       .catch((error) => {
-  //         console.log("Eror Data Tidak Di Temukan", error.response);
-  //       });
-  //   },
-  //   methods: {
-  //     handledetail(id) {
-  //       AprovalService.getShow(id)
-  //         .then((response) => {
-  //           this.dataModal = response.data;
-  //         })
-  //         .catch((error) => {
-  //           console.log("Eror Data Tidak Di Temukan", error.response);
-  //         });
-  //     },
-  //     currency(nominal) {
-  //       return Utils.currencyRp(nominal);
-  //     },
-  //   },
-};
-</script>
+import Navbar from "../components/navigation/Navbar";
+import Detail from "../components/HCCombenUpdate/Detail";
+import Footer from "../components/navigation/Footer";
+import Sidebar from "../components/navigation/Sidebar";
+import Update from "../components/HCCombenUpdate/Update";
 
-<style scoped>
-.btn-white {
-  font-family: "Poppins";
+export default {
+  components: {Update, Sidebar, Footer, Detail, Navbar}
 }
-.btn-white:hover {
-  background-color: #007aff;
-  border-radius: 3px;
-  font-family: "Poppins";
-  color: #ffff;
-}
-</style>
+</script>

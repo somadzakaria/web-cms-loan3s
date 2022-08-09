@@ -161,7 +161,7 @@ import router from "@/router";
 import Sidebar from "../navigation/Sidebar.vue";
 import Navbar from "../navigation/Navbar.vue";
 import Footer from "../navigation/Footer.vue";
-import ProductService from "../../services/produk.service";
+import ProductService from "../../services/produkv1.service";
 
 export default {
   name: "Home",
