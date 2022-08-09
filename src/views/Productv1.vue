@@ -51,7 +51,7 @@
                             font-family: 'Poppins';
                           "
                         >
-                          Product
+                          Products
                         </th>
                         <th
                           style="
